@@ -10,7 +10,8 @@ import CoreData
 
 struct RegistrationView : View {
     
-
+    @State var showAlert = false
+    
     @State private var firstName = ""
     @State private var lastName = ""
     @State private var userName = ""
@@ -61,15 +62,31 @@ struct RegistrationView : View {
                                             Text(gender.rawValue.capitalized).tag(gender)
                                         }
                             }.pickerStyle(SegmentedPickerStyle())
+                Picker("Class", selection: $gender) {
+                                        ForEach(Standing.allCases) { standing in
+                                            Text(standing.rawValue.capitalized).tag(standing)
+                                        }
+                            }
 
                 
+                    }
+            Button(action: {
+                            self.showAlert = true
+                        }, label: { Text("Submit" )})
+            .alert(isPresented: $showAlert) {
+                        Alert(
+                            title: Text("Succesfully Submitted"),
+                            message: Text("Verify account using email link"),
+                            dismissButton: .default(Text("Close"))
+                        )
+                }
             }
-        }
-
             .navigationBarTitle(Text("Register"))
         }
     
 }
+
+
 
 struct RegistrationView_Previews: PreviewProvider {
     static var previews: some View {
