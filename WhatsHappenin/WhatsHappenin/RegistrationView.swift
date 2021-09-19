@@ -10,6 +10,7 @@ import CoreData
 
 struct RegistrationView : View {
     
+
     @State private var firstName = ""
     @State private var lastName = ""
     @State private var userName = ""
@@ -64,6 +65,7 @@ struct RegistrationView : View {
                 
             }
         }
+
             .navigationBarTitle(Text("Register"))
         }
     
