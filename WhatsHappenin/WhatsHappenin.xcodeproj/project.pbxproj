@@ -17,6 +17,7 @@
 		190EB56D26E7EAD600822E65 /* WhatsHappeninUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190EB56C26E7EAD600822E65 /* WhatsHappeninUITests.swift */; };
 		190EB57D26E8375300822E65 /* Siesta in Frameworks */ = {isa = PBXBuildFile; productRef = 190EB57C26E8375300822E65 /* Siesta */; };
 		190EB57F26E8375300822E65 /* SiestaUI in Frameworks */ = {isa = PBXBuildFile; productRef = 190EB57E26E8375300822E65 /* SiestaUI */; };
+		663AAF0826F7C38F00248928 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663AAF0726F7C38F00248928 /* RegistrationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		190EB56C26E7EAD600822E65 /* WhatsHappeninUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsHappeninUITests.swift; sourceTree = "<group>"; };
 		190EB56E26E7EAD600822E65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		190EB57A26E7EAE100822E65 /* WhatsHappenin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WhatsHappenin.entitlements; sourceTree = "<group>"; };
+		663AAF0726F7C38F00248928 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				190EB57A26E7EAE100822E65 /* WhatsHappenin.entitlements */,
 				190EB54A26E7EAD500822E65 /* WhatsHappeninApp.swift */,
 				190EB54C26E7EAD500822E65 /* ContentView.swift */,
+				663AAF0726F7C38F00248928 /* RegistrationView.swift */,
 				190EB54E26E7EAD600822E65 /* Assets.xcassets */,
 				190EB55326E7EAD600822E65 /* Persistence.swift */,
 				190EB55826E7EAD600822E65 /* Info.plist */,
@@ -282,6 +285,7 @@
 				190EB55426E7EAD600822E65 /* Persistence.swift in Sources */,
 				190EB54D26E7EAD500822E65 /* ContentView.swift in Sources */,
 				190EB54B26E7EAD500822E65 /* WhatsHappeninApp.swift in Sources */,
+				663AAF0826F7C38F00248928 /* RegistrationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,7 +445,7 @@
 				CODE_SIGN_ENTITLEMENTS = WhatsHappenin/WhatsHappenin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"WhatsHappenin/Preview Content\"";
-				DEVELOPMENT_TEAM = Z6G83N9S59;
+				DEVELOPMENT_TEAM = 9NDA238J6N;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = WhatsHappenin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -449,7 +453,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = app.whatshappenin.WhatsHappenin;
+				PRODUCT_BUNDLE_IDENTIFIER = app.prithikkarthikeyan.whatshappenin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -464,7 +468,7 @@
 				CODE_SIGN_ENTITLEMENTS = WhatsHappenin/WhatsHappenin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"WhatsHappenin/Preview Content\"";
-				DEVELOPMENT_TEAM = Z6G83N9S59;
+				DEVELOPMENT_TEAM = 9NDA238J6N;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = WhatsHappenin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -472,7 +476,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = app.whatshappenin.WhatsHappenin;
+				PRODUCT_BUNDLE_IDENTIFIER = app.prithikkarthikeyan.whatshappenin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
