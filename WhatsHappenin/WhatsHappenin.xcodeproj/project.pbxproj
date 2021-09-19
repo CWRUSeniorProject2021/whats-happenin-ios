@@ -97,6 +97,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07900D0B26F7F66D00542CD2 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				0760388426F7E10100FFBE2F /* PlacesListView.swift */,
+				0710BBDF26F7CE12000E5501 /* Place.swift */,
+				0710BBE326F7CE52000E5501 /* PlaceView.swift */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		07900D0C26F7F67500542CD2 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				07900D0626F7F21A00542CD2 /* RegistrationView.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
 		190EB53E26E7EAD500822E65 = {
 			isa = PBXGroup;
 			children = (
@@ -123,10 +141,8 @@
 				190EB57A26E7EAE100822E65 /* WhatsHappenin.entitlements */,
 				190EB54A26E7EAD500822E65 /* WhatsHappeninApp.swift */,
 				190EB54C26E7EAD500822E65 /* ContentView.swift */,
-				0760388426F7E10100FFBE2F /* PlacesListView.swift */,
-				07900D0626F7F21A00542CD2 /* RegistrationView.swift */,
-				0710BBDF26F7CE12000E5501 /* Place.swift */,
-				0710BBE326F7CE52000E5501 /* PlaceView.swift */,
+				07900D0B26F7F66D00542CD2 /* Events */,
+				07900D0C26F7F67500542CD2 /* Registration */,
 				190EB54E26E7EAD600822E65 /* Assets.xcassets */,
 				190EB55326E7EAD600822E65 /* Persistence.swift */,
 				190EB55826E7EAD600822E65 /* Info.plist */,
