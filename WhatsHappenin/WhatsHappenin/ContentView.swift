@@ -81,6 +81,8 @@ struct PasswordField: View {
 
 struct LoginButton: View {
     var body: some View {
+        NavigationLink(destination:
+                        PlacesListView(places:Place.samples())){
         Text("LOGIN")
             .font(.headline)
             .foregroundColor(.white)
@@ -89,6 +91,7 @@ struct LoginButton: View {
             .background(Color.green)
             .cornerRadius(15.0)
     }
+}
 }
 
 
@@ -126,7 +129,7 @@ struct TaglineMessage: View {
 
 struct Register: View {
     var body: some View {
-        NavigationLink(destination: RegistrationView()) {
+        NavigationLink(destination:RegistrationView()) {
             Text("REGISTER")
                 .font(.headline)
                 .foregroundColor(.white)

@@ -16,6 +16,9 @@
 		0760388526F7E10100FFBE2F /* PlacesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0760388426F7E10100FFBE2F /* PlacesListView.swift */; };
 		0760388626F7E10100FFBE2F /* PlacesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0760388426F7E10100FFBE2F /* PlacesListView.swift */; };
 		0760388726F7E10100FFBE2F /* PlacesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0760388426F7E10100FFBE2F /* PlacesListView.swift */; };
+		07900D0326F7EE7A00542CD2 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07900D0226F7EE7A00542CD2 /* RegistrationView.swift */; };
+		07900D0426F7EE7A00542CD2 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07900D0226F7EE7A00542CD2 /* RegistrationView.swift */; };
+		07900D0526F7EE7A00542CD2 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07900D0226F7EE7A00542CD2 /* RegistrationView.swift */; };
 		190EB54B26E7EAD500822E65 /* WhatsHappeninApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190EB54A26E7EAD500822E65 /* WhatsHappeninApp.swift */; };
 		190EB54D26E7EAD500822E65 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190EB54C26E7EAD500822E65 /* ContentView.swift */; };
 		190EB54F26E7EAD600822E65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 190EB54E26E7EAD600822E65 /* Assets.xcassets */; };
@@ -49,6 +52,7 @@
 		0710BBDF26F7CE12000E5501 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		0710BBE326F7CE52000E5501 /* PlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceView.swift; sourceTree = "<group>"; };
 		0760388426F7E10100FFBE2F /* PlacesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesListView.swift; sourceTree = "<group>"; };
+		07900D0226F7EE7A00542CD2 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		190EB54726E7EAD500822E65 /* WhatsHappenin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsHappenin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		190EB54A26E7EAD500822E65 /* WhatsHappeninApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsHappeninApp.swift; sourceTree = "<group>"; };
 		190EB54C26E7EAD500822E65 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -64,7 +68,6 @@
 		190EB56C26E7EAD600822E65 /* WhatsHappeninUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsHappeninUITests.swift; sourceTree = "<group>"; };
 		190EB56E26E7EAD600822E65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		190EB57A26E7EAE100822E65 /* WhatsHappenin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WhatsHappenin.entitlements; sourceTree = "<group>"; };
-		663AAF0726F7C38F00248928 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,10 +123,10 @@
 				190EB57A26E7EAE100822E65 /* WhatsHappenin.entitlements */,
 				190EB54A26E7EAD500822E65 /* WhatsHappeninApp.swift */,
 				190EB54C26E7EAD500822E65 /* ContentView.swift */,
+				07900D0226F7EE7A00542CD2 /* RegistrationView.swift */,
 				0760388426F7E10100FFBE2F /* PlacesListView.swift */,
 				0710BBDF26F7CE12000E5501 /* Place.swift */,
 				0710BBE326F7CE52000E5501 /* PlaceView.swift */,
-				663AAF0726F7C38F00248928 /* RegistrationView.swift */,
 				190EB54E26E7EAD600822E65 /* Assets.xcassets */,
 				190EB55326E7EAD600822E65 /* Persistence.swift */,
 				190EB55826E7EAD600822E65 /* Info.plist */,
@@ -302,6 +305,7 @@
 				0760388526F7E10100FFBE2F /* PlacesListView.swift in Sources */,
 				0710BBE026F7CE12000E5501 /* Place.swift in Sources */,
 				190EB54B26E7EAD500822E65 /* WhatsHappeninApp.swift in Sources */,
+				07900D0326F7EE7A00542CD2 /* RegistrationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +317,7 @@
 				0710BBE526F7CE52000E5501 /* PlaceView.swift in Sources */,
 				0760388626F7E10100FFBE2F /* PlacesListView.swift in Sources */,
 				190EB56226E7EAD600822E65 /* WhatsHappeninTests.swift in Sources */,
+				07900D0426F7EE7A00542CD2 /* RegistrationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +329,7 @@
 				0710BBE626F7CE52000E5501 /* PlaceView.swift in Sources */,
 				0760388726F7E10100FFBE2F /* PlacesListView.swift in Sources */,
 				190EB56D26E7EAD600822E65 /* WhatsHappeninUITests.swift in Sources */,
+				07900D0526F7EE7A00542CD2 /* RegistrationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,6 +14,7 @@ struct PlacesListView: View {
     var body: some View {
         scrollForEach
 //            list
+        .navigationBarTitle(Text("Home"))
     }
     
     var list: some View {
@@ -42,6 +43,7 @@ struct PlacesListView: View {
             selection.insert(place)
         }
     }
+    
 }
 
 struct ListRowModifier: ViewModifier {
