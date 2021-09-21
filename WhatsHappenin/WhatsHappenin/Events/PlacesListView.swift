@@ -14,7 +14,12 @@ struct PlacesListView: View {
     var body: some View {
         scrollForEach
 //            list
-        .navigationBarTitle(Text("Home"))
+        .navigationBarTitle(Text("Events"))
+            .navigationBarItems(trailing: NavigationLink(destination:
+                                                            CreateEvent()){
+                                            Image(systemName: "plus")
+                                        })
+       
     }
     
     var list: some View {
