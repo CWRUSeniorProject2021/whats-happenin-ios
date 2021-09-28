@@ -14,7 +14,7 @@ struct Place: Identifiable, Hashable {
     let address: String
    
     
-    static func samples() -> [Place] { (0..<100).map(Place.fixture) }
+    static func samples() -> [Place] { (0..<50).map(Place.fixture) }
     
     private static func fixture(_ id: Int) -> Place {
         Place(

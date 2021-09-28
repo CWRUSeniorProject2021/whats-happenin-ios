@@ -10,11 +10,71 @@ import SwiftUI
 struct PlacesListView: View {
     let places: [Place]
     @State private var selection: Set<Place> = []
+    @State var selectedIndex = 0
+    let icons = [
+        "house",
+        "map",
+        "book",
+        "lasso",
+        "gear"
+    ]
     
     var body: some View {
-        scrollForEach
-//            list
-        .navigationBarTitle(Text("Home"))
+        VStack{
+            ZStack{
+                switch selectedIndex {
+                case 0:
+                    VStack {
+                        Text("Feed").padding()
+                        Spacer()
+                    }
+                    .navigationTitle("Feed")
+                case 1:
+                    VStack {
+                        Text("Map View")
+                        Spacer()
+                    }
+                    .navigationTitle("Map View")
+                    
+                case 2:
+                    VStack {
+                        Text("Your Events")
+                        Spacer()
+                    }
+                    .navigationTitle("Your Events")
+                    
+                case 3:
+                    VStack {
+                        scrollForEach.padding(.bottom, 20.0)
+                        Spacer()
+                    }
+                    .navigationTitle("Events")
+                default:
+                    VStack {
+                        Text("Settings")
+                        Spacer()
+                    }
+                    .navigationTitle("Settings")
+                    
+                }
+            }
+            HStack{
+                ForEach(0..<5, id: \.self) { number in
+                    Spacer()
+                    Button(action: {
+                        self.selectedIndex = number
+                    }, label: {
+                        Image(systemName: icons[number])
+                            .font(.system(
+                                    size: 25,
+                                    weight: .regular,
+                                    design: .default))
+                            .foregroundColor(selectedIndex == number ? .black : Color(UIColor.lightGray))
+                    })
+                    Spacer()
+                }
+            }
+        }
     }
     
     var list: some View {
@@ -51,7 +111,7 @@ struct ListRowModifier: ViewModifier {
         Group {
             content
             Divider()
-        }.offset(x: 20)
+        }.padding(.vertical).frame(width: /*@START_MENU_TOKEN@*/350.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/50.0/*@END_MENU_TOKEN@*/)
     }
 }
 
