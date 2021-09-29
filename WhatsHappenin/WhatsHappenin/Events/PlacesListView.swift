@@ -14,13 +14,17 @@ struct PlacesListView: View {
     let icons = [
         "house",
         "map",
-        "book",
-        "lasso",
-        "gear"
+        "calendar",
+        "list.bullet",
+        "person"
     ]
+    
+    @State var searchText: String
     
     var body: some View {
         VStack{
+            SearchBar(text1: $searchText)
+            
             ZStack{
                 switch selectedIndex {
                 case 0:
@@ -51,10 +55,10 @@ struct PlacesListView: View {
                     .navigationTitle("Events")
                 default:
                     VStack {
-                        Text("Settings")
+                        Text("Profile")
                         Spacer()
                     }
-                    .navigationTitle("Settings")
+                    .navigationTitle("Profile")
                     
                 }
             }
@@ -117,6 +121,6 @@ struct ListRowModifier: ViewModifier {
 
 struct PlacesList_Previews: PreviewProvider {
     static var previews: some View {
-        PlacesListView(places: Place.samples())
+        PlacesListView(places: Place.samples(), searchText: "")
     }
 }
