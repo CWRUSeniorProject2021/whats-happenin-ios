@@ -82,7 +82,7 @@ struct PasswordField: View {
 struct LoginButton: View {
     var body: some View {
         NavigationLink(destination:
-                        PlacesListView(places:Place.samples())){
+                        PlacesListView(places:Place.samples(), searchText: "")){
         Text("LOGIN")
             .font(.headline)
             .foregroundColor(.white)
