@@ -15,6 +15,12 @@ struct CreateEvent : View {
     @State var startTime = Date()
     @State var endTime = Date()
     @State var eventType = ""
+    @State var address1 = ""
+    @State var address2 = ""
+    @State var city = ""
+    @State var state = ""
+    @State var zipcode = ""
+    
     
     enum EventType: String, CaseIterable, Identifiable {
             case open
@@ -45,6 +51,13 @@ struct CreateEvent : View {
                 
                 
                 
+            }
+            Section(header: Text("Event Location")){
+                TextField("Address Line 1", text: $address1)
+                TextField("Address Line 2", text: $address2)
+                TextField("City", text: $city)
+                TextField("State", text: $state)
+                TextField("Zipcode", text: $zipcode)
             }
             Button(action: {
                             self.showAlert = true
