@@ -23,9 +23,7 @@ struct PlacesListView: View {
     
     var body: some View {
         VStack{
-            SearchBar(text1: $searchText)
-            
-            ZStack{
+                ZStack{
                 switch selectedIndex {
                 case 0:
                     VStack {
@@ -42,14 +40,20 @@ struct PlacesListView: View {
                     
                 case 2:
                     VStack {
-                        Text("Your Events")
+                        SearchBar(text1: $searchText)
+                        List(places.filter({ searchText.isEmpty ? true : $0.eventName.contains(searchText) })) { item in
+                            Text(item.eventName)}
                         Spacer()
                     }
                     .navigationTitle("Your Events")
                     
                 case 3:
                     VStack {
-                        scrollForEach.padding(.bottom, 20.0)
+                        SearchBar(text1: $searchText)
+
+                        //List no longer opens up for now but the filter works :)
+                        List(places.filter({ searchText.isEmpty ? true : $0.eventName.contains(searchText) })) { item in
+                            Text(item.eventName)}
                         Spacer()
                     }
                     .navigationTitle("Events")
