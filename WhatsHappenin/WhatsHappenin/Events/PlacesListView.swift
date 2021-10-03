@@ -22,6 +22,14 @@ struct PlacesListView: View {
     @State var searchText: String
     
     var body: some View {
+        scrollForEach
+//            list
+        .navigationBarTitle(Text("Events"))
+            .navigationBarItems(trailing: NavigationLink(destination:
+                                                            CreateEvent()){
+                                            Image(systemName: "plus")
+                                        })
+       
         VStack{
                 ZStack{
                 switch selectedIndex {
