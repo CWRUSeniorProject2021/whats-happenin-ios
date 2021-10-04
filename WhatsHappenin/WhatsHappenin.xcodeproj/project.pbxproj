@@ -35,6 +35,9 @@
 		663AAF0B26FA657500248928 /* CreateEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663AAF0A26FA657500248928 /* CreateEvent.swift */; };
 		663AAF0C26FA657500248928 /* CreateEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663AAF0A26FA657500248928 /* CreateEvent.swift */; };
 		663AAF0D26FA657500248928 /* CreateEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663AAF0A26FA657500248928 /* CreateEvent.swift */; };
+		667D117B270B636F00C5A634 /* EventInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D117A270B636F00C5A634 /* EventInfoView.swift */; };
+		667D117C270B636F00C5A634 /* EventInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D117A270B636F00C5A634 /* EventInfoView.swift */; };
+		667D117D270B636F00C5A634 /* EventInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D117A270B636F00C5A634 /* EventInfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +79,7 @@
 		190EB56E26E7EAD600822E65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		190EB57A26E7EAE100822E65 /* WhatsHappenin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WhatsHappenin.entitlements; sourceTree = "<group>"; };
 		663AAF0A26FA657500248928 /* CreateEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEvent.swift; sourceTree = "<group>"; };
+		667D117A270B636F00C5A634 /* EventInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,7 @@
 				0710BBDF26F7CE12000E5501 /* Place.swift */,
 				0710BBE326F7CE52000E5501 /* PlaceView.swift */,
 				663AAF0A26FA657500248928 /* CreateEvent.swift */,
+				667D117A270B636F00C5A634 /* EventInfoView.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -334,6 +339,7 @@
 				663AAF0B26FA657500248928 /* CreateEvent.swift in Sources */,
 				190EB54B26E7EAD500822E65 /* WhatsHappeninApp.swift in Sources */,
 				07900D0726F7F21A00542CD2 /* RegistrationView.swift in Sources */,
+				667D117B270B636F00C5A634 /* EventInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +354,7 @@
 				190EB56226E7EAD600822E65 /* WhatsHappeninTests.swift in Sources */,
 				07900D0826F7F21A00542CD2 /* RegistrationView.swift in Sources */,
 				071087F12704119C00D1773D /* SearchBar.swift in Sources */,
+				667D117C270B636F00C5A634 /* EventInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +369,7 @@
 				190EB56D26E7EAD600822E65 /* WhatsHappeninUITests.swift in Sources */,
 				07900D0926F7F21A00542CD2 /* RegistrationView.swift in Sources */,
 				071087F22704119C00D1773D /* SearchBar.swift in Sources */,
+				667D117D270B636F00C5A634 /* EventInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
