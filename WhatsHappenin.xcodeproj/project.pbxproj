@@ -85,7 +85,6 @@
 		190EB56E26E7EAD600822E65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		190EB57A26E7EAE100822E65 /* WhatsHappenin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WhatsHappenin.entitlements; sourceTree = "<group>"; };
 		19F66672270CB2500080C6C3 /* WHAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WHAPI.swift; sourceTree = "<group>"; };
-		19F6668F270CB30E0080C6C3 /* WhatsHappenin copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "WhatsHappenin copy-Info.plist"; path = "/Volumes/Files/Projects/whats-happenin-ios/WhatsHappenin/WhatsHappenin copy-Info.plist"; sourceTree = "<absolute>"; };
 		19F6669B270CB6E50080C6C3 /* Staging.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Staging.xcconfig; sourceTree = "<group>"; };
 		19F6669D270CB6F40080C6C3 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
 		19F6669F270CB8A00080C6C3 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
@@ -152,7 +151,6 @@
 				190EB56026E7EAD600822E65 /* WhatsHappeninTests */,
 				190EB56B26E7EAD600822E65 /* WhatsHappeninUITests */,
 				190EB54826E7EAD500822E65 /* Products */,
-				19F6668F270CB30E0080C6C3 /* WhatsHappenin copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};

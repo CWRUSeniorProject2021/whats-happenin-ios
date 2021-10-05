@@ -12,15 +12,24 @@ import KeychainSwift
 class WHAPI: Service {
     enum Keys {
         enum Auth {
-            static let Token = "access-token"
-            static let TokenType = "token-type"
-            static let Client = "client"
-            static let UID = "uid"
+            static let Token : String! = "access-token"
+            static let TokenType : String! = "token-type"
+            static let Client : String! = "client"
+            static let UID : String! = "uid"
         }
     }
     
-    var authToken: String??
-    var authTokenType: String??
+    var authToken: String?? {
+        didSet {
+            //GlobalKeychain.set(authToken, forKey: Keys.Auth.Token)
+            //GlobalKeychain.set
+        }
+    }
+    var authTokenType: String?? {
+        didSet {
+            //GlobalKeychain.set(authTokenType, forKey: Keys.Auth.TokenType)
+        }
+    }
     var authClient: String??
     var authUID: String??
 //    var authToken: String? {

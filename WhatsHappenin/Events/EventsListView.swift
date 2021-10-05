@@ -82,7 +82,7 @@ struct EventsListView: View {
                     Spacer()
                 }
             }
-        }
+        }.navigationBarBackButtonHidden(true)
     }
     
     var list: some View {

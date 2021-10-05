@@ -13,8 +13,9 @@ import CoreData
 
 
 struct LoginView : View {
-    @State var username: String = ""
-    @State var password: String = ""
+    @State var username : String = "tingle@case.edu"
+    @State var password : String = "abc12345"
+    @State var successfulLogin : Bool = false
 
     
     var body: some View {
@@ -62,10 +63,14 @@ struct LoginView : View {
                 print("Button tapped")
                 GlobalKeychain.set(username, forKey: "email")
                 GlobalKeychain.set(password, forKey: "password")
-            whAPI.login().onSuccess { _ in
-                    EventsListView(events: Event.samples(), searchText: "")
+                whAPI.login().onSuccess { _ in
+                    print("login happened or something")
+                    successfulLogin = true
+                }.onFailure { _ in
+                    
                 }
             }) {
+                NavigationLink(destination: EventsListView(events: Event.samples(), searchText: ""), isActive: $successfulLogin) { EmptyView() }
                 Text("LOGIN")
                     .font(.headline)
                     .foregroundColor(.white)
