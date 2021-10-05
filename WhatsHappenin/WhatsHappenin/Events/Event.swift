@@ -1,12 +1,12 @@
 //
-//  Place.swift
+//  Event.swift
 //  WhatsHappenin
 //
 //  Created by Eric Chang on 9/19/21.
 //
 
 import Foundation
-struct Place: Identifiable, Hashable {
+struct Event: Identifiable, Hashable {
     let id: Int
     let eventName: String
     let eventDesc: String
@@ -14,10 +14,10 @@ struct Place: Identifiable, Hashable {
     let address: String
    
     
-    static func samples() -> [Place] { (0..<50).map(Place.fixture) }
+    static func samples() -> [Event] { (0..<50).map(Event.fixture) }
     
-    private static func fixture(_ id: Int) -> Place {
-        Place(
+    private static func fixture(_ id: Int) -> Event {
+        Event(
             id: id,
             eventName: "Event Name #\(id)",
             eventDesc: "Desc of event here: ",

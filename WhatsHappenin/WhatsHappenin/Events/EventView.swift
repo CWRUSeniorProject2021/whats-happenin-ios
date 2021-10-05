@@ -1,5 +1,5 @@
 //
-//  PlaceView.swift
+//  EventView.swift
 //  WhatsHappenin
 //
 //  Created by Eric Chang on 9/19/21.
@@ -8,8 +8,8 @@
 import Foundation
 import SwiftUI
 
-struct PlaceView: View {
-    let place: Place
+struct EventView: View {
+    let event: Event
     let isExpanded: Bool
     
     var body: some View {
@@ -22,13 +22,13 @@ struct PlaceView: View {
     
     private var content: some View {
         VStack(alignment: .leading) {
-            Text(place.eventName).font(.headline)
+            Text(event.eventName).font(.headline)
             
             if isExpanded {
                 VStack(alignment: .leading) {
-                    Text(place.eventDesc)
-                    Text(place.numAttendees)
-                    Text(place.address)
+                    Text(event.eventDesc)
+                    Text(event.numAttendees)
+                    Text(event.address)
                 }
             }
         }

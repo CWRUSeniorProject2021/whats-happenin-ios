@@ -1,5 +1,5 @@
 //
-//  PlacesListView.swift
+//  EventsListView.swift
 //  WhatsHappenin
 //
 //  Created by Eric Chang on 9/19/21.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct PlacesListView: View {
-    let places: [Place]
-    @State private var selection: Set<Place> = []
+struct EventsListView: View {
+    let events: [Event]
+    @State private var selection: Set<Event> = []
     @State var selectedIndex = 0
     let icons = [
         "house",
@@ -42,7 +42,7 @@ struct PlacesListView: View {
                 case 2:
                     VStack {
                         SearchBar(text1: $searchText)
-                        List(places.filter({ searchText.isEmpty ? true : $0.eventName.contains(searchText) })) { item in
+                        List(events.filter({ searchText.isEmpty ? true : $0.eventName.contains(searchText) })) { item in
                             NavigationLink(item.eventName, destination: EventInfoView())}
                         Spacer()
                     }
@@ -53,7 +53,7 @@ struct PlacesListView: View {
                         SearchBar(text1: $searchText)
 
                         //List no longer opens up for now but the filter works :)
-                        List(places.filter({ searchText.isEmpty ? true : $0.eventName.contains(searchText) })) { item in NavigationLink(item.eventName, destination: EventInfoView())}
+                        List(events.filter({ searchText.isEmpty ? true : $0.eventName.contains(searchText) })) { item in NavigationLink(item.eventName, destination: EventInfoView())}
                         Spacer()
                     }
                     .navigationTitle("Events")
@@ -86,29 +86,29 @@ struct PlacesListView: View {
     }
     
     var list: some View {
-        List(places) { place in
-            PlaceView(place: place, isExpanded: self.selection.contains(place))
-                .onTapGesture { self.selectDeselect(place) }
+        List(events) { event in
+            EventView(event: event, isExpanded: self.selection.contains(event))
+                .onTapGesture { self.selectDeselect(event) }
                 .animation(.linear(duration: 0.3))
         }
     }
     
     var scrollForEach: some View {
         ScrollView {
-            ForEach(places) { place in
-                PlaceView(place: place, isExpanded: self.selection.contains(place))
+            ForEach(events) { event in
+                EventView(event: event, isExpanded: self.selection.contains(event))
                     .modifier(ListRowModifier())
-                    .onTapGesture { self.selectDeselect(place) }
+                    .onTapGesture { self.selectDeselect(event) }
                     .animation(.linear(duration: 0.3))
             }
         }
     }
     
-    private func selectDeselect(_ place: Place) {
-        if selection.contains(place) {
-            selection.remove(place)
+    private func selectDeselect(_ event: Event) {
+        if selection.contains(event) {
+            selection.remove(event)
         } else {
-            selection.insert(place)
+            selection.insert(event)
         }
     }
     
@@ -123,8 +123,8 @@ struct ListRowModifier: ViewModifier {
     }
 }
 
-struct PlacesList_Previews: PreviewProvider {
+struct EventsList_Previews: PreviewProvider {
     static var previews: some View {
-        PlacesListView(places: Place.samples(), searchText: "")
+        EventsListView(events: Event.samples(), searchText: "")
     }
 }
