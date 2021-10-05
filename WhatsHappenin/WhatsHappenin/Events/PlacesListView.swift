@@ -22,14 +22,7 @@ struct PlacesListView: View {
     @State var searchText: String
     
     var body: some View {
-        scrollForEach
-//            list
-        .navigationBarTitle(Text("Events"))
-            .navigationBarItems(trailing: NavigationLink(destination:
-                                                            CreateEvent()){
-                                            Image(systemName: "plus")
-                                        })
-       
+    
         VStack{
                 ZStack{
                 switch selectedIndex {
@@ -50,7 +43,7 @@ struct PlacesListView: View {
                     VStack {
                         SearchBar(text1: $searchText)
                         List(places.filter({ searchText.isEmpty ? true : $0.eventName.contains(searchText) })) { item in
-                            Text(item.eventName)}
+                            NavigationLink(item.eventName, destination: EventInfoView())}
                         Spacer()
                     }
                     .navigationTitle("Your Events")
@@ -60,8 +53,7 @@ struct PlacesListView: View {
                         SearchBar(text1: $searchText)
 
                         //List no longer opens up for now but the filter works :)
-                        List(places.filter({ searchText.isEmpty ? true : $0.eventName.contains(searchText) })) { item in
-                            Text(item.eventName)}
+                        List(places.filter({ searchText.isEmpty ? true : $0.eventName.contains(searchText) })) { item in NavigationLink(item.eventName, destination: EventInfoView())}
                         Spacer()
                     }
                     .navigationTitle("Events")

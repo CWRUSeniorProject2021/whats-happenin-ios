@@ -1,5 +1,5 @@
 //
-//  createEvent.swift
+//  EventInfoView.swift
 //  WhatsHappenin
 //
 //  Created by Prithik Karthikeyan on 9/21/21.
