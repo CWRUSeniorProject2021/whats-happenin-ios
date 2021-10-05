@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  LoginView.swift
 //  WhatsHappenin
 //
 //  Created by Christian Tingle on 9/7/21.
@@ -12,7 +12,7 @@ import CoreData
     let lightGreyColor = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0)
 
 
-struct ContentView : View {
+struct LoginView : View {
     
     
     var body: some View {
@@ -42,7 +42,7 @@ private let itemFormatter: DateFormatter = {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        LoginView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
 

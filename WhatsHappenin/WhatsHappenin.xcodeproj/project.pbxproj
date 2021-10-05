@@ -23,7 +23,7 @@
 		07900D0826F7F21A00542CD2 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07900D0626F7F21A00542CD2 /* RegistrationView.swift */; };
 		07900D0926F7F21A00542CD2 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07900D0626F7F21A00542CD2 /* RegistrationView.swift */; };
 		190EB54B26E7EAD500822E65 /* WhatsHappeninApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190EB54A26E7EAD500822E65 /* WhatsHappeninApp.swift */; };
-		190EB54D26E7EAD500822E65 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190EB54C26E7EAD500822E65 /* ContentView.swift */; };
+		190EB54D26E7EAD500822E65 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190EB54C26E7EAD500822E65 /* LoginView.swift */; };
 		190EB54F26E7EAD600822E65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 190EB54E26E7EAD600822E65 /* Assets.xcassets */; };
 		190EB55226E7EAD600822E65 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 190EB55126E7EAD600822E65 /* Preview Assets.xcassets */; };
 		190EB55426E7EAD600822E65 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190EB55326E7EAD600822E65 /* Persistence.swift */; };
@@ -65,7 +65,7 @@
 		07900D0626F7F21A00542CD2 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		190EB54726E7EAD500822E65 /* WhatsHappenin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsHappenin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		190EB54A26E7EAD500822E65 /* WhatsHappeninApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsHappeninApp.swift; sourceTree = "<group>"; };
-		190EB54C26E7EAD500822E65 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		190EB54C26E7EAD500822E65 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		190EB54E26E7EAD600822E65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		190EB55126E7EAD600822E65 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		190EB55326E7EAD600822E65 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -155,7 +155,7 @@
 			children = (
 				190EB57A26E7EAE100822E65 /* WhatsHappenin.entitlements */,
 				190EB54A26E7EAD500822E65 /* WhatsHappeninApp.swift */,
-				190EB54C26E7EAD500822E65 /* ContentView.swift */,
+				190EB54C26E7EAD500822E65 /* LoginView.swift */,
 				07900D0B26F7F66D00542CD2 /* Events */,
 				07900D0C26F7F67500542CD2 /* Registration */,
 				190EB54E26E7EAD600822E65 /* Assets.xcassets */,
@@ -332,7 +332,7 @@
 				190EB55726E7EAD600822E65 /* WhatsHappenin.xcdatamodeld in Sources */,
 				190EB55426E7EAD600822E65 /* Persistence.swift in Sources */,
 				0710BBE426F7CE52000E5501 /* PlaceView.swift in Sources */,
-				190EB54D26E7EAD500822E65 /* ContentView.swift in Sources */,
+				190EB54D26E7EAD500822E65 /* LoginView.swift in Sources */,
 				0760388526F7E10100FFBE2F /* PlacesListView.swift in Sources */,
 				071087F02704119C00D1773D /* SearchBar.swift in Sources */,
 				0710BBE026F7CE12000E5501 /* Place.swift in Sources */,
