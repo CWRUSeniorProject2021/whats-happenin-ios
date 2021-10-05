@@ -32,6 +32,11 @@
 		190EB56D26E7EAD600822E65 /* WhatsHappeninUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190EB56C26E7EAD600822E65 /* WhatsHappeninUITests.swift */; };
 		190EB57D26E8375300822E65 /* Siesta in Frameworks */ = {isa = PBXBuildFile; productRef = 190EB57C26E8375300822E65 /* Siesta */; };
 		190EB57F26E8375300822E65 /* SiestaUI in Frameworks */ = {isa = PBXBuildFile; productRef = 190EB57E26E8375300822E65 /* SiestaUI */; };
+		19F66673270CB2500080C6C3 /* WHAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F66672270CB2500080C6C3 /* WHAPI.swift */; };
+		19F6669E270CB6F40080C6C3 /* Production.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 19F6669D270CB6F40080C6C3 /* Production.xcconfig */; };
+		19F666A0270CB8A00080C6C3 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F6669F270CB8A00080C6C3 /* Environment.swift */; };
+		19F666A5270CD5920080C6C3 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 19F666A4270CD5920080C6C3 /* KeychainSwift */; };
+		19F666A8270CDAEE0080C6C3 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F666A7270CDAEE0080C6C3 /* Keychain.swift */; };
 		663AAF0B26FA657500248928 /* CreateEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663AAF0A26FA657500248928 /* CreateEvent.swift */; };
 		663AAF0C26FA657500248928 /* CreateEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663AAF0A26FA657500248928 /* CreateEvent.swift */; };
 		663AAF0D26FA657500248928 /* CreateEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663AAF0A26FA657500248928 /* CreateEvent.swift */; };
@@ -78,6 +83,12 @@
 		190EB56C26E7EAD600822E65 /* WhatsHappeninUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsHappeninUITests.swift; sourceTree = "<group>"; };
 		190EB56E26E7EAD600822E65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		190EB57A26E7EAE100822E65 /* WhatsHappenin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WhatsHappenin.entitlements; sourceTree = "<group>"; };
+		19F66672270CB2500080C6C3 /* WHAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WHAPI.swift; sourceTree = "<group>"; };
+		19F6668F270CB30E0080C6C3 /* WhatsHappenin copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "WhatsHappenin copy-Info.plist"; path = "/Volumes/Files/Projects/whats-happenin-ios/WhatsHappenin/WhatsHappenin copy-Info.plist"; sourceTree = "<absolute>"; };
+		19F6669B270CB6E50080C6C3 /* Staging.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Staging.xcconfig; sourceTree = "<group>"; };
+		19F6669D270CB6F40080C6C3 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
+		19F6669F270CB8A00080C6C3 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		19F666A7270CDAEE0080C6C3 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		663AAF0A26FA657500248928 /* CreateEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEvent.swift; sourceTree = "<group>"; };
 		667D117A270B636F00C5A634 /* EventInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19F666A5270CD5920080C6C3 /* KeychainSwift in Frameworks */,
 				190EB57D26E8375300822E65 /* Siesta in Frameworks */,
 				190EB57F26E8375300822E65 /* SiestaUI in Frameworks */,
 			);
@@ -137,6 +149,7 @@
 				190EB56026E7EAD600822E65 /* WhatsHappeninTests */,
 				190EB56B26E7EAD600822E65 /* WhatsHappeninUITests */,
 				190EB54826E7EAD500822E65 /* Products */,
+				19F6668F270CB30E0080C6C3 /* WhatsHappenin copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -153,6 +166,9 @@
 		190EB54926E7EAD500822E65 /* WhatsHappenin */ = {
 			isa = PBXGroup;
 			children = (
+				19F666A6270CDADF0080C6C3 /* Util */,
+				19F6669A270CB6BB0080C6C3 /* Configs */,
+				19F66671270CB2310080C6C3 /* API */,
 				190EB57A26E7EAE100822E65 /* WhatsHappenin.entitlements */,
 				190EB54A26E7EAD500822E65 /* WhatsHappeninApp.swift */,
 				190EB54C26E7EAD500822E65 /* LoginView.swift */,
@@ -193,6 +209,32 @@
 			path = WhatsHappeninUITests;
 			sourceTree = "<group>";
 		};
+		19F66671270CB2310080C6C3 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				19F66672270CB2500080C6C3 /* WHAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		19F6669A270CB6BB0080C6C3 /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				19F6669B270CB6E50080C6C3 /* Staging.xcconfig */,
+				19F6669D270CB6F40080C6C3 /* Production.xcconfig */,
+				19F6669F270CB8A00080C6C3 /* Environment.swift */,
+			);
+			path = Configs;
+			sourceTree = "<group>";
+		};
+		19F666A6270CDADF0080C6C3 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				19F666A7270CDAEE0080C6C3 /* Keychain.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -212,6 +254,7 @@
 			packageProductDependencies = (
 				190EB57C26E8375300822E65 /* Siesta */,
 				190EB57E26E8375300822E65 /* SiestaUI */,
+				19F666A4270CD5920080C6C3 /* KeychainSwift */,
 			);
 			productName = WhatsHappenin;
 			productReference = 190EB54726E7EAD500822E65 /* WhatsHappenin.app */;
@@ -286,6 +329,7 @@
 			mainGroup = 190EB53E26E7EAD500822E65;
 			packageReferences = (
 				190EB57B26E8375200822E65 /* XCRemoteSwiftPackageReference "siesta" */,
+				19F666A3270CD5920080C6C3 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 			);
 			productRefGroup = 190EB54826E7EAD500822E65 /* Products */;
 			projectDirPath = "";
@@ -305,6 +349,7 @@
 			files = (
 				190EB55226E7EAD600822E65 /* Preview Assets.xcassets in Resources */,
 				190EB54F26E7EAD600822E65 /* Assets.xcassets in Resources */,
+				19F6669E270CB6F40080C6C3 /* Production.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,10 +381,13 @@
 				0760388526F7E10100FFBE2F /* PlacesListView.swift in Sources */,
 				071087F02704119C00D1773D /* SearchBar.swift in Sources */,
 				0710BBE026F7CE12000E5501 /* Place.swift in Sources */,
+				19F66673270CB2500080C6C3 /* WHAPI.swift in Sources */,
+				19F666A0270CB8A00080C6C3 /* Environment.swift in Sources */,
 				663AAF0B26FA657500248928 /* CreateEvent.swift in Sources */,
 				190EB54B26E7EAD500822E65 /* WhatsHappeninApp.swift in Sources */,
 				07900D0726F7F21A00542CD2 /* RegistrationView.swift in Sources */,
 				667D117B270B636F00C5A634 /* EventInfoView.swift in Sources */,
+				19F666A8270CDAEE0080C6C3 /* Keychain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,6 +439,7 @@
 /* Begin XCBuildConfiguration section */
 		190EB56F26E7EAD600822E65 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 19F6669D270CB6F40080C6C3 /* Production.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -452,6 +501,7 @@
 		};
 		190EB57026E7EAD600822E65 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 19F6669D270CB6F40080C6C3 /* Production.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -507,13 +557,14 @@
 		};
 		190EB57226E7EAD600822E65 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 19F6669D270CB6F40080C6C3 /* Production.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = WhatsHappenin/WhatsHappenin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"WhatsHappenin/Preview Content\"";
-				DEVELOPMENT_TEAM = 9NDA238J6N;
+				DEVELOPMENT_TEAM = Z6G83N9S59;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = WhatsHappenin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -521,8 +572,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = app.prithikkarthikeyan.whatshappenin;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
+				PRODUCT_NAME = "$(APP_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -530,13 +581,14 @@
 		};
 		190EB57326E7EAD600822E65 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 19F6669D270CB6F40080C6C3 /* Production.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = WhatsHappenin/WhatsHappenin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"WhatsHappenin/Preview Content\"";
-				DEVELOPMENT_TEAM = 9NDA238J6N;
+				DEVELOPMENT_TEAM = Z6G83N9S59;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = WhatsHappenin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -544,8 +596,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = app.prithikkarthikeyan.whatshappenin;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
+				PRODUCT_NAME = "$(APP_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -635,6 +687,256 @@
 			};
 			name = Release;
 		};
+		19F66690270CB56E0080C6C3 /* Debug (Staging) */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 19F6669B270CB6E50080C6C3 /* Staging.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = "Debug (Staging)";
+		};
+		19F66691270CB56E0080C6C3 /* Debug (Staging) */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 19F6669B270CB6E50080C6C3 /* Staging.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WhatsHappenin/WhatsHappenin.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"WhatsHappenin/Preview Content\"";
+				DEVELOPMENT_TEAM = Z6G83N9S59;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = WhatsHappenin/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
+				PRODUCT_NAME = "$(APP_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = "Debug (Staging)";
+		};
+		19F66692270CB56E0080C6C3 /* Debug (Staging) */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z6G83N9S59;
+				INFOPLIST_FILE = WhatsHappeninTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.whatshappenin.WhatsHappeninTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WhatsHappenin.app/WhatsHappenin";
+			};
+			name = "Debug (Staging)";
+		};
+		19F66693270CB56E0080C6C3 /* Debug (Staging) */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z6G83N9S59;
+				INFOPLIST_FILE = WhatsHappeninUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.whatshappenin.WhatsHappeninUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = WhatsHappenin;
+			};
+			name = "Debug (Staging)";
+		};
+		19F66695270CB5EF0080C6C3 /* Release (Staging) */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 19F6669B270CB6E50080C6C3 /* Staging.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Release (Staging)";
+		};
+		19F66696270CB5EF0080C6C3 /* Release (Staging) */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 19F6669B270CB6E50080C6C3 /* Staging.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WhatsHappenin/WhatsHappenin.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"WhatsHappenin/Preview Content\"";
+				DEVELOPMENT_TEAM = Z6G83N9S59;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = WhatsHappenin/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
+				PRODUCT_NAME = "$(APP_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = "Release (Staging)";
+		};
+		19F66697270CB5EF0080C6C3 /* Release (Staging) */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z6G83N9S59;
+				INFOPLIST_FILE = WhatsHappeninTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.whatshappenin.WhatsHappeninTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WhatsHappenin.app/WhatsHappenin";
+			};
+			name = "Release (Staging)";
+		};
+		19F66698270CB5EF0080C6C3 /* Release (Staging) */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z6G83N9S59;
+				INFOPLIST_FILE = WhatsHappeninUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.whatshappenin.WhatsHappeninUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = WhatsHappenin;
+			};
+			name = "Release (Staging)";
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -642,7 +944,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				190EB56F26E7EAD600822E65 /* Debug */,
+				19F66690270CB56E0080C6C3 /* Debug (Staging) */,
 				190EB57026E7EAD600822E65 /* Release */,
+				19F66695270CB5EF0080C6C3 /* Release (Staging) */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -651,7 +955,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				190EB57226E7EAD600822E65 /* Debug */,
+				19F66691270CB56E0080C6C3 /* Debug (Staging) */,
 				190EB57326E7EAD600822E65 /* Release */,
+				19F66696270CB5EF0080C6C3 /* Release (Staging) */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -660,7 +966,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				190EB57526E7EAD600822E65 /* Debug */,
+				19F66692270CB56E0080C6C3 /* Debug (Staging) */,
 				190EB57626E7EAD600822E65 /* Release */,
+				19F66697270CB5EF0080C6C3 /* Release (Staging) */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -669,7 +977,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				190EB57826E7EAD600822E65 /* Debug */,
+				19F66693270CB56E0080C6C3 /* Debug (Staging) */,
 				190EB57926E7EAD600822E65 /* Release */,
+				19F66698270CB5EF0080C6C3 /* Release (Staging) */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -685,6 +995,14 @@
 				minimumVersion = 1.5.2;
 			};
 		};
+		19F666A3270CD5920080C6C3 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -697,6 +1015,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 190EB57B26E8375200822E65 /* XCRemoteSwiftPackageReference "siesta" */;
 			productName = SiestaUI;
+		};
+		19F666A4270CD5920080C6C3 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 19F666A3270CD5920080C6C3 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 

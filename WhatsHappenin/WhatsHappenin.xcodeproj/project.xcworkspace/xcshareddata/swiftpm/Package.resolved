@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "KeychainSwift",
+        "repositoryURL": "https://github.com/evgenyneu/keychain-swift.git",
+        "state": {
+          "branch": "master",
+          "revision": "e538f8bb0434c70d27b25ca72bec96735183c037",
+          "version": null
+        }
+      },
+      {
         "package": "Siesta",
         "repositoryURL": "https://github.com/bustoutsolutions/siesta",
         "state": {

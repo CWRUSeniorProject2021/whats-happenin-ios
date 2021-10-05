@@ -1,0 +1,16 @@
+//
+//  Staging.xcconfig
+//  WhatsHappenin Staging
+//
+//  Created by Christian Tingle on 10/5/21.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+ROOT_URL = https:/$()/api-staging.whatshappenin.app
+API_VERSION = v1
+
+// App Settings
+APP_NAME = WH Staging
+APP_BUNDLE_ID = app.whatshappenin.WhatsHappenin.staging
+PRODUCT_BUNDLE_IDENTIFIER = app.whatshappenin.WhatsHappenin.staging
