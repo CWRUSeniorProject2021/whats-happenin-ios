@@ -24,6 +24,10 @@
 	<true/>
 	<key>ROOT_URL</key>
 	<string>$(ROOT_URL)</string>
+	<key>TEST_USER_PASSWORD</key>
+	<string>$(TEST_USER_PASSWORD)</string>
+	<key>TEST_USER_USERNAME</key>
+	<string>$(TEST_USER_USERNAME)</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

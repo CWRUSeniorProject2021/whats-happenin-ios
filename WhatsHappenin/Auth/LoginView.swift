@@ -13,8 +13,8 @@ import CoreData
 
 
 struct LoginView : View {
-    @State var username : String = "tingle@case.edu"
-    @State var password : String = "abc12345"
+    @State var username : String = Environment.testUserUsername
+    @State var password : String = Environment.testUserPassword
     @State var successfulLogin : Bool = false
 
     
