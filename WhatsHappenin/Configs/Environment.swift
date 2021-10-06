@@ -53,12 +53,11 @@ public enum Environment {
     }()
     
     static let testUserUsername : String = {
-        print(Environment.infoDictionary[Keys.Plist.testUserUsername] as? String)
-        return (Environment.infoDictionary[Keys.Plist.testUserUsername] as? String) ?? ""
+        return Environment.infoDictionary[Keys.Plist.testUserUsername] as? String ?? ""
     }()
     
     static let testUserPassword : String = {
-        return (Environment.infoDictionary[Keys.Plist.testUserPassword] as? String) ?? ""
+        return Environment.infoDictionary[Keys.Plist.testUserPassword] as? String ?? ""
     }()
 
 //    static let apiKey: String = {

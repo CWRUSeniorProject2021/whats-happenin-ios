@@ -22,13 +22,13 @@ struct EventView: View {
     
     private var content: some View {
         VStack(alignment: .leading) {
-            Text(event.eventName).font(.headline)
+            Text(event.name).font(.headline)
             
             if isExpanded {
                 VStack(alignment: .leading) {
-                    Text(event.eventDesc)
-                    Text(event.numAttendees)
-                    Text(event.address)
+                    Text(event.description)
+                    Text("ADD NUM ATTENDEES")
+                    Text(event.address.description)
                 }
             }
         }

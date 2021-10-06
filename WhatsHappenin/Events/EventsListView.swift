@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import Siesta
 
 struct EventsListView: View {
-    let events: [Event]
+    @StateObject var controller = EventsListViewController()
+    //@State var events: [Event]
     @State private var selection: Set<Event> = []
     @State var selectedIndex = 0
     let icons = [
@@ -42,8 +44,8 @@ struct EventsListView: View {
                 case 2:
                     VStack {
                         SearchBar(text1: $searchText)
-                        List(events.filter({ searchText.isEmpty ? true : $0.eventName.contains(searchText) })) { item in
-                            NavigationLink(item.eventName, destination: EventInfoView())}
+                        List(controller.events.filter({ searchText.isEmpty ? true : $0.name.contains(searchText) })) { item in
+                            NavigationLink(item.name, destination: EventInfoView())}
                         Spacer()
                     }
                     .navigationTitle("Your Events")
@@ -53,7 +55,7 @@ struct EventsListView: View {
                         SearchBar(text1: $searchText)
 
                         //List no longer opens up for now but the filter works :)
-                        List(events.filter({ searchText.isEmpty ? true : $0.eventName.contains(searchText) })) { item in NavigationLink(item.eventName, destination: EventInfoView())}
+                        List(controller.events.filter({ searchText.isEmpty ? true : $0.name.contains(searchText) })) { item in NavigationLink(item.name, destination: EventInfoView())}
                         Spacer()
                     }
                     .navigationTitle("Events")
@@ -83,10 +85,14 @@ struct EventsListView: View {
                 }
             }
         }.navigationBarBackButtonHidden(true)
+            .onAppear(perform: {
+                //whAPI.events.addObserver(self)
+                //whAPI.events.loadIfNeeded()
+            })
     }
     
     var list: some View {
-        List(events) { event in
+        List(controller.events) { event in
             EventView(event: event, isExpanded: self.selection.contains(event))
                 .onTapGesture { self.selectDeselect(event) }
                 .animation(.linear(duration: 0.3))
@@ -95,7 +101,7 @@ struct EventsListView: View {
     
     var scrollForEach: some View {
         ScrollView {
-            ForEach(events) { event in
+            ForEach(controller.events) { event in
                 EventView(event: event, isExpanded: self.selection.contains(event))
                     .modifier(ListRowModifier())
                     .onTapGesture { self.selectDeselect(event) }
@@ -114,6 +120,15 @@ struct EventsListView: View {
     
 }
 
+//extension EventsListView: ResourceObserver {
+//    func resourceChanged(_ resource: Resource, event: ResourceEvent) {
+//        print("hit resource changed")
+//        if let loadedEvents: [Event] = resource.typedContent() {
+//            self.events = loadedEvents
+//        }
+//    }
+//}
+
 struct ListRowModifier: ViewModifier {
     func body(content: Content) -> some View {
         Group {
@@ -125,6 +140,6 @@ struct ListRowModifier: ViewModifier {
 
 struct EventsList_Previews: PreviewProvider {
     static var previews: some View {
-        EventsListView(events: Event.samples(), searchText: "")
+        EventsListView(searchText: "")
     }
 }

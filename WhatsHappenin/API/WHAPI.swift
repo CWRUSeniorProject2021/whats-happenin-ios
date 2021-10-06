@@ -19,51 +19,34 @@ class WHAPI: Service {
         }
     }
     
+    let jsonDecoder = JSONDecoder()
+    
     var authToken: String?? {
         didSet {
-            //GlobalKeychain.set(authToken, forKey: Keys.Auth.Token)
-            //GlobalKeychain.set
+            GlobalKeychain.set((authToken as? String) ?? "", forKey: Keys.Auth.Token)
         }
     }
     var authTokenType: String?? {
         didSet {
-            //GlobalKeychain.set(authTokenType, forKey: Keys.Auth.TokenType)
+            GlobalKeychain.set((authTokenType as? String) ?? "", forKey: Keys.Auth.TokenType)
         }
     }
-    var authClient: String??
-    var authUID: String??
-//    var authToken: String? {
-//        didSet {
-//            invalidateConfiguration()
-//            wipeResources()
-//        }
-//    }
-//    var authTokenType: String? {
-//        didSet{
-//            invalidateConfiguration()
-//            wipeResources()
-//        }
-//    }
-//    var authClient: String? {
-//        didSet{
-//            invalidateConfiguration()
-//            wipeResources()
-//        }
-//    }
-//    var authUID: String? {
-//        didSet{
-//            invalidateConfiguration()
-//            wipeResources()
-//        }
-//    }
-    
+    var authClient: String?? {
+        didSet {
+            GlobalKeychain.set((authClient as? String) ?? "", forKey: Keys.Auth.Client)
+        }
+    }
+    var authUID: String?? {
+        didSet {
+            GlobalKeychain.set((authUID as? String) ?? "", forKey: Keys.Auth.UID)
+        }
+    }
     
     init() {
-        print("init called")
         super.init(baseURL: Environment.rootURLString + "/" + Environment.apiVersion)
-        print(Environment.rootURLString + "/" + Environment.apiVersion)
         
         configure("**", description: "API Auth") {
+            //print("In Auth Func ---> Token: \(self.authToken)   Token Type: \(self.authTokenType)   Client: \(self.authClient)  UID: \(self.authUID)")
             if let authToken = self.authToken {
                 $0.headers[Keys.Auth.Token] = authToken
             }
@@ -71,18 +54,27 @@ class WHAPI: Service {
                 $0.headers[Keys.Auth.TokenType] = authTokenType
             }
             if let authClient = self.authClient {
-                $0.headers[Keys.Auth.TokenType] = authClient
+                $0.headers[Keys.Auth.Client] = authClient
             }
             if let authUID = self.authUID {
                 $0.headers[Keys.Auth.UID] = authUID
             }
             
+            print($0.headers)
+            
             $0.decorateRequests {
                 self.refreshTokenOnAuthFailure(request: $1)
             }
         }
+        
+        configureTransformer("/events/nearby") {
+            try self.jsonDecoder.decode([Event].self, from: $0.content)
+        }
     }
     
+    /**
+     * If the token is invalid during a request, attempt to reauthenticate with the saved username and password
+     */
     func refreshTokenOnAuthFailure(request: Request) -> Request {
       return request.chained {
         guard case .failure(let error) = $0.response,  // Did request fail…
@@ -102,19 +94,25 @@ class WHAPI: Service {
       }
     }
 
+    /**
+     * Perform a login request
+     */
     func login() -> Request {
         return signInResource
             .request(.post, json: userAuthData())
             .onSuccess {
-                print("success request")
                 self.authToken = $0.headers[Keys.Auth.Token]
                 self.authTokenType = $0.headers[Keys.Auth.TokenType]
                 self.authClient = $0.headers[Keys.Auth.Client]
                 self.authUID = $0.headers[Keys.Auth.UID]
+                //print("In Login Func ---> Token: \(self.authToken)   Token Type: \(self.authTokenType)   Client: \(self.authClient)  UID: \(self.authUID)")
                 self.invalidateConfiguration()                    // …make future requests use it
             }
     }
 
+    /**
+     * Obtain the stored auth parameters from the keychain
+     */
     private func userAuthData() -> [String: String] {
         let email = GlobalKeychain.get("email") ?? ""
         let password = GlobalKeychain.get("password") ?? ""
@@ -123,7 +121,25 @@ class WHAPI: Service {
     }
     
     var signInResource: Resource { return resource("/auth/sign_in") }
-    var events: Resource { return resource("/events") }
+    
+    func nearbyEvents(_ coordinates: CoordinatePair, range: Float = 5.0) -> Resource {
+        return resource("/events/nearby")
+            .withParams([
+                "latitude": "\(coordinates.latitude)",
+                "longitude": "\(coordinates.longitude)",
+                "radius": "\(range)"
+            ])
+    }
+    var events: Resource {
+        print("got asked for resource")
+        return resource("/events")
+    }
+}
+
+extension WHAPI {
+//    func nearbyEvents(coordinates: CoordinatePair, range: float = 5.0) {
+//        self.events.loadIfNeeded()
+//    }
 }
 
 let whAPI = WHAPI()

@@ -39,6 +39,22 @@
 		19F666AC270CDD0A0080C6C3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F666AB270CDD0A0080C6C3 /* LoginView.swift */; };
 		19F666AD270CDD0A0080C6C3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F666AB270CDD0A0080C6C3 /* LoginView.swift */; };
 		19F666AE270CDD0A0080C6C3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F666AB270CDD0A0080C6C3 /* LoginView.swift */; };
+		19F666B1270CF9BD0080C6C3 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F666B0270CF9BD0080C6C3 /* Address.swift */; };
+		19F666B3270CF9CE0080C6C3 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F666B2270CF9CE0080C6C3 /* Country.swift */; };
+		19F666B4270CF9CE0080C6C3 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F666B2270CF9CE0080C6C3 /* Country.swift */; };
+		19F666B5270CF9CE0080C6C3 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F666B2270CF9CE0080C6C3 /* Country.swift */; };
+		19F666B8270CF9F50080C6C3 /* CoordinatePair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F666B7270CF9F50080C6C3 /* CoordinatePair.swift */; };
+		19F666B9270CF9F50080C6C3 /* CoordinatePair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F666B7270CF9F50080C6C3 /* CoordinatePair.swift */; };
+		19F666BA270CF9F50080C6C3 /* CoordinatePair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F666B7270CF9F50080C6C3 /* CoordinatePair.swift */; };
+		19F666C0270CFCAA0080C6C3 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F666BF270CFCAA0080C6C3 /* Comment.swift */; };
+		19F666C1270CFCAA0080C6C3 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F666BF270CFCAA0080C6C3 /* Comment.swift */; };
+		19F666C2270CFCAA0080C6C3 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F666BF270CFCAA0080C6C3 /* Comment.swift */; };
+		19F666C4270D0C9E0080C6C3 /* StateAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F666C3270D0C9E0080C6C3 /* StateAddress.swift */; };
+		19F666C5270D0C9E0080C6C3 /* StateAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F666C3270D0C9E0080C6C3 /* StateAddress.swift */; };
+		19F666C6270D0C9E0080C6C3 /* StateAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F666C3270D0C9E0080C6C3 /* StateAddress.swift */; };
+		19F666C9270D1F530080C6C3 /* EventsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F666C8270D1F530080C6C3 /* EventsListViewController.swift */; };
+		19F666CA270D1F530080C6C3 /* EventsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F666C8270D1F530080C6C3 /* EventsListViewController.swift */; };
+		19F666CB270D1F530080C6C3 /* EventsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F666C8270D1F530080C6C3 /* EventsListViewController.swift */; };
 		663AAF0B26FA657500248928 /* CreateEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663AAF0A26FA657500248928 /* CreateEvent.swift */; };
 		663AAF0C26FA657500248928 /* CreateEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663AAF0A26FA657500248928 /* CreateEvent.swift */; };
 		663AAF0D26FA657500248928 /* CreateEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663AAF0A26FA657500248928 /* CreateEvent.swift */; };
@@ -90,6 +106,12 @@
 		19F6669F270CB8A00080C6C3 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		19F666A7270CDAEE0080C6C3 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		19F666AB270CDD0A0080C6C3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		19F666B0270CF9BD0080C6C3 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		19F666B2270CF9CE0080C6C3 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		19F666B7270CF9F50080C6C3 /* CoordinatePair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatePair.swift; sourceTree = "<group>"; };
+		19F666BF270CFCAA0080C6C3 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		19F666C3270D0C9E0080C6C3 /* StateAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateAddress.swift; sourceTree = "<group>"; };
+		19F666C8270D1F530080C6C3 /* EventsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListViewController.swift; sourceTree = "<group>"; };
 		663AAF0A26FA657500248928 /* CreateEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEvent.swift; sourceTree = "<group>"; };
 		667D117A270B636F00C5A634 /* EventInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,7 +149,6 @@
 			children = (
 				0760388426F7E10100FFBE2F /* EventsListView.swift */,
 				071087EF2704119C00D1773D /* SearchBar.swift */,
-				0710BBDF26F7CE12000E5501 /* Event.swift */,
 				0710BBE326F7CE52000E5501 /* EventView.swift */,
 				663AAF0A26FA657500248928 /* CreateEvent.swift */,
 				667D117A270B636F00C5A634 /* EventInfoView.swift */,
@@ -167,6 +188,7 @@
 		190EB54926E7EAD500822E65 /* WhatsHappenin */ = {
 			isa = PBXGroup;
 			children = (
+				19F666AF270CF8B80080C6C3 /* Objects */,
 				19F666A6270CDADF0080C6C3 /* Util */,
 				19F6669A270CB6BB0080C6C3 /* Configs */,
 				19F66671270CB2310080C6C3 /* API */,
@@ -179,6 +201,7 @@
 				190EB55826E7EAD600822E65 /* Info.plist */,
 				190EB55526E7EAD600822E65 /* WhatsHappenin.xcdatamodeld */,
 				190EB55026E7EAD600822E65 /* Preview Content */,
+				19F666C8270D1F530080C6C3 /* EventsListViewController.swift */,
 			);
 			path = WhatsHappenin;
 			sourceTree = "<group>";
@@ -233,6 +256,19 @@
 				19F666A7270CDAEE0080C6C3 /* Keychain.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		19F666AF270CF8B80080C6C3 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				0710BBDF26F7CE12000E5501 /* Event.swift */,
+				19F666B0270CF9BD0080C6C3 /* Address.swift */,
+				19F666B2270CF9CE0080C6C3 /* Country.swift */,
+				19F666B7270CF9F50080C6C3 /* CoordinatePair.swift */,
+				19F666BF270CFCAA0080C6C3 /* Comment.swift */,
+				19F666C3270D0C9E0080C6C3 /* StateAddress.swift */,
+			);
+			path = Objects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,7 +411,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				190EB55726E7EAD600822E65 /* WhatsHappenin.xcdatamodeld in Sources */,
+				19F666C9270D1F530080C6C3 /* EventsListViewController.swift in Sources */,
 				190EB55426E7EAD600822E65 /* Persistence.swift in Sources */,
+				19F666C4270D0C9E0080C6C3 /* StateAddress.swift in Sources */,
 				0710BBE426F7CE52000E5501 /* EventView.swift in Sources */,
 				0760388526F7E10100FFBE2F /* EventsListView.swift in Sources */,
 				071087F02704119C00D1773D /* SearchBar.swift in Sources */,
@@ -383,9 +421,13 @@
 				19F66673270CB2500080C6C3 /* WHAPI.swift in Sources */,
 				19F666A0270CB8A00080C6C3 /* Environment.swift in Sources */,
 				19F666AC270CDD0A0080C6C3 /* LoginView.swift in Sources */,
+				19F666B1270CF9BD0080C6C3 /* Address.swift in Sources */,
+				19F666B8270CF9F50080C6C3 /* CoordinatePair.swift in Sources */,
 				663AAF0B26FA657500248928 /* CreateEvent.swift in Sources */,
 				190EB54B26E7EAD500822E65 /* WhatsHappeninApp.swift in Sources */,
+				19F666B3270CF9CE0080C6C3 /* Country.swift in Sources */,
 				07900D0726F7F21A00542CD2 /* RegistrationView.swift in Sources */,
+				19F666C0270CFCAA0080C6C3 /* Comment.swift in Sources */,
 				667D117B270B636F00C5A634 /* EventInfoView.swift in Sources */,
 				19F666A8270CDAEE0080C6C3 /* Keychain.swift in Sources */,
 			);
@@ -397,12 +439,17 @@
 			files = (
 				663AAF0C26FA657500248928 /* CreateEvent.swift in Sources */,
 				0710BBE126F7CE12000E5501 /* Event.swift in Sources */,
+				19F666C5270D0C9E0080C6C3 /* StateAddress.swift in Sources */,
 				0710BBE526F7CE52000E5501 /* EventView.swift in Sources */,
 				19F666AD270CDD0A0080C6C3 /* LoginView.swift in Sources */,
+				19F666CA270D1F530080C6C3 /* EventsListViewController.swift in Sources */,
+				19F666B9270CF9F50080C6C3 /* CoordinatePair.swift in Sources */,
 				0760388626F7E10100FFBE2F /* EventsListView.swift in Sources */,
 				190EB56226E7EAD600822E65 /* WhatsHappeninTests.swift in Sources */,
 				07900D0826F7F21A00542CD2 /* RegistrationView.swift in Sources */,
+				19F666C1270CFCAA0080C6C3 /* Comment.swift in Sources */,
 				071087F12704119C00D1773D /* SearchBar.swift in Sources */,
+				19F666B4270CF9CE0080C6C3 /* Country.swift in Sources */,
 				667D117C270B636F00C5A634 /* EventInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,12 +460,17 @@
 			files = (
 				663AAF0D26FA657500248928 /* CreateEvent.swift in Sources */,
 				0710BBE226F7CE12000E5501 /* Event.swift in Sources */,
+				19F666C6270D0C9E0080C6C3 /* StateAddress.swift in Sources */,
 				0710BBE626F7CE52000E5501 /* EventView.swift in Sources */,
 				19F666AE270CDD0A0080C6C3 /* LoginView.swift in Sources */,
+				19F666CB270D1F530080C6C3 /* EventsListViewController.swift in Sources */,
+				19F666BA270CF9F50080C6C3 /* CoordinatePair.swift in Sources */,
 				0760388726F7E10100FFBE2F /* EventsListView.swift in Sources */,
 				190EB56D26E7EAD600822E65 /* WhatsHappeninUITests.swift in Sources */,
 				07900D0926F7F21A00542CD2 /* RegistrationView.swift in Sources */,
+				19F666C2270CFCAA0080C6C3 /* Comment.swift in Sources */,
 				071087F22704119C00D1773D /* SearchBar.swift in Sources */,
+				19F666B5270CF9CE0080C6C3 /* Country.swift in Sources */,
 				667D117D270B636F00C5A634 /* EventInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

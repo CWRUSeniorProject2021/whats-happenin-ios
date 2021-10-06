@@ -64,13 +64,12 @@ struct LoginView : View {
                 GlobalKeychain.set(username, forKey: "email")
                 GlobalKeychain.set(password, forKey: "password")
                 whAPI.login().onSuccess { _ in
-                    print("login happened or something")
                     successfulLogin = true
                 }.onFailure { _ in
                     
                 }
             }) {
-                NavigationLink(destination: EventsListView(events: Event.samples(), searchText: ""), isActive: $successfulLogin) { EmptyView() }
+                NavigationLink(destination: EventsListView(searchText: ""), isActive: $successfulLogin) { EmptyView() }
                 Text("LOGIN")
                     .font(.headline)
                     .foregroundColor(.white)
