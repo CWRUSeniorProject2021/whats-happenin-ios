@@ -10,9 +10,11 @@ import Siesta
 import SwiftUIRefresh
 
 
+let cntlr = EventsListViewController()
 
 struct EventsListView: View {
-    @EnvironmentObject var controller: EventsListViewController
+    @ObservedObject var controller = cntlr
+    //@State private var events = controller.events
     //@State var events: [Event]
     @State private var selection: Set<Event> = []
     @State var selectedIndex = 0
@@ -49,11 +51,12 @@ struct EventsListView: View {
                 case 2:
                     VStack {
                         SearchBar(text1: $searchText)
-                        List(controller.events) { event in
+                        List(cntlr.events) { event in
 //                        List($controller.events.filter({ searchText.isEmpty ? true : $0.title.contains(searchText) })) { event in
                             NavigationLink(event.title, destination: EventInfoView())}
                         .pullToRefresh(isShowing: $isShowing) {
-                            eventsListViewController.reloadNearbyEvents()
+                            controller.reloadNearbyEvents()
+                            print("controller.events1")
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                 self.isShowing = false
                             }
@@ -67,17 +70,20 @@ struct EventsListView: View {
                         SearchBar(text1: $searchText)
 
                         //List no longer opens up for now but the filter works :)
-                        List(controller.events) { event in
-                            NavigationLink(event.title, destination: EventInfoView())}
-                        .pullToRefresh(isShowing: $isShowing) {
-                            eventsListViewController.reloadNearbyEvents()
+                        List {
+                            ForEach(cntlr.events.indices, id: \.self) { index in
+                                NavigationLink(cntlr.events[index].title, destination: EventInfoView())
+                            }
+                        }.pullToRefresh(isShowing: $isShowing) {
+                            controller.reloadNearbyEvents()
+                            print("controller.events2")
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                 self.isShowing = false
                             }
                         }
                         Spacer()
                     }
-                    .navigationTitle("Events")
+                    .navigationTitle("Nearby Events")
                 default:
                     VStack {
                         Text("Profile")
@@ -180,6 +186,6 @@ struct EventsList_Previews: PreviewProvider {
     }
 }
 
-let controller = EventsListViewController()
-let view : some View = EventsListView(searchText: "").environmentObject(controller) // makes `controller` available to all subviews
+//let controller = EventsListViewController()
+//let view : some View = EventsListView(searchText: "").environmentObject(controller) // makes `controller` available to all subviews
 

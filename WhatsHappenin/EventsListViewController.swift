@@ -11,16 +11,27 @@ import CoreLocation
 
 class EventsListViewController: ObservableObject, ResourceObserver {
     @Published var events = [Event]()
+    var nearbyEventsResource: Resource
 
     init() {
+        nearbyEventsResource = whAPI.nearbyEvents
+        //nearbyEventsResource.addObserver(self)
         reloadNearbyEvents()
         //whAPI.nearbyEvents(CoordinatePair(latitude: 41.51037, longitude: -81.60557), range: 5.0).addObserver(self).loadIfNeeded()
     }
     
     func reloadNearbyEvents() {
-        whAPI.nearbyEvents(locationManager.getCurrentLocation() ?? CoordinatePair(latitude: 0.0, longitude: 0.0), range: 5.0)
-            .addObserver(self)
-            .loadIfNeeded()
+        let coordinates = locationManager.getCurrentLocation() ?? CoordinatePair(latitude: 0.0, longitude: 0.0)
+        let range = 5.0
+        nearbyEventsResource.withParams([
+            "latitude": "\(coordinates.latitude)",
+            "longitude": "\(coordinates.longitude)",
+            "radius": "\(range)"
+        ]).addObserver(self).loadIfNeeded()
+//        whA
+//        whAPI.nearbyEvents(locationManager.getCurrentLocation() ?? CoordinatePair(latitude: 0.0, longitude: 0.0), range: 5.0)
+//            .addObserver(self)
+//            .loadIfNeeded()
     }
     
     func resourceChanged(_ resource: Resource, event: ResourceEvent) {
@@ -28,7 +39,6 @@ class EventsListViewController: ObservableObject, ResourceObserver {
 //        var events = resourceo.jsonDict["events"] as? [[String: Any]] ?? []
 //        print(events)
         if let result: [Event] = resource.typedContent() {
-            print("hi")
             print(result)
             self.events = result
         }

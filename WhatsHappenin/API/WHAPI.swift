@@ -154,16 +154,15 @@ class WHAPI: Service {
 
     var signInResource: Resource { return resource("/auth/sign_in") }
 
-    func nearbyEvents(_ coordinates: CoordinatePair, range: Float = 5.0) -> Resource {
+//    func nearbyEvents(_ coordinates: CoordinatePair, range: Float = 5.0) -> Resource {
+//        return resource("/events/nearby")
+//
+//    }
+    var nearbyEvents: Resource {
         return resource("/events/nearby")
-            .withParams([
-                "latitude": "\(coordinates.latitude)",
-                "longitude": "\(coordinates.longitude)",
-                "radius": "\(range)"
-            ])
     }
+    
     var events: Resource {
-        print("got asked for resource")
         return resource("/events")
     }
 }
