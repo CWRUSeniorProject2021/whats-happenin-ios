@@ -31,6 +31,9 @@
 		190EB56D26E7EAD600822E65 /* WhatsHappeninUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190EB56C26E7EAD600822E65 /* WhatsHappeninUITests.swift */; };
 		190EB57D26E8375300822E65 /* Siesta in Frameworks */ = {isa = PBXBuildFile; productRef = 190EB57C26E8375300822E65 /* Siesta */; };
 		190EB57F26E8375300822E65 /* SiestaUI in Frameworks */ = {isa = PBXBuildFile; productRef = 190EB57E26E8375300822E65 /* SiestaUI */; };
+		198ACAA02716112900037178 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198ACA9F2716112800037178 /* GenericResponse.swift */; };
+		198ACAA22716171B00037178 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198ACAA12716171B00037178 /* LocationManager.swift */; };
+		198ACAA627161EAB00037178 /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 198ACAA527161EAB00037178 /* SwiftUIRefresh */; };
 		19F66673270CB2500080C6C3 /* WHAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F66672270CB2500080C6C3 /* WHAPI.swift */; };
 		19F6669E270CB6F40080C6C3 /* Production.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 19F6669D270CB6F40080C6C3 /* Production.xcconfig */; };
 		19F666A0270CB8A00080C6C3 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F6669F270CB8A00080C6C3 /* Environment.swift */; };
@@ -100,6 +103,8 @@
 		190EB56C26E7EAD600822E65 /* WhatsHappeninUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsHappeninUITests.swift; sourceTree = "<group>"; };
 		190EB56E26E7EAD600822E65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		190EB57A26E7EAE100822E65 /* WhatsHappenin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WhatsHappenin.entitlements; sourceTree = "<group>"; };
+		198ACA9F2716112800037178 /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
+		198ACAA12716171B00037178 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		19F66672270CB2500080C6C3 /* WHAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WHAPI.swift; sourceTree = "<group>"; };
 		19F6669B270CB6E50080C6C3 /* Staging.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Staging.xcconfig; sourceTree = "<group>"; };
 		19F6669D270CB6F40080C6C3 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
@@ -121,6 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				198ACAA627161EAB00037178 /* SwiftUIRefresh in Frameworks */,
 				19F666A5270CD5920080C6C3 /* KeychainSwift in Frameworks */,
 				190EB57D26E8375300822E65 /* Siesta in Frameworks */,
 				190EB57F26E8375300822E65 /* SiestaUI in Frameworks */,
@@ -254,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				19F666A7270CDAEE0080C6C3 /* Keychain.swift */,
+				198ACAA12716171B00037178 /* LocationManager.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -267,6 +274,7 @@
 				19F666B7270CF9F50080C6C3 /* CoordinatePair.swift */,
 				19F666BF270CFCAA0080C6C3 /* Comment.swift */,
 				19F666C3270D0C9E0080C6C3 /* StateAddress.swift */,
+				198ACA9F2716112800037178 /* GenericResponse.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -291,6 +299,7 @@
 				190EB57C26E8375300822E65 /* Siesta */,
 				190EB57E26E8375300822E65 /* SiestaUI */,
 				19F666A4270CD5920080C6C3 /* KeychainSwift */,
+				198ACAA527161EAB00037178 /* SwiftUIRefresh */,
 			);
 			productName = WhatsHappenin;
 			productReference = 190EB54726E7EAD500822E65 /* WhatsHappenin.app */;
@@ -366,6 +375,7 @@
 			packageReferences = (
 				190EB57B26E8375200822E65 /* XCRemoteSwiftPackageReference "siesta" */,
 				19F666A3270CD5920080C6C3 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				198ACAA427161EAB00037178 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */,
 			);
 			productRefGroup = 190EB54826E7EAD500822E65 /* Products */;
 			projectDirPath = "";
@@ -416,6 +426,7 @@
 				19F666C4270D0C9E0080C6C3 /* StateAddress.swift in Sources */,
 				0710BBE426F7CE52000E5501 /* EventView.swift in Sources */,
 				0760388526F7E10100FFBE2F /* EventsListView.swift in Sources */,
+				198ACAA02716112900037178 /* GenericResponse.swift in Sources */,
 				071087F02704119C00D1773D /* SearchBar.swift in Sources */,
 				0710BBE026F7CE12000E5501 /* Event.swift in Sources */,
 				19F66673270CB2500080C6C3 /* WHAPI.swift in Sources */,
@@ -423,6 +434,7 @@
 				19F666AC270CDD0A0080C6C3 /* LoginView.swift in Sources */,
 				19F666B1270CF9BD0080C6C3 /* Address.swift in Sources */,
 				19F666B8270CF9F50080C6C3 /* CoordinatePair.swift in Sources */,
+				198ACAA22716171B00037178 /* LocationManager.swift in Sources */,
 				663AAF0B26FA657500248928 /* CreateEvent.swift in Sources */,
 				190EB54B26E7EAD500822E65 /* WhatsHappeninApp.swift in Sources */,
 				19F666B3270CF9CE0080C6C3 /* Country.swift in Sources */,
@@ -1049,6 +1061,14 @@
 				minimumVersion = 1.5.2;
 			};
 		};
+		198ACAA427161EAB00037178 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/timbersoftware/SwiftUIRefresh.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		19F666A3270CD5920080C6C3 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
@@ -1069,6 +1089,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 190EB57B26E8375200822E65 /* XCRemoteSwiftPackageReference "siesta" */;
 			productName = SiestaUI;
+		};
+		198ACAA527161EAB00037178 /* SwiftUIRefresh */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 198ACAA427161EAB00037178 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */;
+			productName = SwiftUIRefresh;
 		};
 		19F666A4270CD5920080C6C3 /* KeychainSwift */ = {
 			isa = XCSwiftPackageProductDependency;

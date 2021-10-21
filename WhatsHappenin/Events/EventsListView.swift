@@ -7,9 +7,12 @@
 
 import SwiftUI
 import Siesta
+import SwiftUIRefresh
+
+
 
 struct EventsListView: View {
-    @StateObject var controller = EventsListViewController()
+    @EnvironmentObject var controller: EventsListViewController
     //@State var events: [Event]
     @State private var selection: Set<Event> = []
     @State var selectedIndex = 0
@@ -22,6 +25,8 @@ struct EventsListView: View {
     ]
     
     @State var searchText: String
+    
+    @State private var isShowing = false
     
     var body: some View {
     
@@ -44,8 +49,15 @@ struct EventsListView: View {
                 case 2:
                     VStack {
                         SearchBar(text1: $searchText)
-                        List(controller.events.filter({ searchText.isEmpty ? true : $0.name.contains(searchText) })) { item in
-                            NavigationLink(item.name, destination: EventInfoView())}
+                        List(controller.events) { event in
+//                        List($controller.events.filter({ searchText.isEmpty ? true : $0.title.contains(searchText) })) { event in
+                            NavigationLink(event.title, destination: EventInfoView())}
+                        .pullToRefresh(isShowing: $isShowing) {
+                            eventsListViewController.reloadNearbyEvents()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                self.isShowing = false
+                            }
+                        }
                         Spacer()
                     }
                     .navigationTitle("Your Events")
@@ -55,7 +67,14 @@ struct EventsListView: View {
                         SearchBar(text1: $searchText)
 
                         //List no longer opens up for now but the filter works :)
-                        List(controller.events.filter({ searchText.isEmpty ? true : $0.name.contains(searchText) })) { item in NavigationLink(item.name, destination: EventInfoView())}
+                        List(controller.events) { event in
+                            NavigationLink(event.title, destination: EventInfoView())}
+                        .pullToRefresh(isShowing: $isShowing) {
+                            eventsListViewController.reloadNearbyEvents()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                self.isShowing = false
+                            }
+                        }
                         Spacer()
                     }
                     .navigationTitle("Events")
@@ -91,24 +110,41 @@ struct EventsListView: View {
             })
     }
     
-    var list: some View {
-        List(controller.events) { event in
-            EventView(event: event, isExpanded: self.selection.contains(event))
-                .onTapGesture { self.selectDeselect(event) }
-                .animation(.linear(duration: 0.3))
-        }
-    }
+//    var list: some View {
+//        List($controller.events) { $event in
+//            EventView(event: $event, isExpanded: self.selection.contains($event))
+//                .onTapGesture { self.selectDeselect($event) }
+//
+//                .animation(.linear(duration: 0.3))
+//        }
+//        .pullToRefresh(isShowing: $isShowing) {
+//            eventsListViewController.reloadNearbyEvents()
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//                self.isShowing = false
+//            }
+//        }
+//
+////        .refreshable {
+////            await eventsListViewController.reloadNearbyEvents()
+////        }
+//    }
     
-    var scrollForEach: some View {
-        ScrollView {
-            ForEach(controller.events) { event in
-                EventView(event: event, isExpanded: self.selection.contains(event))
-                    .modifier(ListRowModifier())
-                    .onTapGesture { self.selectDeselect(event) }
-                    .animation(.linear(duration: 0.3))
-            }
-        }
-    }
+//    var scrollForEach: some View {
+//        ScrollView {
+//            ForEach($controller.events) { $event in
+//                EventView(event: $event, isExpanded: self.selection.contains($event))
+//                    .modifier(ListRowModifier())
+//                    .onTapGesture { self.selectDeselect($event) }
+//                    .animation(.linear(duration: 0.3))
+//            }
+//        }
+//        .pullToRefresh(isShowing: $isShowing) {
+//            eventsListViewController.reloadNearbyEvents()
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//                self.isShowing = false
+//            }
+//        }
+//    }
     
     private func selectDeselect(_ event: Event) {
         if selection.contains(event) {
@@ -143,3 +179,7 @@ struct EventsList_Previews: PreviewProvider {
         EventsListView(searchText: "")
     }
 }
+
+let controller = EventsListViewController()
+let view : some View = EventsListView(searchText: "").environmentObject(controller) // makes `controller` available to all subviews
+

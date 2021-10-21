@@ -29,6 +29,7 @@ struct Address: Hashable, Codable {
 
 extension Address: CustomStringConvertible {
     var description: String {
-        return "\(street1) \(street2 ?? "") \(city), \(state.name) \(postalCode)"
+        return ""
+        //return "\(street1) \(street2 ?? "") \(city), \(state.name) \(postalCode)"
     }
 }

@@ -66,7 +66,7 @@ struct LoginView : View {
                 whAPI.login().onSuccess { _ in
                     successfulLogin = true
                 }.onFailure { _ in
-                    
+                    successfulLogin = false
                 }
             }) {
                 NavigationLink(destination: EventsListView(searchText: ""), isActive: $successfulLogin) { EmptyView() }

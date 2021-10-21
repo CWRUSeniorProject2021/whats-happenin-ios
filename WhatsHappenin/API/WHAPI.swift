@@ -6,6 +6,36 @@
 //
 
 import Foundation
+//import KeychainSwift
+//import Alamofire
+
+//class WHAPI {
+//
+//    let headers: HTTPHeaders = [
+//        .accept("application/json")
+//    ]
+//
+//    init() {
+//        print("hi")
+//        AF.request("https://httpbin.org/get").response { response in
+//            print("\(response)")
+//            debugPrint("Response: \(response)")
+//        }
+//    }
+//
+//    func login(username: String, password: String) {
+//        AF.request("")
+//    }
+//
+//    func printhi() {
+//        print("hi")
+//    }
+//
+//}
+//
+//let whAPI = WHAPI()
+
+
 import Siesta
 import KeychainSwift
 
@@ -18,9 +48,9 @@ class WHAPI: Service {
             static let UID : String! = "uid"
         }
     }
-    
+
     let jsonDecoder = JSONDecoder()
-    
+
     var authToken: String?? {
         didSet {
             GlobalKeychain.set((authToken as? String) ?? "", forKey: Keys.Auth.Token)
@@ -41,10 +71,12 @@ class WHAPI: Service {
             GlobalKeychain.set((authUID as? String) ?? "", forKey: Keys.Auth.UID)
         }
     }
-    
+
     init() {
-        super.init(baseURL: Environment.rootURLString + "/" + Environment.apiVersion)
+        super.init(baseURL: Environment.rootURLString + "/" + Environment.apiVersion, standardTransformers: [.text, .image])
         
+        SiestaLog.Category.enabled = [.network, .pipeline, .observers]
+
         configure("**", description: "API Auth") {
             //print("In Auth Func ---> Token: \(self.authToken)   Token Type: \(self.authTokenType)   Client: \(self.authClient)  UID: \(self.authUID)")
             if let authToken = self.authToken {
@@ -59,19 +91,19 @@ class WHAPI: Service {
             if let authUID = self.authUID {
                 $0.headers[Keys.Auth.UID] = authUID
             }
-            
+
             print($0.headers)
-            
+
             $0.decorateRequests {
                 self.refreshTokenOnAuthFailure(request: $1)
             }
         }
-        
+
         configureTransformer("/events/nearby") {
-            try self.jsonDecoder.decode([Event].self, from: $0.content)
+            try self.jsonDecoder.decode(GenericResponse<EventList>.self, from: $0.content).data.events
         }
     }
-    
+
     /**
      * If the token is invalid during a request, attempt to reauthenticate with the saved username and password
      */
@@ -119,9 +151,9 @@ class WHAPI: Service {
         return ["email": email,
                 "password": password]
     }
-    
+
     var signInResource: Resource { return resource("/auth/sign_in") }
-    
+
     func nearbyEvents(_ coordinates: CoordinatePair, range: Float = 5.0) -> Resource {
         return resource("/events/nearby")
             .withParams([
@@ -143,3 +175,4 @@ extension WHAPI {
 }
 
 let whAPI = WHAPI()
+

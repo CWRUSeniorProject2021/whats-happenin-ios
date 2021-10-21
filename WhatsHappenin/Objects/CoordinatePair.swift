@@ -8,8 +8,8 @@
 import Foundation
 
 struct CoordinatePair: Hashable, Codable {
-    var latitude: Float
-    var longitude: Float
+    var latitude: Double
+    var longitude: Double
     
     enum CodingKeys: String, CodingKey {
         case latitude

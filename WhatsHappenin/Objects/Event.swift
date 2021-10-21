@@ -10,17 +10,17 @@ import Siesta
 
 struct Event: Identifiable, Hashable, Codable {
     var id: Int
-    var name: String
+    var title: String
     var description: String
     var attendeeLimit: Int
     var address: Address
-    var startDate: Date
-    var endDate: Date
+    var startDate: String
+    var endDate: String
     var comments: [Comment]?
     
     enum CodingKeys: String, CodingKey {
         case id
-        case name
+        case title
         case description
         case attendeeLimit = "attendee_limit"
         case address
@@ -35,12 +35,12 @@ struct Event: Identifiable, Hashable, Codable {
     private static func fixture(_ id: Int) -> Event {
         Event(
             id: id,
-            name: "Event Name #\(id)",
+            title: "Event Title #\(id)",
             description: "Desc of event here: ",
             attendeeLimit: 100,
-            address: Address(street1: "\(id) Ansel Rd", city: "Cleveland", postalCode: "44106", state: StateAddress(name: "Ohio", code: "OH"), country: Country(name: "United States", code: "US")),
-            startDate: Date(),
-            endDate: Date().addingTimeInterval(TimeInterval(3600))
+            address: Address(street1: "1750 Ansel Rd", city: "Cleveland", postalCode: "44106", state: StateAddress(name: "Ohio", code: "OH"), country: Country(name: "United States", code: "US")),
+            startDate: "sd",//Date(),
+            endDate: "ed"//Date().addingTimeInterval(TimeInterval(3600))
         )
     }
     
@@ -54,4 +54,12 @@ struct Event: Identifiable, Hashable, Codable {
 //
 //        return []
 //    }
+}
+
+struct EventList: Codable {
+    let events: [Event]
+    
+    enum CodingKeys: String, CodingKey {
+        case events
+    }
 }
