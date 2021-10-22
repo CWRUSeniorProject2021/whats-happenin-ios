@@ -28,7 +28,7 @@ struct EventsListView: View {
     
     @State var searchText: String
     
-    @State private var isShowing = false
+    @State var isRefreshing: Bool = false
     
     var body: some View {
     
@@ -54,11 +54,10 @@ struct EventsListView: View {
                         List(cntlr.events) { event in
 //                        List($controller.events.filter({ searchText.isEmpty ? true : $0.title.contains(searchText) })) { event in
                             NavigationLink(event.title, destination: EventInfoView())}
-                        .pullToRefresh(isShowing: $isShowing) {
+                        .pullToRefresh(isShowing: $isRefreshing) {
                             controller.reloadNearbyEvents()
-                            print("controller.events1")
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                self.isShowing = false
+                                self.isRefreshing = false
                             }
                         }
                         Spacer()
@@ -69,21 +68,23 @@ struct EventsListView: View {
                     VStack {
                         SearchBar(text1: $searchText)
 
-                        //List no longer opens up for now but the filter works :)
+                        //Filter no longer works but list opens :)
                         List {
                             ForEach(cntlr.events.indices, id: \.self) { index in
                                 NavigationLink(cntlr.events[index].title, destination: EventInfoView())
                             }
-                        }.pullToRefresh(isShowing: $isShowing) {
+                        }
+                        .pullToRefresh(isShowing: $isRefreshing) {
                             controller.reloadNearbyEvents()
-                            print("controller.events2")
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                self.isShowing = false
+                                self.isRefreshing = false
                             }
+                        }
+                        .onChange(of: self.isRefreshing) { value in
                         }
                         Spacer()
                     }
-                    .navigationTitle("Nearby Events")
+                    .navigationBarTitle("Nearby Events")
                 default:
                     VStack {
                         Text("Profile")
@@ -158,6 +159,10 @@ struct EventsListView: View {
         } else {
             selection.insert(event)
         }
+    }
+    
+    private func doNothing() {
+        
     }
     
 }

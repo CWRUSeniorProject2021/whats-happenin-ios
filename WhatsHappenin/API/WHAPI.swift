@@ -40,6 +40,8 @@ import Siesta
 import KeychainSwift
 
 class WHAPI: Service {
+    static let sharedInstance = WHAPI()
+
     enum Keys {
         enum Auth {
             static let Token : String! = "access-token"
@@ -72,7 +74,7 @@ class WHAPI: Service {
         }
     }
 
-    init() {
+    private init() {
         super.init(baseURL: Environment.rootURLString + "/" + Environment.apiVersion, standardTransformers: [.text, .image])
         
         SiestaLog.Category.enabled = [.network, .pipeline, .observers]
@@ -140,6 +142,14 @@ class WHAPI: Service {
                 //print("In Login Func ---> Token: \(self.authToken)   Token Type: \(self.authTokenType)   Client: \(self.authClient)  UID: \(self.authUID)")
                 self.invalidateConfiguration()                    // …make future requests use it
             }
+            .onFailure { _ in
+                self.authToken = ""
+                self.authTokenType = ""
+                self.authClient = ""
+                self.authUID = ""
+                GlobalKeychain.set("", forKey: "email")
+                GlobalKeychain.set("", forKey: "password")
+            }
     }
 
     /**
@@ -173,5 +183,4 @@ extension WHAPI {
 //    }
 }
 
-let whAPI = WHAPI()
 

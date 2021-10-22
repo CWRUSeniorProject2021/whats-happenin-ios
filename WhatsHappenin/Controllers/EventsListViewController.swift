@@ -14,7 +14,7 @@ class EventsListViewController: ObservableObject, ResourceObserver {
     var nearbyEventsResource: Resource
 
     init() {
-        nearbyEventsResource = whAPI.nearbyEvents
+        nearbyEventsResource = WHAPI.sharedInstance.nearbyEvents
         //nearbyEventsResource.addObserver(self)
         reloadNearbyEvents()
         //whAPI.nearbyEvents(CoordinatePair(latitude: 41.51037, longitude: -81.60557), range: 5.0).addObserver(self).loadIfNeeded()

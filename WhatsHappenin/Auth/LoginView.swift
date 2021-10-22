@@ -15,7 +15,8 @@ import CoreData
 struct LoginView : View {
     @State var username : String = Environment.testUserUsername
     @State var password : String = Environment.testUserPassword
-    @State var successfulLogin : Bool = false
+    @State var successfulLogin : Bool = GlobalKeychain.get("email") ?? "" != "" && GlobalKeychain.get("password") ?? "" != ""
+    //@State var credentialsObtained : Bool =
 
     
     var body: some View {
@@ -63,7 +64,7 @@ struct LoginView : View {
                 print("Button tapped")
                 GlobalKeychain.set(username, forKey: "email")
                 GlobalKeychain.set(password, forKey: "password")
-                whAPI.login().onSuccess { _ in
+                WHAPI.sharedInstance.login().onSuccess { _ in
                     successfulLogin = true
                 }.onFailure { _ in
                     successfulLogin = false

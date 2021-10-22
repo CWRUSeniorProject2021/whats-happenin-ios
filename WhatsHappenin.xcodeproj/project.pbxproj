@@ -194,6 +194,7 @@
 		190EB54926E7EAD500822E65 /* WhatsHappenin */ = {
 			isa = PBXGroup;
 			children = (
+				196D0EF62723683700E05CC8 /* Controllers */,
 				19F666AF270CF8B80080C6C3 /* Objects */,
 				19F666A6270CDADF0080C6C3 /* Util */,
 				19F6669A270CB6BB0080C6C3 /* Configs */,
@@ -207,7 +208,6 @@
 				190EB55826E7EAD600822E65 /* Info.plist */,
 				190EB55526E7EAD600822E65 /* WhatsHappenin.xcdatamodeld */,
 				190EB55026E7EAD600822E65 /* Preview Content */,
-				19F666C8270D1F530080C6C3 /* EventsListViewController.swift */,
 			);
 			path = WhatsHappenin;
 			sourceTree = "<group>";
@@ -236,6 +236,14 @@
 				190EB56E26E7EAD600822E65 /* Info.plist */,
 			);
 			path = WhatsHappeninUITests;
+			sourceTree = "<group>";
+		};
+		196D0EF62723683700E05CC8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				19F666C8270D1F530080C6C3 /* EventsListViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		19F66671270CB2310080C6C3 /* API */ = {
