@@ -43,7 +43,8 @@ struct EventsListView: View {
                     .navigationTitle("Feed")
                 case 1:
                     VStack {
-                        Text("Map View")
+                        MapView()
+                            .edgesIgnoringSafeArea(.all)
                         Spacer()
                     }
                     .navigationTitle("Map View")
