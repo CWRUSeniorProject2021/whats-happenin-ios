@@ -110,7 +110,7 @@ struct EventsListView: View {
                     Spacer()
                 }
             }
-        }.navigationBarBackButtonHidden(true)
+        }.navigationBarBackButtonHidden(false)
             .onAppear(perform: {
                 //whAPI.events.addObserver(self)
                 //whAPI.events.loadIfNeeded()

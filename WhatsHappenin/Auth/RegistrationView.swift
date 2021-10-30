@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import Siesta
 
 struct RegistrationView : View {
     
@@ -71,6 +72,8 @@ struct RegistrationView : View {
                 
                     }
             Button(action: {
+                            //add method call
+                WHAPI.sharedInstance.auth.request(.post, urlEncoded:["email":emailAddr, "password":password1, "password_confirmation":password2, "username":userName , "first_name":firstName , "last_name":lastName])
                             self.showAlert = true
                         }, label: { Text("Submit" )})
             .alert(isPresented: $showAlert) {
