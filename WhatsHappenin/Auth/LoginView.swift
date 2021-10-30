@@ -70,7 +70,8 @@ struct LoginView : View {
                     successfulLogin = false
                 }
             }) {
-                NavigationLink(destination: EventsListView(searchText: ""), isActive: $successfulLogin) { EmptyView() }
+            NavigationLink(destination: FeedView(), isActive: $successfulLogin) { EmptyView() }
+//                NavigationLink(destination: EventsListView(searchText: ""), isActive: $successfulLogin) { EmptyView() }
                 Text("LOGIN")
                     .font(.headline)
                     .foregroundColor(.white)

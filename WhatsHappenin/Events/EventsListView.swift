@@ -1,6 +1,8 @@
 //
 //  EventsListView.swift
 //  WhatsHappenin
+
+//  DEPRECATED
 //
 //  Created by Eric Chang on 9/19/21.
 //
@@ -43,7 +45,7 @@ struct EventsListView: View {
                     .navigationTitle("Feed")
                 case 1:
                     VStack {
-                        MapView()
+                        ShowMap()
                             .edgesIgnoringSafeArea(.all)
                         Spacer()
                     }

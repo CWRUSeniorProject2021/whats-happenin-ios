@@ -7,8 +7,8 @@
 import MapKit
 import SwiftUI
 
-struct MapView: View {
-    @StateObject private var viewModel = MapViewModel()
+struct ShowMap: View {
+    @StateObject private var viewModel = ShowMapModel()
     
     var body: some View {
         Map(coordinateRegion: $viewModel.region, showsUserLocation: true)
@@ -24,13 +24,13 @@ struct MapView: View {
 //    }
 }
 
-struct MapView_Previews: PreviewProvider {
+struct ShowMap_Previews: PreviewProvider {
     static var previews: some View {
-        MapView()
+        ShowMap()
     }
 }
 
-final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
+final class ShowMapModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     @Published var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 0, longitude: 0), // don't need actual loc
                                                    span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
