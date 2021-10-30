@@ -22,6 +22,9 @@
 		07900D0726F7F21A00542CD2 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07900D0626F7F21A00542CD2 /* RegistrationView.swift */; };
 		07900D0826F7F21A00542CD2 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07900D0626F7F21A00542CD2 /* RegistrationView.swift */; };
 		07900D0926F7F21A00542CD2 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07900D0626F7F21A00542CD2 /* RegistrationView.swift */; };
+		07A68AC1272B3F0000C47F29 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A68AC0272B3F0000C47F29 /* MapView.swift */; };
+		07A68AC2272B3F0100C47F29 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A68AC0272B3F0000C47F29 /* MapView.swift */; };
+		07A68AC3272B3F0100C47F29 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A68AC0272B3F0000C47F29 /* MapView.swift */; };
 		190EB54B26E7EAD500822E65 /* WhatsHappeninApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190EB54A26E7EAD500822E65 /* WhatsHappeninApp.swift */; };
 		190EB54F26E7EAD600822E65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 190EB54E26E7EAD600822E65 /* Assets.xcassets */; };
 		190EB55226E7EAD600822E65 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 190EB55126E7EAD600822E65 /* Preview Assets.xcassets */; };
@@ -89,6 +92,7 @@
 		0710BBE326F7CE52000E5501 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		0760388426F7E10100FFBE2F /* EventsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListView.swift; sourceTree = "<group>"; };
 		07900D0626F7F21A00542CD2 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		07A68AC0272B3F0000C47F29 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		190EB54726E7EAD500822E65 /* WhatsHappenin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsHappenin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		190EB54A26E7EAD500822E65 /* WhatsHappeninApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsHappeninApp.swift; sourceTree = "<group>"; };
 		190EB54E26E7EAD600822E65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 				0710BBE326F7CE52000E5501 /* EventView.swift */,
 				663AAF0A26FA657500248928 /* CreateEvent.swift */,
 				667D117A270B636F00C5A634 /* EventInfoView.swift */,
+				07A68AC0272B3F0000C47F29 /* MapView.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -437,6 +442,7 @@
 				198ACAA02716112900037178 /* GenericResponse.swift in Sources */,
 				071087F02704119C00D1773D /* SearchBar.swift in Sources */,
 				0710BBE026F7CE12000E5501 /* Event.swift in Sources */,
+				07A68AC1272B3F0000C47F29 /* MapView.swift in Sources */,
 				19F66673270CB2500080C6C3 /* WHAPI.swift in Sources */,
 				19F666A0270CB8A00080C6C3 /* Environment.swift in Sources */,
 				19F666AC270CDD0A0080C6C3 /* LoginView.swift in Sources */,
@@ -464,6 +470,7 @@
 				19F666AD270CDD0A0080C6C3 /* LoginView.swift in Sources */,
 				19F666CA270D1F530080C6C3 /* EventsListViewController.swift in Sources */,
 				19F666B9270CF9F50080C6C3 /* CoordinatePair.swift in Sources */,
+				07A68AC2272B3F0100C47F29 /* MapView.swift in Sources */,
 				0760388626F7E10100FFBE2F /* EventsListView.swift in Sources */,
 				190EB56226E7EAD600822E65 /* WhatsHappeninTests.swift in Sources */,
 				07900D0826F7F21A00542CD2 /* RegistrationView.swift in Sources */,
@@ -485,6 +492,7 @@
 				19F666AE270CDD0A0080C6C3 /* LoginView.swift in Sources */,
 				19F666CB270D1F530080C6C3 /* EventsListViewController.swift in Sources */,
 				19F666BA270CF9F50080C6C3 /* CoordinatePair.swift in Sources */,
+				07A68AC3272B3F0100C47F29 /* MapView.swift in Sources */,
 				0760388726F7E10100FFBE2F /* EventsListView.swift in Sources */,
 				190EB56D26E7EAD600822E65 /* WhatsHappeninUITests.swift in Sources */,
 				07900D0926F7F21A00542CD2 /* RegistrationView.swift in Sources */,
