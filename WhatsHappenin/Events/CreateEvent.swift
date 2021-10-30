@@ -21,7 +21,7 @@ struct CreateEvent : View {
     @State var state = ""
     @State var zipcode = ""
     
-    
+    //things to 
     enum EventType: String, CaseIterable, Identifiable {
             case open
             case RSVP

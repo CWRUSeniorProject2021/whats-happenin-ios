@@ -112,7 +112,7 @@ class WHAPI: Service {
     func refreshTokenOnAuthFailure(request: Request) -> Request {
       return request.chained {
         guard case .failure(let error) = $0.response,  // Did request fail…
-          error.httpStatusCode == 401 else {           // …because of expired token?
+          error.httpStatusCode == 403 else {           // …because of expired token?
             return .useThisResponse                    // If not, use the response we got.
         }
 
@@ -175,7 +175,12 @@ class WHAPI: Service {
     var events: Resource {
         return resource("/events")
     }
+    
+    var auth: Resource {
+        return resource("/auth")
+    }
 }
+
 
 extension WHAPI {
 //    func nearbyEvents(coordinates: CoordinatePair, range: float = 5.0) {
