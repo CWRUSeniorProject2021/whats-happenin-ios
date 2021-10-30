@@ -47,7 +47,7 @@ struct EventsListView: View {
                             .edgesIgnoringSafeArea(.all)
                         Spacer()
                     }
-                    .navigationTitle("Map View")
+                    
                     
                 case 2:
                     VStack {

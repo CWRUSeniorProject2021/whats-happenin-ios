@@ -7,16 +7,18 @@
 import MapKit
 import SwiftUI
 
-struct MapView: UIViewRepresentable {
-    func makeUIView(context: Context) ->
-        MKMapView {
-        let mapView = MKMapView()
-        return mapView
-    }
+struct MapView: View {
     
-    func updateUIView(_ view: MKMapView, context: Context) {
-        
+    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 41.51271, longitude: -81.60443),
+                                                   span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+    var body: some View {
+        Map(coordinateRegion: $region)
+            .ignoresSafeArea()
     }
+//
+//    func updateUIView(_ view: MKMapView, context: Context) {
+//
+//    }
 }
 
 struct MapView_Previews: PreviewProvider {
