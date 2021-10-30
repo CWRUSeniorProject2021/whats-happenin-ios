@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 struct EventInfoView : View {
-            
+    
     var body: some View {
         Form{
             Section{
@@ -28,11 +28,25 @@ struct EventInfoView : View {
                 .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
             Text("Phone Number:")
             Text("Email:")
+        
             Section{
             Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
                 Text("RSVP")
             })
                 
+            }
+            
+            Section{
+                Text("Comments:")
+                    .lineLimit(4)
+                    .multilineTextAlignment(.leading)
+                    .frame(minWidth: 100, maxWidth: 200, minHeight: 100, maxHeight: .infinity, alignment: .topLeading)
+                
+                Text("Type Your Comment Here")
+                
+                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                    Text("Add Comment")
+                })
             }
             }
             .navigationBarTitle(Text("Event Details"))
