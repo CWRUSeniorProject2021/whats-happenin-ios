@@ -47,6 +47,7 @@ struct EventsListView: View {
                             .edgesIgnoringSafeArea(.all)
                         Spacer()
                     }
+                    .navigationTitle("")
                     
                     
                 case 2:
@@ -86,6 +87,11 @@ struct EventsListView: View {
                         Spacer()
                     }
                     .navigationBarTitle("Nearby Events")
+                    .navigationBarItems(trailing:
+                                NavigationLink(destination: CreateEvent()) {
+                                        Image(systemName: "plus")
+                                    }
+                                )
                 default:
                     VStack {
                         Text("Profile")
