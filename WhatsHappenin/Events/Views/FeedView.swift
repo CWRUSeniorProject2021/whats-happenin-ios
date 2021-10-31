@@ -12,8 +12,6 @@ struct FeedView: View {
     var body: some View {
         VStack {
             Text("Feed").padding()
-            Spacer()
-            Buttons()
         }.navigationTitle("Feed")
     }
 }

@@ -25,8 +25,6 @@ struct UserEventView: View {
                     self.isRefreshing = false
                 }
             }
-            Spacer()
-            Buttons()
         }
     }
 }

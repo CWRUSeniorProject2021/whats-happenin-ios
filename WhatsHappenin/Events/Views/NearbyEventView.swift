@@ -35,15 +35,7 @@ struct NearbyEventView: View {
             }
             .onChange(of: self.isRefreshing) { value in
             }
-            Spacer()
-            Buttons()
         }
-        .navigationBarTitle("Nearby Events")
-        .navigationBarItems(trailing:
-                    NavigationLink(destination: CreateEvent()) {
-                            Image(systemName: "plus")
-                        }
-                    )
     }
 }
 

@@ -95,11 +95,12 @@ struct EventsListView: View {
                                     }
                                 )
                 default:
-                    VStack {
-                        Text("Profile")
-                        Spacer()
-                    }
-                    .navigationTitle("Profile")
+                    EmptyView()
+//                    VStack {
+//                        //Text("Profile")
+//                        //Spacer()
+//                    }
+//                    .navigationTitle("Profile")
                     
                 }
             }

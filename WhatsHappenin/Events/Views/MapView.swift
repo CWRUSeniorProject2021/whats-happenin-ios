@@ -13,8 +13,6 @@ struct MapView: View {
         VStack {
             ShowMap()
                 .edgesIgnoringSafeArea(.all)
-            Spacer()
-            Buttons()
         }
     }
 }
