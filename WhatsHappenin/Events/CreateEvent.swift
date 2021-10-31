@@ -60,7 +60,9 @@ struct CreateEvent : View {
                 TextField("Zipcode", text: $zipcode)
             }
             Button(action: {
-                            self.showAlert = true
+                self.showAlert = true
+//                cntlr.events.append(Event) This is the idea
+                
                         }, label: { Text("Submit" )})
             .alert(isPresented: $showAlert) {
                         Alert(
