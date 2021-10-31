@@ -6,6 +6,7 @@
 //
 import SwiftUI
 import CoreData
+import Siesta
 
 struct CreateEvent : View {
     
@@ -60,6 +61,10 @@ struct CreateEvent : View {
                 TextField("Zipcode", text: $zipcode)
             }
             Button(action: {
+                var st = "\(startTime)"
+                var et = "\(endTime)"
+                
+                WHAPI.sharedInstance.events.request(.post, urlEncoded:["event[title]":eventName, "event[description]":eventDesc, "event[start_date]": st, "event[end_date]": et, "event[visibility]": "school_vis", "event[address_attributes][street1]":address1,"event[address_attributes][street2]":address2, "event[address_attributes][city]":city,"event[address_attributes][state_code]":state, "event[address_attributes][country_code]":"US","event[address_attributes][postal_code]":zipcode])
                 self.showAlert = true
 //                cntlr.events.append(Event) This is the idea
                 

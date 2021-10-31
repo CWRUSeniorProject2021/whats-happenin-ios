@@ -14,11 +14,13 @@ struct ShowMap: View {
         Map(coordinateRegion: $viewModel.region, showsUserLocation: true,
                     annotationItems: cntlr.events){ event in
                     MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: event.address.coordinates?.latitude ?? 41.51273, longitude: event.address.coordinates?.longitude ?? -81.60443)) {
-                        NavigationLink {
-                            EventInfoView()
-                          } label: {
-                            PlaceAnnotationView(title: event.title)
-                          }}
+                        NavigationLink(
+                            destination: EventInfoView(),
+                            label: {
+                                PlaceAnnotationView(title: event.title)
+
+                            })
+                    }
                     }
                     .ignoresSafeArea()
         //            .accentColor(Color(.systemPink)) // change current location circle to pink ^_^
