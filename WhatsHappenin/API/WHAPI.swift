@@ -77,6 +77,8 @@ class WHAPI: Service {
     private init() {
         super.init(baseURL: Environment.rootURLString + "/" + Environment.apiVersion, standardTransformers: [.text, .image])
         
+        initializeAuthDetails()
+        
         SiestaLog.Category.enabled = [.network, .pipeline, .observers]
 
         configure("**", description: "API Auth") {
@@ -104,6 +106,13 @@ class WHAPI: Service {
         configureTransformer("/events/nearby") {
             try self.jsonDecoder.decode(GenericResponse<EventList>.self, from: $0.content).data.events
         }
+    }
+    
+    private func initializeAuthDetails() {
+        authToken = GlobalKeychain.get(Keys.Auth.Token) ?? ""
+        authTokenType = GlobalKeychain.get(Keys.Auth.TokenType) ?? ""
+        authClient = GlobalKeychain.get(Keys.Auth.Client) ?? ""
+        authUID = GlobalKeychain.get(Keys.Auth.UID) ?? ""
     }
 
     /**
