@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ShowMap: View {
     @StateObject private var viewModel = ShowMapModel()
-    
+
     var body: some View {
         Map(coordinateRegion: $viewModel.region, showsUserLocation: true,
                     annotationItems: cntlr.events){ event in
@@ -24,6 +24,8 @@ struct ShowMap: View {
         //            .accentColor(Color(.systemPink)) // change current location circle to pink ^_^
                     .onAppear {
                         viewModel.checkIfLocationServicesIsEnabled()
+                        viewModel.reload()
+                            
                     }
     }
 //
@@ -44,6 +46,8 @@ final class ShowMapModel: NSObject, ObservableObject, CLLocationManagerDelegate 
                                                    span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
     
     var locationManager: CLLocationManager?
+    
+    @State var isRefreshing: Bool = false
     
     func checkIfLocationServicesIsEnabled() {
         if CLLocationManager.locationServicesEnabled() {
@@ -80,6 +84,14 @@ final class ShowMapModel: NSObject, ObservableObject, CLLocationManagerDelegate 
     // Check if user turned off location services while the app is open
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         checkLocationAuthorization()
+    }
+    
+    func reload() {
+        print("Reloading Map")
+        cntlr.reloadNearbyEvents()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.isRefreshing = false
+        }
     }
 }
 
