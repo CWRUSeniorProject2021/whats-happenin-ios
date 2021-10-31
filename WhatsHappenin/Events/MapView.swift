@@ -9,23 +9,19 @@ import SwiftUI
 
 struct MapView: View {
     @StateObject private var viewModel = MapViewModel()
-
+    
     var body: some View {
-        Map(coordinateRegion: $viewModel.region, showsUserLocation: true,
-            annotationItems: cntlr.events){ event in
-            MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: event.address.coordinates?.latitude ?? 41.51273, longitude: event.address.coordinates?.longitude ?? -81.60443)) {
-                NavigationLink {
-                    EventInfoView()
-                  } label: {
-                    PlaceAnnotationView(title: event.title)
-                  }}
-            }
+        Map(coordinateRegion: $viewModel.region, showsUserLocation: true)
             .ignoresSafeArea()
-//            .accentColor(Color(.systemPink)) // change current location circle to pink ^_^
+            .accentColor(Color(.systemPink)) // change current location circle to pink ^_^
             .onAppear {
                 viewModel.checkIfLocationServicesIsEnabled()
             }
     }
+//
+//    func updateUIView(_ view: MKMapView, context: Context) {
+//
+//    }
 }
 
 struct MapView_Previews: PreviewProvider {
@@ -77,30 +73,4 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         checkLocationAuthorization()
     }
-}
-
-// We can use a custom one in later versions (designed)
-struct PlaceAnnotationView: View {
-  let title: String
-
-  var body: some View {
-    VStack(spacing: 0) {
-
-      Image(systemName: "bell.badge")
-            .resizable()
-            .scaledToFit()
-            .frame(width: 30, height: 30)
-            .font(.title)
-            .foregroundColor(.red)
-//
-        // Uncomment for standard marker
-//        Image(systemName: "mappin.circle.fill")
-//          .font(.title)
-//          .foregroundColor(.red)
-//      Image(systemName: "arrowtriangle.down.fill")
-//        .font(.caption)
-//        .foregroundColor(.red)
-//        .offset(x: 0, y: -5)
-    }
-  }
 }

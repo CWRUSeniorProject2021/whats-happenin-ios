@@ -18,7 +18,6 @@ struct EventsListView: View {
     //@State var events: [Event]
     @State private var selection: Set<Event> = []
     @State var selectedIndex = 0
-    
     let icons = [
         "house",
         "map",
@@ -43,7 +42,6 @@ struct EventsListView: View {
                     }
                     .navigationTitle("Feed")
                 case 1:
-                    
                     VStack {
                         MapView()
                             .edgesIgnoringSafeArea(.all)
@@ -64,7 +62,6 @@ struct EventsListView: View {
                             }
                         }
                         Spacer()
-                        
                     }
                     .navigationTitle("Your Events")
                     
