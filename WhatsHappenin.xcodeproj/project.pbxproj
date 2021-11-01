@@ -82,6 +82,9 @@
 		663AAF0B26FA657500248928 /* CreateEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663AAF0A26FA657500248928 /* CreateEvent.swift */; };
 		663AAF0C26FA657500248928 /* CreateEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663AAF0A26FA657500248928 /* CreateEvent.swift */; };
 		663AAF0D26FA657500248928 /* CreateEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663AAF0A26FA657500248928 /* CreateEvent.swift */; };
+		6677179E273093B1008F7B1C /* UserCreatedEventsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6677179D273093B1008F7B1C /* UserCreatedEventsController.swift */; };
+		6677179F273093B1008F7B1C /* UserCreatedEventsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6677179D273093B1008F7B1C /* UserCreatedEventsController.swift */; };
+		667717A0273093B1008F7B1C /* UserCreatedEventsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6677179D273093B1008F7B1C /* UserCreatedEventsController.swift */; };
 		667D117B270B636F00C5A634 /* EventInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D117A270B636F00C5A634 /* EventInfoView.swift */; };
 		667D117C270B636F00C5A634 /* EventInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D117A270B636F00C5A634 /* EventInfoView.swift */; };
 		667D117D270B636F00C5A634 /* EventInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D117A270B636F00C5A634 /* EventInfoView.swift */; };
@@ -146,6 +149,7 @@
 		19F666C3270D0C9E0080C6C3 /* StateAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateAddress.swift; sourceTree = "<group>"; };
 		19F666C8270D1F530080C6C3 /* EventsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListViewController.swift; sourceTree = "<group>"; };
 		663AAF0A26FA657500248928 /* CreateEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEvent.swift; sourceTree = "<group>"; };
+		6677179D273093B1008F7B1C /* UserCreatedEventsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCreatedEventsController.swift; sourceTree = "<group>"; };
 		667D117A270B636F00C5A634 /* EventInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -285,6 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				19F666C8270D1F530080C6C3 /* EventsListViewController.swift */,
+				6677179D273093B1008F7B1C /* UserCreatedEventsController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -489,6 +494,7 @@
 				07D654BA272DF92600EABA93 /* MapView.swift in Sources */,
 				19F666B1270CF9BD0080C6C3 /* Address.swift in Sources */,
 				19F666B8270CF9F50080C6C3 /* CoordinatePair.swift in Sources */,
+				6677179E273093B1008F7B1C /* UserCreatedEventsController.swift in Sources */,
 				198ACAA22716171B00037178 /* LocationManager.swift in Sources */,
 				07D654B2272DF85200EABA93 /* FeedView.swift in Sources */,
 				663AAF0B26FA657500248928 /* CreateEvent.swift in Sources */,
@@ -525,6 +531,7 @@
 				190EB56226E7EAD600822E65 /* WhatsHappeninTests.swift in Sources */,
 				07900D0826F7F21A00542CD2 /* RegistrationView.swift in Sources */,
 				19F666C1270CFCAA0080C6C3 /* Comment.swift in Sources */,
+				6677179F273093B1008F7B1C /* UserCreatedEventsController.swift in Sources */,
 				071087F12704119C00D1773D /* SearchBar.swift in Sources */,
 				19F666B4270CF9CE0080C6C3 /* Country.swift in Sources */,
 				667D117C270B636F00C5A634 /* EventInfoView.swift in Sources */,
@@ -553,6 +560,7 @@
 				190EB56D26E7EAD600822E65 /* WhatsHappeninUITests.swift in Sources */,
 				07900D0926F7F21A00542CD2 /* RegistrationView.swift in Sources */,
 				19F666C2270CFCAA0080C6C3 /* Comment.swift in Sources */,
+				667717A0273093B1008F7B1C /* UserCreatedEventsController.swift in Sources */,
 				071087F22704119C00D1773D /* SearchBar.swift in Sources */,
 				19F666B5270CF9CE0080C6C3 /* Country.swift in Sources */,
 				667D117D270B636F00C5A634 /* EventInfoView.swift in Sources */,

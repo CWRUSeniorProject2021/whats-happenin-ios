@@ -104,6 +104,9 @@ class WHAPI: Service {
         configureTransformer("/events/nearby") {
             try self.jsonDecoder.decode(GenericResponse<EventList>.self, from: $0.content).data.events
         }
+        configureTransformer("/events/mine") {
+            try self.jsonDecoder.decode(GenericResponse<EventList>.self, from: $0.content).data.events
+        }
     }
 
     /**
@@ -170,6 +173,18 @@ class WHAPI: Service {
 //    }
     var nearbyEvents: Resource {
         return resource("/events/nearby")
+    }
+    
+    var createdEvents: Resource {
+        return resource("/events/mine")
+    }
+    
+    var pastEvents: Resource {
+        return resource("/events/past")
+    }
+    
+    var upcomingEvents: Resource {
+        return resource("/events/upcoming")
     }
     
     var events: Resource {

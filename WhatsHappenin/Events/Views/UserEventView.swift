@@ -7,27 +7,41 @@
 
 import SwiftUI
 
+let userCreatedEventsControllerInst = UserCreatedEventsController()
+
 struct UserEventView: View {
-    
-    @ObservedObject var controller = cntlr
+   @ObservedObject var controller = userCreatedEventsControllerInst
     @State var searchText: String
     
     @State var isRefreshing: Bool = false
+    
     var body: some View {
         VStack {
             SearchBar(text1: $searchText)
-            List(cntlr.events) { event in
-//                        List($controller.events.filter({ searchText.isEmpty ? true : $0.title.contains(searchText) })) { event in
-                NavigationLink(event.title, destination: EventInfoView())}
+
+            //Filter no longer works but list opens :)
+            List {
+                ForEach(controller.events.indices, id: \.self) { index in
+                    NavigationLink(controller.events[index].title, destination: EventInfoView())
+                }
+            }
             .pullToRefresh(isShowing: $isRefreshing) {
-                controller.reloadNearbyEvents()
+                controller.reloadCreatedEvents()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     self.isRefreshing = false
                 }
             }
+            .onChange(of: self.isRefreshing) { value in
+            }
             Spacer()
             Buttons()
         }
+        .navigationBarTitle("Your Events")
+        .navigationBarItems(trailing:
+                    NavigationLink(destination: CreateEvent()) {
+                            Image(systemName: "plus")
+                        }
+                    )
     }
 }
 
