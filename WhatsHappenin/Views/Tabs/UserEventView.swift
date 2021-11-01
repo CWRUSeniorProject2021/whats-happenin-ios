@@ -18,7 +18,7 @@ struct UserEventView: View {
             SearchBar(text1: $searchText)
             List(cntlr.events) { event in
 //                        List($controller.events.filter({ searchText.isEmpty ? true : $0.title.contains(searchText) })) { event in
-                NavigationLink(event.title, destination: EventInfoView())}
+                NavigationLink(event.title, destination: EventInfoView(event: event))}
             .pullToRefresh(isShowing: $isRefreshing) {
                 controller.reloadNearbyEvents()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

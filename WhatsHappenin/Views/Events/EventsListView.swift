@@ -57,7 +57,7 @@ struct EventsListView: View {
                         SearchBar(text1: $searchText)
                         List(cntlr.events) { event in
 //                        List($controller.events.filter({ searchText.isEmpty ? true : $0.title.contains(searchText) })) { event in
-                            NavigationLink(event.title, destination: EventInfoView())}
+                            NavigationLink(event.title, destination: EventInfoView(event:event))}
                         .pullToRefresh(isShowing: $isRefreshing) {
                             controller.reloadNearbyEvents()
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -75,7 +75,7 @@ struct EventsListView: View {
                         //Filter no longer works but list opens :)
                         List {
                             ForEach(cntlr.events.indices, id: \.self) { index in
-                                NavigationLink(cntlr.events[index].title, destination: EventInfoView())
+                                NavigationLink(cntlr.events[index].title, destination: EventInfoView(event: cntlr.events[index]))
                             }
                         }
                         .pullToRefresh(isShowing: $isRefreshing) {
