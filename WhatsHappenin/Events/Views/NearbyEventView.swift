@@ -24,7 +24,8 @@ struct NearbyEventView: View {
             //Filter no longer works but list opens :)
             List {
                 ForEach(cntlr.events.indices, id: \.self) { index in
-                    NavigationLink(cntlr.events[index].title, destination: EventInfoView())
+                    
+                    NavigationLink(cntlr.events[index].title, destination: EventInfoView(event: cntlr.events[index]))
                 }
             }
             .pullToRefresh(isShowing: $isRefreshing) {

@@ -9,25 +9,25 @@ import SwiftUI
 import CoreData
 
 struct EventInfoView : View {
-    
+    var event: Event
     var body: some View {
         Form{
             Section{
-            Text("Event Name:")
-            Text("Event Description:")
+                Text("Event Name: " + event.title)
+                Text("Event Description: " + event.description)
                 .lineLimit(4)
                 .multilineTextAlignment(.leading)
                 .frame(minWidth: 100, maxWidth: 200, minHeight: 100, maxHeight: .infinity, alignment: .topLeading)
                 
             }
             Section{
-            Text("Starts:")
-            Text("Ends:")
+                Text("Starts: " + event.startDate)
+                Text("Ends: " + event.endDate)
             }
-            Text("Address:")
+            Text("Address: " )
                 .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
-            Text("Phone Number:")
-            Text("Email:")
+            Text("Phone Number: ")
+            Text("Email: ")
         
             Section{
             Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
@@ -55,9 +55,8 @@ struct EventInfoView : View {
 }
 
 
-
-struct EventInfoView_Previews: PreviewProvider {
-    static var previews: some View {
-        EventInfoView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    }
-}
+//struct EventInfoView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        EventInfoView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+//    }
+//}
