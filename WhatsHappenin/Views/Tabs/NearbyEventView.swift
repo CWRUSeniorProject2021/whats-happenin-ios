@@ -12,30 +12,28 @@ struct NearbyEventView: View {
    
     @ObservedObject var controller = EventsListViewController.sharedInstance
     @State private var selection: Set<Event> = []
-    @State var searchText: String
+    @State private var searchText: String = ""
     @State var isRefreshing: Bool = false
     
     var body: some View {
-        VStack {
-            SearchBar(text1: $searchText)
-
-            //Filter no longer works but list opens :)
-            List {
-                ForEach(controller.events.indices, id: \.self) { index in
-                    NavigationLink(controller.events[index].title, destination: EventInfoView())
+        //SearchBar(text1: $searchText)
+        //    .padding(.top, -30)
+        List {
+            ForEach(controller.nearbyEvents.indices, id: \.self) { index in
+                NavigationLink(destination: EventInfoView()) {
+                    EventRow(event: $controller.nearbyEvents[index])
                 }
             }
-            .pullToRefresh(isShowing: $isRefreshing) {
-                controller.reloadNearbyEvents()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                    self.isRefreshing = false
-                                }
-            }
-            .onChange(of: self.isRefreshing) { value in
-            }
         }
-        .navigationTitle("Nearby Events")
-        .navigationBarTitleDisplayMode(.inline)
+        //.searchable(text: $searchText) IOS 15 only
+        .pullToRefresh(isShowing: $isRefreshing) {
+            controller.reloadNearbyEvents()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                self.isRefreshing = false
+                            }
+        }
+        .onChange(of: self.isRefreshing) { value in
+        }
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 NavigationLink(destination: CreateEvent()) {
@@ -48,6 +46,6 @@ struct NearbyEventView: View {
 
 struct NearbyEventView_Previews: PreviewProvider {
     static var previews: some View {
-        NearbyEventView(searchText: "")
+        NearbyEventView()
     }
 }

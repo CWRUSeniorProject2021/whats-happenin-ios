@@ -13,8 +13,9 @@ struct WhatsHappeninApp: App {
 
     var body: some Scene {
         WindowGroup {
-            RootView().environment(\.managedObjectContext, persistenceController.container.viewContext)
-            //LoginView().environment(\.managedObjectContext, persistenceController.container.viewContext)
+            rootView.environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }
+
+let rootView = RootView()

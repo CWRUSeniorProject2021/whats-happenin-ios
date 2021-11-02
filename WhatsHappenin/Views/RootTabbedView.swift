@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct RootTabbedView: View {
+    @Binding var isLoggedIn: Bool
+
     var body: some View {
         TabView {
             NavigationView {
@@ -32,14 +34,15 @@ struct RootTabbedView: View {
             }
             
             NavigationView {
-                NearbyEventView(searchText: "")
+                NearbyEventView()
+                    .navigationTitle("Nearby Events")
             }
             .tabItem {
                 Label("Nearby Events", systemImage: "list.bullet")
             }
             
             NavigationView {
-                ProfileView()
+                ProfileView(isLoggedIn: $isLoggedIn)
             }
             .tabItem {
                 Label("Profile", systemImage: "person")
@@ -50,6 +53,6 @@ struct RootTabbedView: View {
 
 struct MainTabbedView_Previews: PreviewProvider {
     static var previews: some View {
-        RootTabbedView()
+        RootTabbedView(isLoggedIn: .constant(false))
     }
 }

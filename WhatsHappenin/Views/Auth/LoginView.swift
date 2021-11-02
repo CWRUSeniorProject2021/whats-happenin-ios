@@ -12,8 +12,8 @@ let lightGreyColor = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255
 
 struct LoginView : View {
     @Binding var isLoggedIn: Bool
-    @State var username : String = Environment.testUserUsername
-    @State var password : String = Environment.testUserPassword
+    @State var username: String = Environment.testUserUsername
+    @State var password: String = Environment.testUserPassword
     
     var body: some View {
             NavigationView{
@@ -57,7 +57,8 @@ struct LoginView : View {
     
     private var loginButtonView : some View {
         Button(action: {
-                WHAPI.sharedInstance.login().onSuccess { _ in
+            print("u:\(username) p:\(password)")
+            WHAPI.sharedInstance.login(username: username, password: password).onSuccess { _ in
                     GlobalKeychain.set(username, forKey: "email")
                     GlobalKeychain.set(password, forKey: "password")
                     isLoggedIn = true

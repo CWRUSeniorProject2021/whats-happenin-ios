@@ -8,6 +8,8 @@ import SwiftUI
 
 struct ShowProfilePage: View {
     let profilePageCntrl = ProfilePageController()
+    @Binding var isLoggedIn: Bool
+    
     var body: some View {
         VStack {
             VStack {
@@ -44,8 +46,13 @@ struct ShowProfilePage: View {
 
         Button {
             print("Button Tapped")
+            WHAPI.sharedInstance.logout()
+                .onSuccess { _ in
+                    isLoggedIn = false
+                    //rootView.logout()
+                }
         } label : {
-            Text("Updated Profile")
+            Text("Log Out")
                 .bold()
                 .frame(width: 260, height: 50)
                 .background(Color.red)
@@ -57,7 +64,7 @@ struct ShowProfilePage: View {
 
 struct ShowProfilePage_Previews: PreviewProvider {
     static var previews: some View {
-        ShowProfilePage()
+        ShowProfilePage(isLoggedIn: .constant(true))
     }
 }
 

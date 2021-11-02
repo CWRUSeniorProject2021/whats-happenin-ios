@@ -17,8 +17,7 @@ struct UserEventView: View {
     var body: some View {
         VStack {
             SearchBar(text1: $searchText)
-            List(controller.events) { event in
-//                        List($controller.events.filter({ searchText.isEmpty ? true : $0.title.contains(searchText) })) { event in
+            List(controller.nearbyEvents) { event in
                 NavigationLink(event.title, destination: EventInfoView())}
             .pullToRefresh(isShowing: $isRefreshing) {
                 controller.reloadNearbyEvents()

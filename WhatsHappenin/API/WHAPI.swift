@@ -131,25 +131,54 @@ class WHAPI: Service {
     /**
      * Perform a login request
      */
-    func login() -> Request {
+    func login(username: String = "", password: String = "") -> Request {
+        var authDetails = [String : String]()
+        if (username != "" || password != "") {
+            authDetails["email"] = username
+            authDetails["password"] = password
+        } else {
+            authDetails = userAuthData()
+        }
+        print(authDetails)
+        
         return signInResource
-            .request(.post, json: userAuthData())
+            .request(.post, json: authDetails)
             .onSuccess {
                 self.authToken = $0.headers[Keys.Auth.Token]
                 self.authTokenType = $0.headers[Keys.Auth.TokenType]
                 self.authClient = $0.headers[Keys.Auth.Client]
                 self.authUID = $0.headers[Keys.Auth.UID]
-                //print("In Login Func ---> Token: \(self.authToken)   Token Type: \(self.authTokenType)   Client: \(self.authClient)  UID: \(self.authUID)")
                 self.invalidateConfiguration()                    // …make future requests use it
             }
             .onFailure { _ in
-                self.authToken = ""
-                self.authTokenType = ""
-                self.authClient = ""
-                self.authUID = ""
-                GlobalKeychain.set("", forKey: "email")
-                GlobalKeychain.set("", forKey: "password")
+                self.clearAuthDetails()
             }
+    }
+    
+    /**
+     * Perform logout request
+     */
+    func logout() -> Request {
+        return signOutResource
+            .request(.delete)
+            .onSuccess { _ in
+                self.clearAuthDetails()
+            }
+            .onFailure { _ in
+                print("Failed to logout")
+            }
+    }
+    
+    /**
+     * Clears auth details from keychain storage
+     */
+    func clearAuthDetails() {
+        self.authToken = ""
+        self.authTokenType = ""
+        self.authClient = ""
+        self.authUID = ""
+        GlobalKeychain.set("", forKey: "email")
+        GlobalKeychain.set("", forKey: "password")
     }
 
     /**
@@ -163,6 +192,7 @@ class WHAPI: Service {
     }
 
     var signInResource: Resource { return resource("/auth/sign_in") }
+    var signOutResource: Resource { return resource("/auth/sign_out") }
 
 //    func nearbyEvents(_ coordinates: CoordinatePair, range: Float = 5.0) -> Resource {
 //        return resource("/events/nearby")

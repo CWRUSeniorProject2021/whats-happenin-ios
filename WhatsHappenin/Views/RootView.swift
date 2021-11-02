@@ -12,7 +12,7 @@ struct RootView: View {
     
     var body: some View {
         if (isLoggedIn) {
-            RootTabbedView()
+            RootTabbedView(isLoggedIn: $isLoggedIn)
         } else {
             LoginView(isLoggedIn: $isLoggedIn)
         }
