@@ -16,9 +16,6 @@
 		0710BBE426F7CE52000E5501 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0710BBE326F7CE52000E5501 /* EventView.swift */; };
 		0710BBE526F7CE52000E5501 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0710BBE326F7CE52000E5501 /* EventView.swift */; };
 		0710BBE626F7CE52000E5501 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0710BBE326F7CE52000E5501 /* EventView.swift */; };
-		0760388526F7E10100FFBE2F /* EventsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0760388426F7E10100FFBE2F /* EventsListView.swift */; };
-		0760388626F7E10100FFBE2F /* EventsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0760388426F7E10100FFBE2F /* EventsListView.swift */; };
-		0760388726F7E10100FFBE2F /* EventsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0760388426F7E10100FFBE2F /* EventsListView.swift */; };
 		07900D0726F7F21A00542CD2 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07900D0626F7F21A00542CD2 /* RegistrationView.swift */; };
 		07900D0826F7F21A00542CD2 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07900D0626F7F21A00542CD2 /* RegistrationView.swift */; };
 		07900D0926F7F21A00542CD2 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07900D0626F7F21A00542CD2 /* RegistrationView.swift */; };
@@ -115,7 +112,6 @@
 		071087EF2704119C00D1773D /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		0710BBDF26F7CE12000E5501 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		0710BBE326F7CE52000E5501 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
-		0760388426F7E10100FFBE2F /* EventsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListView.swift; sourceTree = "<group>"; };
 		07900D0626F7F21A00542CD2 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		0797026E27307F8E00FBF801 /* RootTabbedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabbedView.swift; sourceTree = "<group>"; };
 		07D654B1272DF85200EABA93 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
@@ -193,7 +189,6 @@
 		07900D0B26F7F66D00542CD2 /* Events */ = {
 			isa = PBXGroup;
 			children = (
-				0760388426F7E10100FFBE2F /* EventsListView.swift */,
 				07D654B5272DF90200EABA93 /* ShowMap.swift */,
 				071087EF2704119C00D1773D /* SearchBar.swift */,
 				0710BBE326F7CE52000E5501 /* EventView.swift */,
@@ -506,7 +501,6 @@
 				19F666C4270D0C9E0080C6C3 /* StateAddress.swift in Sources */,
 				07D654BE272DF93900EABA93 /* UserEventView.swift in Sources */,
 				0710BBE426F7CE52000E5501 /* EventView.swift in Sources */,
-				0760388526F7E10100FFBE2F /* EventsListView.swift in Sources */,
 				198ACAA02716112900037178 /* GenericResponse.swift in Sources */,
 				071087F02704119C00D1773D /* SearchBar.swift in Sources */,
 				0710BBE026F7CE12000E5501 /* Event.swift in Sources */,
@@ -551,7 +545,6 @@
 				07D654B3272DF85200EABA93 /* FeedView.swift in Sources */,
 				07D654BB272DF92600EABA93 /* MapView.swift in Sources */,
 				07D654C7272DF95100EABA93 /* ProfileView.swift in Sources */,
-				0760388626F7E10100FFBE2F /* EventsListView.swift in Sources */,
 				190EB56226E7EAD600822E65 /* WhatsHappeninTests.swift in Sources */,
 				07900D0826F7F21A00542CD2 /* RegistrationView.swift in Sources */,
 				19F666C1270CFCAA0080C6C3 /* Comment.swift in Sources */,
@@ -580,7 +573,6 @@
 				07D654B4272DF85200EABA93 /* FeedView.swift in Sources */,
 				07D654BC272DF92600EABA93 /* MapView.swift in Sources */,
 				07D654C8272DF95100EABA93 /* ProfileView.swift in Sources */,
-				0760388726F7E10100FFBE2F /* EventsListView.swift in Sources */,
 				190EB56D26E7EAD600822E65 /* WhatsHappeninUITests.swift in Sources */,
 				07900D0926F7F21A00542CD2 /* RegistrationView.swift in Sources */,
 				19F666C2270CFCAA0080C6C3 /* Comment.swift in Sources */,

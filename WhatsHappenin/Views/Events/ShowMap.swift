@@ -9,10 +9,11 @@ import SwiftUI
 
 struct ShowMap: View {
     @StateObject private var viewModel = ShowMapModel()
+    @ObservedObject private var controller = EventsListViewController.sharedInstance
 
     var body: some View {
         Map(coordinateRegion: $viewModel.region, showsUserLocation: true,
-                    annotationItems: cntlr.events){ event in
+                    annotationItems: controller.events){ event in
                     MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: event.address.coordinates?.latitude ?? 41.51273, longitude: event.address.coordinates?.longitude ?? -81.60443)) {
                         NavigationLink(
                             destination: EventInfoView(),
@@ -46,6 +47,8 @@ final class ShowMapModel: NSObject, ObservableObject, CLLocationManagerDelegate 
     
     @Published var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 0, longitude: 0), // don't need actual loc
                                                    span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+    @ObservedObject private var controller = EventsListViewController.sharedInstance
+
     
     var locationManager: CLLocationManager?
     
@@ -90,7 +93,7 @@ final class ShowMapModel: NSObject, ObservableObject, CLLocationManagerDelegate 
     
     func reload() {
         print("Reloading Map")
-        cntlr.reloadNearbyEvents()
+        controller.reloadNearbyEvents()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.isRefreshing = false
         }

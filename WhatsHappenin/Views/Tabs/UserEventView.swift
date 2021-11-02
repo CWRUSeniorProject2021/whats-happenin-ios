@@ -6,17 +6,18 @@
 //
 
 import SwiftUI
+import SwiftUIRefresh
 
 struct UserEventView: View {
     
-    @ObservedObject var controller = cntlr
+    @ObservedObject var controller = EventsListViewController.sharedInstance
     @State var searchText: String
     
     @State var isRefreshing: Bool = false
     var body: some View {
         VStack {
             SearchBar(text1: $searchText)
-            List(cntlr.events) { event in
+            List(controller.events) { event in
 //                        List($controller.events.filter({ searchText.isEmpty ? true : $0.title.contains(searchText) })) { event in
                 NavigationLink(event.title, destination: EventInfoView())}
             .pullToRefresh(isShowing: $isRefreshing) {
@@ -24,6 +25,8 @@ struct UserEventView: View {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     self.isRefreshing = false
                 }
+            }
+            .onChange(of: self.isRefreshing) { value in
             }
         }
         .navigationTitle("Your Events")

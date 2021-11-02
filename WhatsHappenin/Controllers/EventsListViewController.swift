@@ -10,6 +10,8 @@ import Siesta
 import CoreLocation
 
 class EventsListViewController: ObservableObject, ResourceObserver {
+    static let sharedInstance = EventsListViewController()
+    
     @Published var events = [Event]()
     var nearbyEventsResource: Resource
 
@@ -45,4 +47,4 @@ class EventsListViewController: ObservableObject, ResourceObserver {
     }
 }
 
-let eventsListViewController = EventsListViewController()
+//let eventsListViewController = EventsListViewController()

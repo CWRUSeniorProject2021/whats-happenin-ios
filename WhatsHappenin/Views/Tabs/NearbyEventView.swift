@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import SwiftUIRefresh
 
 struct NearbyEventView: View {
    
-    @ObservedObject var controller = cntlr
+    @ObservedObject var controller = EventsListViewController.sharedInstance
     @State private var selection: Set<Event> = []
     @State var searchText: String
     @State var isRefreshing: Bool = false
@@ -20,15 +21,15 @@ struct NearbyEventView: View {
 
             //Filter no longer works but list opens :)
             List {
-                ForEach(cntlr.events.indices, id: \.self) { index in
-                    NavigationLink(cntlr.events[index].title, destination: EventInfoView())
+                ForEach(controller.events.indices, id: \.self) { index in
+                    NavigationLink(controller.events[index].title, destination: EventInfoView())
                 }
             }
             .pullToRefresh(isShowing: $isRefreshing) {
                 controller.reloadNearbyEvents()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    self.isRefreshing = false
-                }
+                                    self.isRefreshing = false
+                                }
             }
             .onChange(of: self.isRefreshing) { value in
             }
