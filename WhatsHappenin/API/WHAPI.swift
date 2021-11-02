@@ -6,36 +6,6 @@
 //
 
 import Foundation
-//import KeychainSwift
-//import Alamofire
-
-//class WHAPI {
-//
-//    let headers: HTTPHeaders = [
-//        .accept("application/json")
-//    ]
-//
-//    init() {
-//        print("hi")
-//        AF.request("https://httpbin.org/get").response { response in
-//            print("\(response)")
-//            debugPrint("Response: \(response)")
-//        }
-//    }
-//
-//    func login(username: String, password: String) {
-//        AF.request("")
-//    }
-//
-//    func printhi() {
-//        print("hi")
-//    }
-//
-//}
-//
-//let whAPI = WHAPI()
-
-
 import Siesta
 import KeychainSwift
 
@@ -73,7 +43,6 @@ class WHAPI: Service {
         SiestaLog.Category.enabled = [.network, .pipeline, .observers]
 
         configure("**", description: "API Auth") {
-            //print("In Auth Func ---> Token: \(self.authToken)   Token Type: \(self.authTokenType)   Client: \(self.authClient)  UID: \(self.authUID)")
             if let authToken = self.authToken {
                 $0.headers[Keys.Auth.Token] = authToken
             }
@@ -86,9 +55,7 @@ class WHAPI: Service {
             if let authUID = self.authUID {
                 $0.headers[Keys.Auth.UID] = authUID
             }
-
-            print($0.headers)
-
+            
             $0.decorateRequests {
                 self.refreshTokenOnAuthFailure(request: $1)
             }
@@ -193,29 +160,10 @@ class WHAPI: Service {
 
     var signInResource: Resource { return resource("/auth/sign_in") }
     var signOutResource: Resource { return resource("/auth/sign_out") }
+    var auth: Resource { return resource("/auth") }
 
-//    func nearbyEvents(_ coordinates: CoordinatePair, range: Float = 5.0) -> Resource {
-//        return resource("/events/nearby")
-//
-//    }
-    var nearbyEvents: Resource {
-        return resource("/events/nearby")
-    }
-    
-    var events: Resource {
-        return resource("/events")
-    }
-    
-    var auth: Resource {
-        return resource("/auth")
-    }
-}
-
-
-extension WHAPI {
-//    func nearbyEvents(coordinates: CoordinatePair, range: float = 5.0) {
-//        self.events.loadIfNeeded()
-//    }
+    var events: Resource { return resource("/events") }
+    var nearbyEvents: Resource { return resource("/events/nearby") }
 }
 
 
