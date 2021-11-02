@@ -13,7 +13,8 @@ struct WhatsHappeninApp: App {
 
     var body: some Scene {
         WindowGroup {
-            LoginView().environment(\.managedObjectContext, persistenceController.container.viewContext)
+            RootView().environment(\.managedObjectContext, persistenceController.container.viewContext)
+            //LoginView().environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }

@@ -10,13 +10,10 @@ import SwiftUI
 struct NearbyEventView: View {
    
     @ObservedObject var controller = cntlr
-    //@State private var events = controller.events
-    //@State var events: [Event]
     @State private var selection: Set<Event> = []
-    
     @State var searchText: String
-    
     @State var isRefreshing: Bool = false
+    
     var body: some View {
         VStack {
             SearchBar(text1: $searchText)
@@ -35,6 +32,15 @@ struct NearbyEventView: View {
             }
             .onChange(of: self.isRefreshing) { value in
             }
+        }
+        .navigationTitle("Nearby Events")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                NavigationLink(destination: CreateEvent()) {
+                    Image(systemName: "plus")
+                }
+              }
         }
     }
 }

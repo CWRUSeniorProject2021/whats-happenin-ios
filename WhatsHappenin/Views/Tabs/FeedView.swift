@@ -12,7 +12,9 @@ struct FeedView: View {
     var body: some View {
         VStack {
             Text("Feed").padding()
-        }.navigationTitle("Feed")
+        }
+        .navigationTitle("Feed")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

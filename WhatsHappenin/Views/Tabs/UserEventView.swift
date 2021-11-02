@@ -26,6 +26,8 @@ struct UserEventView: View {
                 }
             }
         }
+        .navigationTitle("Your Events")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

@@ -8,16 +8,12 @@
 import SwiftUI
 import CoreData
 
-
-    let lightGreyColor = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0)
-
+let lightGreyColor = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0)
 
 struct LoginView : View {
+    @Binding var isLoggedIn: Bool
     @State var username : String = Environment.testUserUsername
     @State var password : String = Environment.testUserPassword
-    @State var successfulLogin : Bool = GlobalKeychain.get("email") ?? "" != "" && GlobalKeychain.get("password") ?? "" != ""
-    //@State var credentialsObtained : Bool =
-
     
     var body: some View {
             NavigationView{
@@ -61,17 +57,14 @@ struct LoginView : View {
     
     private var loginButtonView : some View {
         Button(action: {
-                print("Button tapped")
-                GlobalKeychain.set(username, forKey: "email")
-                GlobalKeychain.set(password, forKey: "password")
                 WHAPI.sharedInstance.login().onSuccess { _ in
-                    successfulLogin = true
+                    GlobalKeychain.set(username, forKey: "email")
+                    GlobalKeychain.set(password, forKey: "password")
+                    isLoggedIn = true
                 }.onFailure { _ in
-                    successfulLogin = false
+                    isLoggedIn = false
                 }
             }) {
-            NavigationLink(destination: MainTabbedView(), isActive: $successfulLogin) { EmptyView() }
-//                NavigationLink(destination: EventsListView(searchText: ""), isActive: $successfulLogin) { EmptyView() }
                 Text("LOGIN")
                     .font(.headline)
                     .foregroundColor(.white)
@@ -121,6 +114,6 @@ private let itemFormatter: DateFormatter = {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        LoginView(isLoggedIn: .constant(false)).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
