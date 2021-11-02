@@ -25,11 +25,14 @@ struct Address: Hashable, Codable {
         case country
         case coordinates
     }
+    
+    var stringRepr: String {
+        return "\(street1) \(street2 ?? "")\n\(city), \(state.name) \(postalCode)"
+    }
 }
 
 extension Address: CustomStringConvertible {
     var description: String {
-        return ""
-        //return "\(street1) \(street2 ?? "") \(city), \(state.name) \(postalCode)"
+        return "\(street1) \(street2 ?? "") \(city), \(state.name) \(postalCode)"
     }
 }

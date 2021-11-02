@@ -2,13 +2,15 @@
 //  Event.swift
 //  WhatsHappenin
 //
-//  Created by Eric Chang on 9/19/21.
+//  Created by Christian Tingle on 9/19/21.
 //
 
 import Foundation
 import Siesta
+import UIKit
 
-struct Event: Identifiable, Hashable, Codable {
+struct Event: Identifiable, Hashable, Codable, Imageable {
+
     var id: Int
     var title: String
     var description: String
@@ -17,6 +19,14 @@ struct Event: Identifiable, Hashable, Codable {
     var startDate: Date
     var endDate: Date
     var comments: [Comment]?
+    
+    var imageURL: String? {
+        didSet {
+            print("SET VARIABLE")
+        }
+    }
+    var imageResource: Resource?
+    var image: UIImage?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -27,8 +37,29 @@ struct Event: Identifiable, Hashable, Codable {
         case startDate = "start_date"
         case endDate = "end_date"
         case comments
+        case imageURL = "image_url"
     }
    
+//    mutating func loadImage() {
+//        if let url: String = imageURL {
+//            self.imageResource = WHAPI.sharedInstance.resource(absoluteURL: url)
+//            if let resource: Resource = self.imageResource {
+//                resource.load()
+//                    .onSuccess { response in
+//                        print(response)
+//                        print("image loaded")
+//                        DispatchQueue.main.async {
+//                            if let img: UIImage = response.typedContent() {
+//                                self.image = img
+//                            }
+//                        }
+//                    }
+//                    .onFailure { response in
+//                        print("image failed")
+//                    }
+//            }
+//        }
+//    }
     
     static func samples() -> [Event] { (0..<50).map(Event.fixture) }
 

@@ -18,7 +18,7 @@ struct UserEventView: View {
         VStack {
             SearchBar(text1: $searchText)
             List(controller.nearbyEvents) { event in
-                NavigationLink(event.title, destination: EventInfoView(event: event))}
+                NavigationLink(event.title, destination: EventDetailView(event: event))}
             .pullToRefresh(isShowing: $isRefreshing) {
                 controller.loadNearbyEvents()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

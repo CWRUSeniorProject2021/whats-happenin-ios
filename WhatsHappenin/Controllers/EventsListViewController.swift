@@ -8,6 +8,7 @@
 import Foundation
 import Siesta
 import CoreLocation
+import UIKit
 
 class EventsListViewController: ObservableObject, ResourceObserver {
     static let sharedInstance = EventsListViewController()
@@ -15,6 +16,7 @@ class EventsListViewController: ObservableObject, ResourceObserver {
     @Published var nearbyEvents = [Event]()
     @Published var yourEvents = [Event]()
     @Published var feedEvents = [Event]()
+    @Published var eventImages = [Event:UIImage]()
     
     var nearbyEventsResource: Resource
 
@@ -41,12 +43,35 @@ class EventsListViewController: ObservableObject, ResourceObserver {
         }
     }
     
+    func loadImages(events: [Event]) {
+        events.forEach({ event in
+            if let url: String = event.imageURL {
+                let resource = WHAPI.sharedInstance.resource(absoluteURL: url)
+                if let request = resource.loadIfNeeded() {
+                //resource.loadIfNeeded()
+                    request
+                    .onSuccess { response in
+                        print(response)
+                        print("image loaded")
+                        if let img: UIImage = response.typedContent() {
+                            self.eventImages[event] = img
+                        }
+                    }
+                    .onFailure { response in
+                        print("image failed")
+                    }
+                }
+            }
+        })
+    }
+    
     func resourceChanged(_ resource: Resource, event: ResourceEvent) {
         switch (resource) {
         // Handle nearby
         case nearbyEventsResource:
             if let result: [Event] = resource.typedContent() {
                 self.nearbyEvents = result
+                self.loadImages(events: self.nearbyEvents)
             }
         default:
             break

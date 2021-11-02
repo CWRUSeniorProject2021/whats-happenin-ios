@@ -1,5 +1,5 @@
 //
-//  EventInfoView.swift
+//  EventDetailView.swift
 //  WhatsHappenin
 //
 //  Created by Prithik Karthikeyan on 9/21/21.
@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 
-struct EventInfoView : View {
+struct EventDetailView : View {
     @State var event: Event
     
     var body: some View {
@@ -29,7 +29,7 @@ struct EventInfoView : View {
                 //Text("Ends: \(dateFormatter.string(from: event.endDate))")
             }
             
-            Text("Address:")
+            Text("Address: \(event.address.stringRepr)")
                 .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
 
             Section{

@@ -15,14 +15,16 @@ struct NearbyEventView: View {
     @State private var searchText: String = ""
     @State var isRefreshing: Bool = false
     
+    init() {
+    }
+    
     var body: some View {
         List($controller.nearbyEvents) { $event in
-            Section(header: Text("poop")) {
-            NavigationLink(destination: EventInfoView(event: event)) {
-                                EventRow(event: $event)
-                            }
-            }
+            EventRow(event: $event, controller: controller)
         }
+        .padding(EdgeInsets(top: 44, leading: 0, bottom: 24, trailing: 0))
+        .edgesIgnoringSafeArea(.all)
+        .listStyle(PlainListStyle())
         .pullToRefresh(isShowing: $isRefreshing) {
             controller.loadNearbyEvents()
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

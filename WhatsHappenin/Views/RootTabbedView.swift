@@ -9,16 +9,22 @@ import SwiftUI
 
 struct RootTabbedView: View {
     @Binding var isLoggedIn: Bool
+    
+    init(isLoggedIn: Binding<Bool>) {
+        self._isLoggedIn = isLoggedIn
+        let tabBarAppearance = UITabBarAppearance()
+        UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+    }
 
     var body: some View {
         TabView {
-            NavigationView {
-                FeedView()
-                    .navigationTitle("Feed")
-            }
-            .tabItem {
-                Label("Feed", systemImage: "house")
-            }
+//            NavigationView {
+//                FeedView()
+//                    .navigationTitle("Feed")
+//            }
+//            .tabItem {
+//                Label("Feed", systemImage: "house")
+//            }
             
             NavigationView {
                 MapView()
@@ -34,7 +40,7 @@ struct RootTabbedView: View {
             .tabItem {
                 Label("Your Events", systemImage: "calendar")
             }
-            
+
             NavigationView {
                 NearbyEventView()
                     .navigationTitle("Nearby Events")
@@ -42,18 +48,13 @@ struct RootTabbedView: View {
             .tabItem {
                 Label("Nearby Events", systemImage: "list.bullet")
             }
-            
+
             NavigationView {
                 ProfileView(isLoggedIn: $isLoggedIn)
             }
             .tabItem {
                 Label("Profile", systemImage: "person")
             }
-            
-            NearbyEventView()
-                .tabItem {
-                    Label("Poop", systemImage: "calendar")
-                }
         }
     }
 }
