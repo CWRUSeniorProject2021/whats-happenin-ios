@@ -84,7 +84,7 @@ struct RegistrationView : View {
                         )
                 }
             }
-            .navigationBarTitle(Text("Register"))
+            .navigationTitle(Text("Register"))
         }
     
 }

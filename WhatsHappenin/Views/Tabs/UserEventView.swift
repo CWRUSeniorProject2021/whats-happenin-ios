@@ -18,9 +18,9 @@ struct UserEventView: View {
         VStack {
             SearchBar(text1: $searchText)
             List(controller.nearbyEvents) { event in
-                NavigationLink(event.title, destination: EventInfoView())}
+                NavigationLink(event.title, destination: EventInfoView(event: event))}
             .pullToRefresh(isShowing: $isRefreshing) {
-                controller.reloadNearbyEvents()
+                controller.loadNearbyEvents()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     self.isRefreshing = false
                 }
@@ -28,8 +28,6 @@ struct UserEventView: View {
             .onChange(of: self.isRefreshing) { value in
             }
         }
-        .navigationTitle("Your Events")
-        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

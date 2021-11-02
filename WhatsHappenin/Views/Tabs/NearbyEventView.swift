@@ -16,18 +16,15 @@ struct NearbyEventView: View {
     @State var isRefreshing: Bool = false
     
     var body: some View {
-        //SearchBar(text1: $searchText)
-        //    .padding(.top, -30)
-        List {
-            ForEach(controller.nearbyEvents.indices, id: \.self) { index in
-                NavigationLink(destination: EventInfoView()) {
-                    EventRow(event: $controller.nearbyEvents[index])
-                }
+        List($controller.nearbyEvents) { $event in
+            Section(header: Text("poop")) {
+            NavigationLink(destination: EventInfoView(event: event)) {
+                                EventRow(event: $event)
+                            }
             }
         }
-        //.searchable(text: $searchText) IOS 15 only
         .pullToRefresh(isShowing: $isRefreshing) {
-            controller.reloadNearbyEvents()
+            controller.loadNearbyEvents()
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                 self.isRefreshing = false
                             }

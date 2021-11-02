@@ -8,27 +8,30 @@
 import SwiftUI
 import CoreData
 
+
 struct EventInfoView : View {
+    @State var event: Event
     
     var body: some View {
         Form{
             Section{
-            Text("Event Name:")
-            Text("Event Description:")
+                Text("Event Name: \(event.title)")
+                Text("Event Description: \(event.description)")
                 .lineLimit(4)
                 .multilineTextAlignment(.leading)
                 .frame(minWidth: 100, maxWidth: 200, minHeight: 100, maxHeight: .infinity, alignment: .topLeading)
-                
             }
+            
             Section{
-            Text("Starts:")
-            Text("Ends:")
+                Text("Starts: \(event.startDate)")
+                Text("Ends: \(event.endDate)")
+                //Text("Starts: \(dateFormatter.string(from: event.startDate))")
+                //Text("Ends: \(dateFormatter.string(from: event.endDate))")
             }
+            
             Text("Address:")
                 .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
-            Text("Phone Number:")
-            Text("Email:")
-        
+
             Section{
             Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
                 Text("RSVP")
@@ -49,15 +52,15 @@ struct EventInfoView : View {
                 })
             }
             }
-            .navigationBarTitle(Text("Event Details"))
+            .navigationTitle("Event Details")
         }
     
 }
 
 
 
-struct EventInfoView_Previews: PreviewProvider {
-    static var previews: some View {
-        EventInfoView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    }
-}
+//struct EventInfoView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        EventInfoView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+//    }
+//}

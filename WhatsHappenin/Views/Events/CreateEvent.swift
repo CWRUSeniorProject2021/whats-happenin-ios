@@ -97,7 +97,7 @@ struct CreateEvent : View {
                         )
                     }
             }
-            .navigationBarTitle(Text("Create Event"))
+            .navigationTitle("Create Event")
         }
     
 }

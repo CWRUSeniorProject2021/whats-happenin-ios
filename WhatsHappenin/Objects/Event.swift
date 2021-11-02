@@ -14,8 +14,8 @@ struct Event: Identifiable, Hashable, Codable {
     var description: String
     var attendeeLimit: Int
     var address: Address
-    var startDate: String
-    var endDate: String
+    var startDate: Date
+    var endDate: Date
     var comments: [Comment]?
     
     enum CodingKeys: String, CodingKey {
@@ -39,21 +39,10 @@ struct Event: Identifiable, Hashable, Codable {
             description: "Desc of event here: ",
             attendeeLimit: 100,
             address: Address(street1: "1750 Ansel Rd", city: "Cleveland", postalCode: "44106", state: StateAddress(name: "Ohio", code: "OH"), country: Country(name: "United States", code: "US")),
-            startDate: "sd",//Date(),
-            endDate: "ed"//Date().addingTimeInterval(TimeInterval(3600))
+            startDate: Date(),
+            endDate: Date().addingTimeInterval(TimeInterval(3600))
         )
     }
-    
-//    static func eventsFromResource(_ resource: Resource) -> [Event] {
-//        let decoder = JSONDecoder()
-//        let json = resource.jsonDict
-//        let errors = json["errors"]
-//        let data = json["data"]
-//        let eventArray = json["events"]
-//        try decoder.decode([String: String].self, from: eventArray)
-//
-//        return []
-//    }
 }
 
 struct EventList: Codable {

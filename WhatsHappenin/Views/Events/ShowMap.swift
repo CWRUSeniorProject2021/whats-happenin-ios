@@ -12,24 +12,25 @@ struct ShowMap: View {
     @ObservedObject private var controller = EventsListViewController.sharedInstance
 
     var body: some View {
-        Map(coordinateRegion: $viewModel.region, showsUserLocation: true,
-                    annotationItems: controller.nearbyEvents){ event in
+        Map(coordinateRegion: $viewModel.region,
+            showsUserLocation: true,
+            annotationItems: controller.nearbyEvents) { event in
                     MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: event.address.coordinates?.latitude ?? 41.51273, longitude: event.address.coordinates?.longitude ?? -81.60443)) {
-                        NavigationLink(
-                            destination: EventInfoView(),
-                            label: {
-                                PlaceAnnotationView(title: event.title)
+                            NavigationLink(
+                                destination: EventInfoView(event: event),
+                                label: {
+                                    PlaceAnnotationView(title: event.title)
 
-                            })
-                    }
-                    }
-                    .ignoresSafeArea()
-        //            .accentColor(Color(.systemPink)) // change current location circle to pink ^_^
-                    .onAppear {
-                        viewModel.checkIfLocationServicesIsEnabled()
-                        viewModel.reload()
-                            
-                    }
+                                })
+                        }
+            }
+            .ignoresSafeArea()
+//            .accentColor(Color(.systemPink)) // change current location circle to pink ^_^
+            .onAppear {
+                viewModel.checkIfLocationServicesIsEnabled()
+                viewModel.reload()
+                    
+            }
     }
 //
 //    func updateUIView(_ view: MKMapView, context: Context) {
@@ -93,7 +94,7 @@ final class ShowMapModel: NSObject, ObservableObject, CLLocationManagerDelegate 
     
     func reload() {
         print("Reloading Map")
-        controller.reloadNearbyEvents()
+        controller.loadNearbyEvents()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.isRefreshing = false
         }

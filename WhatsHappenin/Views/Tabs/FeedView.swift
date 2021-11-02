@@ -13,8 +13,6 @@ struct FeedView: View {
         VStack {
             Text("Feed").padding()
         }
-        .navigationTitle("Feed")
-        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

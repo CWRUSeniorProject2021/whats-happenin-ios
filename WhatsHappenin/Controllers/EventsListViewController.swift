@@ -20,10 +20,10 @@ class EventsListViewController: ObservableObject, ResourceObserver {
 
     init() {
         nearbyEventsResource = WHAPI.sharedInstance.nearbyEvents
-        reloadNearbyEvents()
+        loadNearbyEvents()
     }
     
-    func reloadNearbyEvents() {
+    func loadNearbyEvents() {
         let coordinates = locationManager.getCurrentLocation() ?? CoordinatePair(latitude: 0.0, longitude: 0.0)
         let range = 5.0
         nearbyEventsResource = WHAPI.sharedInstance.nearbyEvents.withParams([
@@ -32,6 +32,13 @@ class EventsListViewController: ObservableObject, ResourceObserver {
             "radius": "\(range)"
         ])
         nearbyEventsResource.addObserver(self).load()
+    }
+    
+    func reloadNearbyEvents() async {
+        loadNearbyEvents()
+        while(nearbyEventsResource.isLoading) {
+            print("waiting")
+        }
     }
     
     func resourceChanged(_ resource: Resource, event: ResourceEvent) {

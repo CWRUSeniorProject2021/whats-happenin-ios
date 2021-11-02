@@ -14,6 +14,7 @@ struct RootTabbedView: View {
         TabView {
             NavigationView {
                 FeedView()
+                    .navigationTitle("Feed")
             }
             .tabItem {
                 Label("Feed", systemImage: "house")
@@ -28,6 +29,7 @@ struct RootTabbedView: View {
             
             NavigationView {
                 UserEventView(searchText: "")
+                    .navigationTitle("Your Events")
             }
             .tabItem {
                 Label("Your Events", systemImage: "calendar")
@@ -47,6 +49,11 @@ struct RootTabbedView: View {
             .tabItem {
                 Label("Profile", systemImage: "person")
             }
+            
+            NearbyEventView()
+                .tabItem {
+                    Label("Poop", systemImage: "calendar")
+                }
         }
     }
 }
