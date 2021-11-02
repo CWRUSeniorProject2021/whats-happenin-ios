@@ -56,6 +56,10 @@
 		198ACAA22716171B00037178 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198ACAA12716171B00037178 /* LocationManager.swift */; };
 		198ACAA627161EAB00037178 /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 198ACAA527161EAB00037178 /* SwiftUIRefresh */; };
 		19B276902730C34B0050438F /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B2768F2730C34B0050438F /* RootView.swift */; };
+		19B276992730D9060050438F /* ShowProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B276982730D9050050438F /* ShowProfilePage.swift */; };
+		19B2769B2730D9290050438F /* ProfilePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B2769A2730D9290050438F /* ProfilePageController.swift */; };
+		19B2769C2730D92D0050438F /* ProfilePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B2769A2730D9290050438F /* ProfilePageController.swift */; };
+		19B2769D2730D92D0050438F /* ProfilePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B2769A2730D9290050438F /* ProfilePageController.swift */; };
 		19F66673270CB2500080C6C3 /* WHAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F66672270CB2500080C6C3 /* WHAPI.swift */; };
 		19F6669E270CB6F40080C6C3 /* Production.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 19F6669D270CB6F40080C6C3 /* Production.xcconfig */; };
 		19F666A0270CB8A00080C6C3 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F6669F270CB8A00080C6C3 /* Environment.swift */; };
@@ -135,6 +139,8 @@
 		198ACA9F2716112800037178 /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		198ACAA12716171B00037178 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		19B2768F2730C34B0050438F /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		19B276982730D9050050438F /* ShowProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowProfilePage.swift; sourceTree = "<group>"; };
+		19B2769A2730D9290050438F /* ProfilePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageController.swift; sourceTree = "<group>"; };
 		19F66672270CB2500080C6C3 /* WHAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WHAPI.swift; sourceTree = "<group>"; };
 		19F6669B270CB6E50080C6C3 /* Staging.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Staging.xcconfig; sourceTree = "<group>"; };
 		19F6669D270CB6F40080C6C3 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
@@ -272,6 +278,7 @@
 		196D0EF62723683700E05CC8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				19B2769A2730D9290050438F /* ProfilePageController.swift */,
 				19F666C8270D1F530080C6C3 /* EventsListViewController.swift */,
 			);
 			path = Controllers;
@@ -284,6 +291,7 @@
 				0797026E27307F8E00FBF801 /* RootTabbedView.swift */,
 				07900D0B26F7F66D00542CD2 /* Events */,
 				19B2768F2730C34B0050438F /* RootView.swift */,
+				19B276982730D9050050438F /* ShowProfilePage.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -482,6 +490,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19B2769B2730D9290050438F /* ProfilePageController.swift in Sources */,
+				19B276992730D9060050438F /* ShowProfilePage.swift in Sources */,
 				190EB55726E7EAD600822E65 /* WhatsHappenin.xcdatamodeld in Sources */,
 				07D654C2272DF94500EABA93 /* NearbyEventView.swift in Sources */,
 				19F666C9270D1F530080C6C3 /* EventsListViewController.swift in Sources */,
@@ -525,6 +535,7 @@
 				0710BBE526F7CE52000E5501 /* EventView.swift in Sources */,
 				19F666AD270CDD0A0080C6C3 /* LoginView.swift in Sources */,
 				07D654C3272DF94500EABA93 /* NearbyEventView.swift in Sources */,
+				19B2769D2730D92D0050438F /* ProfilePageController.swift in Sources */,
 				19F666CA270D1F530080C6C3 /* EventsListViewController.swift in Sources */,
 				07D654BF272DF93900EABA93 /* UserEventView.swift in Sources */,
 				19F666B9270CF9F50080C6C3 /* CoordinatePair.swift in Sources */,
@@ -553,6 +564,7 @@
 				0710BBE626F7CE52000E5501 /* EventView.swift in Sources */,
 				19F666AE270CDD0A0080C6C3 /* LoginView.swift in Sources */,
 				07D654C4272DF94500EABA93 /* NearbyEventView.swift in Sources */,
+				19B2769C2730D92D0050438F /* ProfilePageController.swift in Sources */,
 				19F666CB270D1F530080C6C3 /* EventsListViewController.swift in Sources */,
 				07D654C0272DF93900EABA93 /* UserEventView.swift in Sources */,
 				19F666BA270CF9F50080C6C3 /* CoordinatePair.swift in Sources */,

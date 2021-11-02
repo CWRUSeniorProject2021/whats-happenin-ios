@@ -11,7 +11,7 @@ import CoreLocation
 
 class ProfilePageController: ObservableObject { // Should we keep? --> ResourceObserver {
     var profilePageResource: Resource// [String : String]
-    let username = LoginView().username
+    let username = LoginView(isLoggedIn: .constant(false)).username
 //    let user = WHAPI.sharedInstance.auth.request()
     
 //    let lastName = RegistrationView().lastName
