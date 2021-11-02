@@ -11,7 +11,7 @@ struct ProfileView: View {
    
     var body: some View {
         VStack {
-            Text("Profile")
+            ShowProfilePage()
         }
         .navigationTitle("Profile")
         
