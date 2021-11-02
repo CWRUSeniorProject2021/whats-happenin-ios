@@ -10,10 +10,14 @@ import CoreLocation
 
 class LocationManager: NSObject, CLLocationManagerDelegate {
     private var _locationManager: CLLocationManager?
-    private var location: CLLocation?
+    private var currentLocation: CLLocation?
+    private var coordinates: CoordinatePair?
+    
+    private let encoder = JSONEncoder()
     
     override init() {
         super.init()
+        encoder.outputFormatting = .prettyPrinted
         setupUserLocation()
     }
     
@@ -26,15 +30,40 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let loc = locations.last {
-            location = loc
+            currentLocation = loc
+            coordinates = locToCoords(loc: loc)
+            
+            do {
+                let jsonData = try encoder.encode(coordinates)
+                if let jsonString = String(data: jsonData, encoding: .utf8) {
+                    defaults.set(jsonString, forKey: Keys.Defaults.lastLocation)
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
         }
     }
     
     public func getCurrentLocation() -> CoordinatePair? {
-        if (location == nil) {
-            return nil
+        if (currentLocation == nil || coordinates == nil) {
+            guard let lastLoc = defaults.string(forKey: Keys.Defaults.lastLocation) else {
+                return nil
+            }
+            if let jsonData = lastLoc.data(using: .utf8) {
+                let decoder = JSONDecoder()
+                do {
+                    coordinates = try decoder.decode(CoordinatePair.self, from: jsonData)
+                } catch {
+                    print(error.localizedDescription)
+                    return nil
+                }
+            }
         }
-        return CoordinatePair(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
+        return coordinates
+    }
+    
+    private func locToCoords(loc: CLLocation) -> CoordinatePair {
+        return CoordinatePair(latitude: loc.coordinate.latitude, longitude: loc.coordinate.longitude)
     }
 }
 

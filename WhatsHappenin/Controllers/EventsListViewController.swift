@@ -27,7 +27,7 @@ class EventsListViewController: ObservableObject, ResourceObserver {
             "latitude": "\(coordinates.latitude)",
             "longitude": "\(coordinates.longitude)",
             "radius": "\(range)"
-        ]).addObserver(self).loadIfNeeded()
+        ]).addObserver(self).load()
 //        whA
 //        whAPI.nearbyEvents(locationManager.getCurrentLocation() ?? CoordinatePair(latitude: 0.0, longitude: 0.0), range: 5.0)
 //            .addObserver(self)

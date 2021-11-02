@@ -42,15 +42,6 @@ import KeychainSwift
 class WHAPI: Service {
     static let sharedInstance = WHAPI()
 
-    enum Keys {
-        enum Auth {
-            static let Token : String! = "access-token"
-            static let TokenType : String! = "token-type"
-            static let Client : String! = "client"
-            static let UID : String! = "uid"
-        }
-    }
-
     let jsonDecoder = JSONDecoder()
 
     var authToken: String?? {

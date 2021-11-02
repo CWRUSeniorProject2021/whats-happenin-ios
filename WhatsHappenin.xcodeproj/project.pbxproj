@@ -60,6 +60,8 @@
 		19B2769B2730D9290050438F /* ProfilePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B2769A2730D9290050438F /* ProfilePageController.swift */; };
 		19B2769C2730D92D0050438F /* ProfilePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B2769A2730D9290050438F /* ProfilePageController.swift */; };
 		19B2769D2730D92D0050438F /* ProfilePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B2769A2730D9290050438F /* ProfilePageController.swift */; };
+		19B2769F2730EEA60050438F /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B2769E2730EEA60050438F /* Storage.swift */; };
+		19B276A12730EFB30050438F /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B276A02730EFB30050438F /* Keys.swift */; };
 		19F66673270CB2500080C6C3 /* WHAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F66672270CB2500080C6C3 /* WHAPI.swift */; };
 		19F6669E270CB6F40080C6C3 /* Production.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 19F6669D270CB6F40080C6C3 /* Production.xcconfig */; };
 		19F666A0270CB8A00080C6C3 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F6669F270CB8A00080C6C3 /* Environment.swift */; };
@@ -141,6 +143,8 @@
 		19B2768F2730C34B0050438F /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		19B276982730D9050050438F /* ShowProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowProfilePage.swift; sourceTree = "<group>"; };
 		19B2769A2730D9290050438F /* ProfilePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageController.swift; sourceTree = "<group>"; };
+		19B2769E2730EEA60050438F /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		19B276A02730EFB30050438F /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		19F66672270CB2500080C6C3 /* WHAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WHAPI.swift; sourceTree = "<group>"; };
 		19F6669B270CB6E50080C6C3 /* Staging.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Staging.xcconfig; sourceTree = "<group>"; };
 		19F6669D270CB6F40080C6C3 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
@@ -331,6 +335,8 @@
 			children = (
 				19F666A7270CDAEE0080C6C3 /* Keychain.swift */,
 				198ACAA12716171B00037178 /* LocationManager.swift */,
+				19B2769E2730EEA60050438F /* Storage.swift */,
+				19B276A02730EFB30050438F /* Keys.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -491,6 +497,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				19B2769B2730D9290050438F /* ProfilePageController.swift in Sources */,
+				19B276A12730EFB30050438F /* Keys.swift in Sources */,
 				19B276992730D9060050438F /* ShowProfilePage.swift in Sources */,
 				190EB55726E7EAD600822E65 /* WhatsHappenin.xcdatamodeld in Sources */,
 				07D654C2272DF94500EABA93 /* NearbyEventView.swift in Sources */,
@@ -513,6 +520,7 @@
 				19F666B1270CF9BD0080C6C3 /* Address.swift in Sources */,
 				19F666B8270CF9F50080C6C3 /* CoordinatePair.swift in Sources */,
 				198ACAA22716171B00037178 /* LocationManager.swift in Sources */,
+				19B2769F2730EEA60050438F /* Storage.swift in Sources */,
 				07D654B2272DF85200EABA93 /* FeedView.swift in Sources */,
 				663AAF0B26FA657500248928 /* CreateEvent.swift in Sources */,
 				190EB54B26E7EAD500822E65 /* WhatsHappeninApp.swift in Sources */,

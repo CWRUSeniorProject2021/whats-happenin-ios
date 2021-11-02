@@ -10,17 +10,19 @@ import Siesta
 
 struct CreateEvent : View {
     
-    @State var showAlert = false
-    @State var eventName = ""
-    @State var eventDesc = ""
-    @State var startTime = Date()
-    @State var endTime = Date()
-    @State var eventType = ""
-    @State var address1 = ""
-    @State var address2 = ""
-    @State var city = ""
-    @State var state = ""
-    @State var zipcode = ""
+    @State var showAlert: Bool = false
+    @State var alertMessage: String = ""
+    
+    @State var eventName: String = ""
+    @State var eventDesc: String = ""
+    @State var startTime: Date = Date()
+    @State var endTime: Date = Date()
+    @State var eventType: String = ""
+    @State var address1: String = ""
+    @State var address2: String = ""
+    @State var city: String = ""
+    @State var state: String = ""
+    @State var zipcode: String = ""
     
     //things to 
     enum EventType: String, CaseIterable, Identifiable {
@@ -61,20 +63,39 @@ struct CreateEvent : View {
                 TextField("Zipcode", text: $zipcode)
             }
             Button(action: {
-                var st = "\(startTime)"
-                var et = "\(endTime)"
+                let requestContent: [String : Any] = [
+                    "title": eventName,
+                    "description": eventDesc,
+                    "start_date": "\(startTime)",
+                    "end_date": "\(endTime)",
+                    "visibility": "school_vis",
+                    "address_attributes": [
+                        "street1": address1,
+                        "street2": address2,
+                        "city": city,
+                        "state_code": state,
+                        "country_code": "US",
+                        "postal_code": zipcode
+                    ]
+                ] as [String : Any]
                 
-                WHAPI.sharedInstance.events.request(.post, urlEncoded:["event[title]":eventName, "event[description]":eventDesc, "event[start_date]": st, "event[end_date]": et, "event[visibility]": "school_vis", "event[address_attributes][street1]":address1,"event[address_attributes][street2]":address2, "event[address_attributes][city]":city,"event[address_attributes][state_code]":state, "event[address_attributes][country_code]":"US","event[address_attributes][postal_code]":zipcode])
-                self.showAlert = true
-//                cntlr.events.append(Event) This is the idea
+                WHAPI.sharedInstance.events.request(.post, json: requestContent)
+                    .onSuccess { _ in
+                        self.alertMessage = "Event was successfully created"
+                        self.showAlert = true
+                    }
+                    .onFailure { _ in
+                        self.alertMessage = "There was an error creating the event"
+                        self.showAlert = true
+                    }
                 
-                        }, label: { Text("Submit" )})
-            .alert(isPresented: $showAlert) {
+            }, label: { Text("Submit")})
+                .alert(isPresented: $showAlert) {
                         Alert(
                             title: Text("Event Successfully Created"),
                             dismissButton: .default(Text("Close"))
                         )
-                }
+                    }
             }
             .navigationBarTitle(Text("Create Event"))
         }

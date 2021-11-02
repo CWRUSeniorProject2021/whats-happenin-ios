@@ -7,18 +7,7 @@
 
 import Foundation
 
-public enum Environment {
-    // MARK: - Keys
-    enum Keys {
-        enum Plist {
-            static let rootURL = "ROOT_URL"
-            static let apiVersion = "API_VERSION"
-            static let testUserUsername = "TEST_USER_USERNAME"
-            static let testUserPassword = "TEST_USER_PASSWORD"
-            //static let apiKey = "API_KEY"
-        }
-    }
-    
+public enum Environment {    
     // MARK: - Plist
     private static let infoDictionary: [String: Any] = {
         guard let dict = Bundle.main.infoDictionary else {
