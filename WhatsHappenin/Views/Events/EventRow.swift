@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EventRow: View {
     @Binding var event: Event
-    @ObservedObject var controller: EventsListViewController
+    @ObservedObject var controller: EventsListController
     
     var body: some View {
         ZStack {
@@ -36,7 +36,6 @@ struct EventRow: View {
                        .resizable()
                        .scaledToFit()
                } else {
-//                   EmptyView()
                    Image("SampleImage")
                        .resizable()
                        .scaledToFit()
@@ -44,16 +43,17 @@ struct EventRow: View {
                 
                 VStack {
                     Text(event.title)
-                        .font(.title)
+                        .font(.title2)
+                        .bold()
                         .foregroundColor(Color("FontColor"))
                         .fixedSize(horizontal: false, vertical: true)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Text(event.description)
-                        .font(.caption)
+                        .font(.body)
                         .foregroundColor(Color("FontColor"))
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                .padding()
+                .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 10))
             }
         }
         .fixedSize(horizontal: false, vertical: true)
@@ -65,6 +65,6 @@ struct EventRow: View {
 
 struct EventRow_Previews: PreviewProvider {
     static var previews: some View {
-        EventRow(event: .constant(Event.samples()[0]), controller: EventsListViewController.sharedInstance)
+        EventRow(event: .constant(Event.samples()[0]), controller: EventsListController.sharedInstance)
     }
 }

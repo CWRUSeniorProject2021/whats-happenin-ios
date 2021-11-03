@@ -71,17 +71,19 @@ struct CreateEvent : View {
                     image?
                         .resizable()
                         .scaledToFit()
+                        .onTapGesture {
+                            showingImagePicker = true
+                        }
                 } else {
-                    Button("Tap to select a picture") {
-                    }
+                    Button(action: {
+                        showingImagePicker = true
+                    }, label: { Text("Add an Image")})
                     .foregroundColor(.white)
                     .font(.headline)
                         
                 }
             }
-            .onTapGesture {
-                showingImagePicker = true
-            }
+            
             Button(action: {
                 var requestContent: [String : Any] = [
                     "title": eventName,

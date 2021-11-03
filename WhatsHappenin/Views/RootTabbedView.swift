@@ -34,7 +34,7 @@ struct RootTabbedView: View {
             }
             
             NavigationView {
-                UserEventView(searchText: "")
+                UserEventView()
                     .navigationTitle("Your Events")
             }
             .tabItem {

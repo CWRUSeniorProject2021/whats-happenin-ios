@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ShowMap: View {
     @StateObject private var viewModel = ShowMapModel()
-    @ObservedObject private var controller = EventsListViewController.sharedInstance
+    @ObservedObject private var controller = EventsListController.sharedInstance
 
     var body: some View {
         Map(coordinateRegion: $viewModel.region,
@@ -48,7 +48,7 @@ final class ShowMapModel: NSObject, ObservableObject, CLLocationManagerDelegate 
     
     @Published var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 0, longitude: 0), // don't need actual loc
                                                    span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-    @ObservedObject private var controller = EventsListViewController.sharedInstance
+    @ObservedObject private var controller = EventsListController.sharedInstance
 
     
     var locationManager: CLLocationManager?

@@ -10,29 +10,38 @@ import SwiftUIRefresh
 
 struct UserEventView: View {
     
-    @ObservedObject var controller = EventsListViewController.sharedInstance
-    @State var searchText: String
-    
+    @ObservedObject var controller = EventsListController.sharedInstance
+    @State private var searchText: String = ""
     @State var isRefreshing: Bool = false
+    
     var body: some View {
-        VStack {
-            SearchBar(text1: $searchText)
-            List(controller.nearbyEvents) { event in
-                NavigationLink(event.title, destination: EventDetailView(event: event))}
-            .pullToRefresh(isShowing: $isRefreshing) {
-                controller.loadNearbyEvents()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    self.isRefreshing = false
+        //SearchBar(text1: $searchText)
+        List($controller.yourEvents) { $event in
+            EventRow(event: $event, controller: controller)
+        }
+        .padding(EdgeInsets(top: 44, leading: 0, bottom: 24, trailing: 0))
+        .edgesIgnoringSafeArea(.all)
+        .listStyle(PlainListStyle())
+        .pullToRefresh(isShowing: $isRefreshing) {
+            controller.loadYourEvents()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                self.isRefreshing = false
+                            }
+        }
+        .onChange(of: self.isRefreshing) { value in
+        }
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                NavigationLink(destination: CreateEvent()) {
+                    Image(systemName: "plus")
                 }
-            }
-            .onChange(of: self.isRefreshing) { value in
-            }
+              }
         }
     }
 }
 
 struct UserEventView_Previews: PreviewProvider {
     static var previews: some View {
-        UserEventView(searchText: "")
+        UserEventView()
     }
 }

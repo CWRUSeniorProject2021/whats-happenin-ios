@@ -10,13 +10,9 @@ import SwiftUIRefresh
 
 struct NearbyEventView: View {
    
-    @ObservedObject var controller = EventsListViewController.sharedInstance
-    @State private var selection: Set<Event> = []
+    @ObservedObject var controller = EventsListController.sharedInstance
     @State private var searchText: String = ""
     @State var isRefreshing: Bool = false
-    
-    init() {
-    }
     
     var body: some View {
         List($controller.nearbyEvents) { $event in

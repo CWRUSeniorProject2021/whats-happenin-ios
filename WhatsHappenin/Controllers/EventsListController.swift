@@ -10,8 +10,8 @@ import Siesta
 import CoreLocation
 import UIKit
 
-class EventsListViewController: ObservableObject, ResourceObserver {
-    static let sharedInstance = EventsListViewController()
+class EventsListController: ObservableObject, ResourceObserver {
+    static let sharedInstance = EventsListController()
     
     @Published var nearbyEvents = [Event]()
     @Published var yourEvents = [Event]()
@@ -23,6 +23,9 @@ class EventsListViewController: ObservableObject, ResourceObserver {
     init() {
         nearbyEventsResource = WHAPI.sharedInstance.nearbyEvents
         loadNearbyEvents()
+        
+        WHAPI.sharedInstance.yourEvents.addObserver(self)
+        loadYourEvents()
     }
     
     func loadNearbyEvents() {
@@ -36,11 +39,8 @@ class EventsListViewController: ObservableObject, ResourceObserver {
         nearbyEventsResource.addObserver(self).load()
     }
     
-    func reloadNearbyEvents() async {
-        loadNearbyEvents()
-        while(nearbyEventsResource.isLoading) {
-            print("waiting")
-        }
+    func loadYourEvents() {
+        WHAPI.sharedInstance.yourEvents.loadIfNeeded()
     }
     
     func loadImages(events: [Event]) {
@@ -72,6 +72,11 @@ class EventsListViewController: ObservableObject, ResourceObserver {
             if let result: [Event] = resource.typedContent() {
                 self.nearbyEvents = result
                 self.loadImages(events: self.nearbyEvents)
+            }
+        case WHAPI.sharedInstance.yourEvents:
+            if let result: [Event] = resource.typedContent() {
+                self.yourEvents = result
+                self.loadImages(events: self.yourEvents)
             }
         default:
             break
