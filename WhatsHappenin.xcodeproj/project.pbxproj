@@ -35,6 +35,7 @@
 		19F2F5032731AEAE0095775B /* EventRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F2F5022731AEAE0095775B /* EventRow.swift */; };
 		19F2F5072731B0D90095775B /* Imageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F2F5062731B0D90095775B /* Imageable.swift */; };
 		19F2F50B2731D8C10095775B /* RemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F2F50A2731D8C10095775B /* RemoteImageView.swift */; };
+		19F2F50D2731F18B0095775B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F2F50C2731F18B0095775B /* ImagePicker.swift */; };
 		19F66673270CB2500080C6C3 /* WHAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F66672270CB2500080C6C3 /* WHAPI.swift */; };
 		19F6669E270CB6F40080C6C3 /* Production.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 19F6669D270CB6F40080C6C3 /* Production.xcconfig */; };
 		19F666A0270CB8A00080C6C3 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F6669F270CB8A00080C6C3 /* Environment.swift */; };
@@ -84,6 +85,7 @@
 		19F2F5022731AEAE0095775B /* EventRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRow.swift; sourceTree = "<group>"; };
 		19F2F5062731B0D90095775B /* Imageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Imageable.swift; sourceTree = "<group>"; };
 		19F2F50A2731D8C10095775B /* RemoteImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
+		19F2F50C2731F18B0095775B /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		19F66672270CB2500080C6C3 /* WHAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WHAPI.swift; sourceTree = "<group>"; };
 		19F6669B270CB6E50080C6C3 /* Staging.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Staging.xcconfig; sourceTree = "<group>"; };
 		19F6669D270CB6F40080C6C3 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				19B2769E2730EEA60050438F /* Constants.swift */,
 				19B276A02730EFB30050438F /* Keys.swift */,
 				19F2F50A2731D8C10095775B /* RemoteImageView.swift */,
+				19F2F50C2731F18B0095775B /* ImagePicker.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				19F666A0270CB8A00080C6C3 /* Environment.swift in Sources */,
 				19F666AC270CDD0A0080C6C3 /* LoginView.swift in Sources */,
 				07D654BA272DF92600EABA93 /* MapView.swift in Sources */,
+				19F2F50D2731F18B0095775B /* ImagePicker.swift in Sources */,
 				19F666B1270CF9BD0080C6C3 /* Address.swift in Sources */,
 				19F666B8270CF9F50080C6C3 /* CoordinatePair.swift in Sources */,
 				198ACAA22716171B00037178 /* LocationManager.swift in Sources */,

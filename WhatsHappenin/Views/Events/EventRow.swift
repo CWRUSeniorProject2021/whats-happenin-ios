@@ -13,7 +13,7 @@ struct EventRow: View {
     
     var body: some View {
         ZStack {
-            Color.white
+            Color("ListRowColor")
             NavigationLink(destination: EventDetailView(event: event)) { EmptyView() }
             .buttonStyle(PlainButtonStyle())
             .opacity(0.0)
@@ -45,10 +45,12 @@ struct EventRow: View {
                 VStack {
                     Text(event.title)
                         .font(.title)
+                        .foregroundColor(Color("FontColor"))
                         .fixedSize(horizontal: false, vertical: true)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Text(event.description)
                         .font(.caption)
+                        .foregroundColor(Color("FontColor"))
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .padding()
