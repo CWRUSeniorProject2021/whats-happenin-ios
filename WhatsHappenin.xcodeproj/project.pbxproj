@@ -32,6 +32,7 @@
 		19B2769B2730D9290050438F /* ProfilePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B2769A2730D9290050438F /* ProfilePageController.swift */; };
 		19B2769F2730EEA60050438F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B2769E2730EEA60050438F /* Constants.swift */; };
 		19B276A12730EFB30050438F /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B276A02730EFB30050438F /* Keys.swift */; };
+		19B276A9273242130050438F /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B276A8273242130050438F /* EventDetailView.swift */; };
 		19F2F5032731AEAE0095775B /* EventRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F2F5022731AEAE0095775B /* EventRow.swift */; };
 		19F2F5072731B0D90095775B /* Imageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F2F5062731B0D90095775B /* Imageable.swift */; };
 		19F2F50B2731D8C10095775B /* RemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F2F50A2731D8C10095775B /* RemoteImageView.swift */; };
@@ -49,7 +50,6 @@
 		19F666C4270D0C9E0080C6C3 /* StateAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F666C3270D0C9E0080C6C3 /* StateAddress.swift */; };
 		19F666C9270D1F530080C6C3 /* EventsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F666C8270D1F530080C6C3 /* EventsListController.swift */; };
 		663AAF0B26FA657500248928 /* CreateEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663AAF0A26FA657500248928 /* CreateEvent.swift */; };
-		667D117B270B636F00C5A634 /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D117A270B636F00C5A634 /* EventDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +82,7 @@
 		19B2769A2730D9290050438F /* ProfilePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageController.swift; sourceTree = "<group>"; };
 		19B2769E2730EEA60050438F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		19B276A02730EFB30050438F /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		19B276A8273242130050438F /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
 		19F2F5022731AEAE0095775B /* EventRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRow.swift; sourceTree = "<group>"; };
 		19F2F5062731B0D90095775B /* Imageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Imageable.swift; sourceTree = "<group>"; };
 		19F2F50A2731D8C10095775B /* RemoteImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
@@ -99,7 +100,6 @@
 		19F666C3270D0C9E0080C6C3 /* StateAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateAddress.swift; sourceTree = "<group>"; };
 		19F666C8270D1F530080C6C3 /* EventsListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListController.swift; sourceTree = "<group>"; };
 		663AAF0A26FA657500248928 /* CreateEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEvent.swift; sourceTree = "<group>"; };
-		667D117A270B636F00C5A634 /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,7 +122,7 @@
 			children = (
 				19F2F5022731AEAE0095775B /* EventRow.swift */,
 				663AAF0A26FA657500248928 /* CreateEvent.swift */,
-				667D117A270B636F00C5A634 /* EventDetailView.swift */,
+				19B276A8273242130050438F /* EventDetailView.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -376,6 +376,7 @@
 				19B276A12730EFB30050438F /* Keys.swift in Sources */,
 				19B276992730D9060050438F /* ShowProfilePage.swift in Sources */,
 				190EB55726E7EAD600822E65 /* WhatsHappenin.xcdatamodeld in Sources */,
+				19B276A9273242130050438F /* EventDetailView.swift in Sources */,
 				07D654C2272DF94500EABA93 /* NearbyEventView.swift in Sources */,
 				19F666C9270D1F530080C6C3 /* EventsListController.swift in Sources */,
 				190EB55426E7EAD600822E65 /* Persistence.swift in Sources */,
@@ -403,7 +404,6 @@
 				19F666B3270CF9CE0080C6C3 /* Country.swift in Sources */,
 				07900D0726F7F21A00542CD2 /* RegistrationView.swift in Sources */,
 				19F666C0270CFCAA0080C6C3 /* Comment.swift in Sources */,
-				667D117B270B636F00C5A634 /* EventDetailView.swift in Sources */,
 				19F666A8270CDAEE0080C6C3 /* Keychain.swift in Sources */,
 				07D654B6272DF90200EABA93 /* ShowMap.swift in Sources */,
 				19F2F5072731B0D90095775B /* Imageable.swift in Sources */,

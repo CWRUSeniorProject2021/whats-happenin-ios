@@ -31,7 +31,7 @@ struct EventRow: View {
 //                        .resizable()
 //                        .scaledToFit()
 //                }
-                if let img: UIImage = controller.eventImages[event] {
+               if let img: UIImage = controller.eventImages[event] {
                    Image(uiImage: img)
                        .resizable()
                        .scaledToFit()
