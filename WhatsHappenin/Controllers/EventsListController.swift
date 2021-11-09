@@ -16,6 +16,8 @@ class EventsListController: ObservableObject, ResourceObserver {
     @Published var nearbyEvents = [Event]()
     @Published var yourEvents = [Event]()
     @Published var feedEvents = [Event]()
+    @Published var upcomingEvents = [Event]()
+    @Published var pastEvents = [Event]()
     @Published var eventImages = [Event:UIImage]()
     
     var nearbyEventsResource: Resource
@@ -77,6 +79,16 @@ class EventsListController: ObservableObject, ResourceObserver {
             if let result: [Event] = resource.typedContent() {
                 self.yourEvents = result
                 self.loadImages(events: self.yourEvents)
+            }
+        case WHAPI.sharedInstance.pastEvents:
+            if let result: [Event] = resource.typedContent() {
+                self.pastEvents = result
+                self.loadImages(events: self.pastEvents)
+            }
+        case WHAPI.sharedInstance.upcomingEvents:
+            if let result: [Event] = resource.typedContent() {
+                self.upcomingEvents = result
+                self.loadImages(events: self.upcomingEvents)
             }
         default:
             break
