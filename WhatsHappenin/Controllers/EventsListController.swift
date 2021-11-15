@@ -9,6 +9,7 @@ import Foundation
 import Siesta
 import CoreLocation
 import UIKit
+import Combine
 
 class EventsListController: ObservableObject, ResourceObserver {
     static let sharedInstance = EventsListController()
@@ -19,6 +20,9 @@ class EventsListController: ObservableObject, ResourceObserver {
     @Published var upcomingEvents = [Event]()
     @Published var pastEvents = [Event]()
     @Published var eventImages = [Event:UIImage]()
+    @Published var searchTerm: String = ""
+    // I want originalEvents to be the original array of events.
+    @Published var originalEvents = [Event(id: 4, title: "Tree viewing", description: "Hello", attendeeLimit: 4, address: Address(street1: "Hello", city: "Hello", postalCode: "Hello", state: StateAddress(name: "Hello", code: "Hello"), country: Country(name: "Hello", code: "Hello")), startDate: Date.now, endDate: Date.now)];
     
     var nearbyEventsResource: Resource
 
@@ -28,6 +32,14 @@ class EventsListController: ObservableObject, ResourceObserver {
         
         WHAPI.sharedInstance.yourEvents.addObserver(self)
         loadYourEvents()
+        
+        Publishers.CombineLatest($originalEvents, $searchTerm)
+              .map { nearbyEvents, searchTerm in
+                  nearbyEvents.filter { event in
+                      searchTerm.isEmpty ? true : (event.title == searchTerm)
+                }
+              }
+              .assign(to: &$nearbyEvents)
     }
     
     func loadNearbyEvents() {

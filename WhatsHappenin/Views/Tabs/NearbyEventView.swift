@@ -9,10 +9,19 @@ import SwiftUI
 import SwiftUIRefresh
 
 struct NearbyEventView: View {
-   
-    @ObservedObject var controller = EventsListController.sharedInstance
+    @StateObject var controller = EventsListController.sharedInstance
     @State private var searchText = ""
     @State var isRefreshing: Bool = false
+    
+//    var filteredEvents: Binding<[Event]> {
+//        if searchText.isEmpty {
+//            return $controller.nearbyEvents
+//        } else {
+//            return $controller.nearbyEvents.filter {
+//                $0.title.localizedCaseInsensitiveContains(searchText.localizedLowercase)
+//            }
+//        }
+//    }
     
     var body: some View {
         NavigationView{
@@ -20,7 +29,7 @@ struct NearbyEventView: View {
             List($controller.nearbyEvents) { $event in
                 EventRow(event: $event, controller: controller)
             }
-            .searchable(text: $searchText)
+            .searchable(text: $controller.searchTerm)
             .padding(EdgeInsets(top: 44, leading: 0, bottom: 24, trailing: 0))
             .edgesIgnoringSafeArea(.all)
             .listStyle(PlainListStyle())
