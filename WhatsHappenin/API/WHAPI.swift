@@ -83,22 +83,26 @@ class WHAPI: Service {
      * If the token is invalid during a request, attempt to reauthenticate with the saved username and password
      */
     func refreshTokenOnAuthFailure(request: Request) -> Request {
-      return request.chained {
-        guard case .failure(let error) = $0.response,  // Did request fail…
-          error.httpStatusCode == 403 else {           // …because of expired token?
-            return .useThisResponse                    // If not, use the response we got.
-        }
+        let authDetails = self.userAuthData()
+        let hasCreds = (authDetails["email"]) ?? "" != "" && (authDetails["password"] ?? "") != ""
 
-        return .passTo(
-          self.login().chained {             // If so, first request a new token, then:
-            if case .failure = $0.response {           // If token request failed…
-              return .useThisResponse                  // …report that error.
-            } else {
-              return .passTo(request.repeated())       // We have a new token! Repeat the original request.
-            }
-          }
-        )
-      }
+        return request.chained {
+            guard case .failure(let error) = $0.response,  // Did request fail…
+                  error.httpStatusCode == 401 && hasCreds else {           // …because of expired token?
+                      return .useThisResponse                    // If not, use the response we got.
+                  }
+            
+            return .passTo(
+                self.login().chained {             // If so, first request a new token, then:
+                    if case .failure = $0.response { // If token request failed…
+                        return .useThisResponse                  // …report that error.
+                    } else {
+                        print("repeating")
+                        return .passTo(request.repeated())       // We have a new token! Repeat the original request.
+                    }
+                }
+            )
+        }
     }
 
     /**
@@ -112,7 +116,6 @@ class WHAPI: Service {
         } else {
             authDetails = userAuthData()
         }
-        print(authDetails)
         
         return signInResource
             .request(.post, json: authDetails)
