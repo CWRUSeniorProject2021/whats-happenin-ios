@@ -97,7 +97,6 @@ class WHAPI: Service {
                     if case .failure = $0.response { // If token request failed…
                         return .useThisResponse                  // …report that error.
                     } else {
-                        print("repeating")
                         return .passTo(request.repeated())       // We have a new token! Repeat the original request.
                     }
                 }
