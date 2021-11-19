@@ -13,6 +13,10 @@ import UIKit
 class EventsListController: ObservableObject, ResourceObserver {
     static let sharedInstance = EventsListController()
     
+    @Published var events = [Int:Event]()
+    @Published var nearbyEventIds = [Int]()
+    @Published var yourEventIds = [Int]()
+    @Published var 
     @Published var nearbyEvents = [Event]()
     @Published var yourEvents = [Event]()
     @Published var feedEvents = [Event]()
@@ -28,6 +32,8 @@ class EventsListController: ObservableObject, ResourceObserver {
         
         WHAPI.sharedInstance.yourEvents.addObserver(self)
         loadYourEvents()
+        
+        WHAPI.sharedInstance.events.addObserver(self)
     }
     
     func loadNearbyEvents() {
@@ -67,6 +73,11 @@ class EventsListController: ObservableObject, ResourceObserver {
         })
     }
     
+    func doRSVP(_ event: Event, status: String) {
+        let requestContent: [String: Any] = ["rsvp_status": status.lowercased()] as [String: Any]
+        WHAPI.sharedInstance.events.child("\(event.id)/rsvp").request(.post, json: requestContent)
+    }
+    
     func resourceChanged(_ resource: Resource, event: ResourceEvent) {
         switch (resource) {
         // Handle nearby
@@ -89,6 +100,10 @@ class EventsListController: ObservableObject, ResourceObserver {
             if let result: [Event] = resource.typedContent() {
                 self.upcomingEvents = result
                 self.loadImages(events: self.upcomingEvents)
+            }
+        case WHAPI.sharedInstance.events:
+            if let result: Event = resource.typedContent() {
+                
             }
         default:
             break

@@ -18,6 +18,7 @@ struct Event: Identifiable, Hashable, Codable, Imageable {
     var address: Address
     var startDate: Date
     var endDate: Date
+    var rsvp: String
     var comments: [Comment]?
     
     var imageURL: String? {
@@ -38,6 +39,7 @@ struct Event: Identifiable, Hashable, Codable, Imageable {
         case endDate = "end_date"
         case comments
         case imageURL = "image_url"
+        case rsvp = "rsvp_status"
     }
    
 //    mutating func loadImage() {
@@ -71,7 +73,8 @@ struct Event: Identifiable, Hashable, Codable, Imageable {
             attendeeLimit: 100,
             address: Address(street1: "1750 Ansel Rd", city: "Cleveland", postalCode: "44106", state: StateAddress(name: "Ohio", code: "OH"), country: Country(name: "United States", code: "US")),
             startDate: Date(),
-            endDate: Date().addingTimeInterval(TimeInterval(3600))
+            endDate: Date().addingTimeInterval(TimeInterval(3600)),
+            rsvp: "maybe"
         )
     }
 }
@@ -81,5 +84,13 @@ struct EventList: Codable {
     
     enum CodingKeys: String, CodingKey {
         case events
+    }
+}
+
+struct SingleEvent: Codable {
+    let event: Event
+    
+    enum CodingKeys: String, CodingKey {
+        case event
     }
 }
