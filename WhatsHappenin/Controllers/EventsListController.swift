@@ -16,15 +16,13 @@ class EventsListController: ObservableObject, ResourceObserver {
     @Published var events = [Int:Event]()
     @Published var nearbyEventIds = [Int]()
     @Published var yourEventIds = [Int]()
-    @Published var 
-    @Published var nearbyEvents = [Event]()
-    @Published var yourEvents = [Event]()
-    @Published var feedEvents = [Event]()
-    @Published var upcomingEvents = [Event]()
-    @Published var pastEvents = [Event]()
+    @Published var feedEventIds = [Int]()
+    @Published var upcomingEventIds = [Int]()
+    @Published var pastEventIds = [Int]()
     @Published var eventImages = [Event:UIImage]()
     
-    var nearbyEventsResource: Resource
+    private var eventResources = [Resource]()
+    private var nearbyEventsResource: Resource
 
     init() {
         nearbyEventsResource = WHAPI.sharedInstance.nearbyEvents
@@ -36,6 +34,49 @@ class EventsListController: ObservableObject, ResourceObserver {
         WHAPI.sharedInstance.events.addObserver(self)
     }
     
+    var nearbyEvents: [Event] {
+        get { return getEvents(nearbyEventIds) }
+        set(val) {
+          nearbyEventIds = refreshEvents(val)
+        }
+    }
+    var yourEvents: [Event] {
+        get { return getEvents(yourEventIds) }
+        set(val) {
+          yourEventIds = refreshEvents(val)
+        }
+    }
+    var feedEvents: [Event] {
+        get { return getEvents(feedEventIds) }
+        set(val) {
+          feedEventIds = refreshEvents(val)
+        }
+    }
+    var upcomingEvents: [Event] {
+        get { return getEvents(upcomingEventIds) }
+        set(val) {
+          upcomingEventIds = refreshEvents(val)
+        }
+    }
+    var pastEvents: [Event] {
+        get { return getEvents(pastEventIds) }
+        set(val) {
+          pastEventIds = refreshEvents(val)
+        }
+    }
+    
+    func getEvents(_ arr: [Int]) -> [Event] {
+        var temp = [Event]()
+        arr.forEach( { id in
+            if let event = events[id] {
+                temp.append(event)
+            } else {
+            }
+        })
+        return temp
+    }
+    
+    // MARK: Load events
     func loadNearbyEvents() {
         let coordinates = locationManager.getCurrentLocation() ?? CoordinatePair(latitude: 0.0, longitude: 0.0)
         let range = 5.0
@@ -51,22 +92,40 @@ class EventsListController: ObservableObject, ResourceObserver {
         WHAPI.sharedInstance.yourEvents.loadIfNeeded()
     }
     
-    func loadImages(events: [Event]) {
+    // MARK: Load Images
+    func loadImage(_ event: Event) {
+        if (self.eventImages[event] != nil) {
+            return
+        }
+
+        if let url: String = event.imageURL {
+            let resource = WHAPI.sharedInstance.resource(absoluteURL: url)
+            if let request = resource.loadIfNeeded() {
+                request
+                .onSuccess { response in
+                    if let img: UIImage = response.typedContent() {
+                        self.eventImages[event] = img
+                    }
+                }
+                .onFailure { response in
+                }
+            }
+        }
+    }
+    
+    func loadImages(_ events: [Event]) {
         events.forEach({ event in
             if let url: String = event.imageURL {
                 let resource = WHAPI.sharedInstance.resource(absoluteURL: url)
                 if let request = resource.loadIfNeeded() {
-                //resource.loadIfNeeded()
                     request
                     .onSuccess { response in
                         print(response)
-                        print("image loaded")
                         if let img: UIImage = response.typedContent() {
                             self.eventImages[event] = img
                         }
                     }
                     .onFailure { response in
-                        print("image failed")
                     }
                 }
             }
@@ -75,7 +134,38 @@ class EventsListController: ObservableObject, ResourceObserver {
     
     func doRSVP(_ event: Event, status: String) {
         let requestContent: [String: Any] = ["rsvp_status": status.lowercased()] as [String: Any]
-        WHAPI.sharedInstance.events.child("\(event.id)/rsvp").request(.post, json: requestContent)
+        let res = WHAPI.sharedInstance.events.child("\(event.id)/rsvp")
+        res.addObserver(self)
+        res.request(.post, json: requestContent).onSuccess { response in
+            if let result: Event = response.typedContent() {
+                self.setEvent(result)
+            }
+        }
+    }
+    
+    // MARK: Set Events
+    func refreshEvents(_ items: [Event]) -> [Int] {
+        var tempIds = [Int]()
+        items.forEach { event in
+            setEvent(event)
+            let id = event.id
+            tempIds.append(id)
+        }
+        return tempIds
+    }
+    
+    func setEvent(_ event: Event) {
+        let oldEvent = events[event.id]
+        let id = event.id
+        self.events[id] = event
+        if let oE = oldEvent {
+            if (oldEvent?.imageURL == event.imageURL && eventImages[oE] != nil) {
+                eventImages[event] = eventImages.removeValue(forKey: oE)
+            }
+        }
+        if (eventImages[event] == nil) {
+            loadImage(event)
+        }
     }
     
     func resourceChanged(_ resource: Resource, event: ResourceEvent) {
@@ -83,27 +173,23 @@ class EventsListController: ObservableObject, ResourceObserver {
         // Handle nearby
         case nearbyEventsResource:
             if let result: [Event] = resource.typedContent() {
-                self.nearbyEvents = result
-                self.loadImages(events: self.nearbyEvents)
+                nearbyEventIds = refreshEvents(result)
             }
         case WHAPI.sharedInstance.yourEvents:
             if let result: [Event] = resource.typedContent() {
-                self.yourEvents = result
-                self.loadImages(events: self.yourEvents)
+                yourEventIds = refreshEvents(result)
             }
         case WHAPI.sharedInstance.pastEvents:
             if let result: [Event] = resource.typedContent() {
-                self.pastEvents = result
-                self.loadImages(events: self.pastEvents)
+                pastEventIds = refreshEvents(result)
             }
         case WHAPI.sharedInstance.upcomingEvents:
             if let result: [Event] = resource.typedContent() {
-                self.upcomingEvents = result
-                self.loadImages(events: self.upcomingEvents)
+                upcomingEventIds = refreshEvents(result)
             }
         case WHAPI.sharedInstance.events:
             if let result: Event = resource.typedContent() {
-                
+                events[result.id] = result
             }
         default:
             break

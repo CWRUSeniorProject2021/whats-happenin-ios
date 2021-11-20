@@ -14,7 +14,7 @@ struct EventRow: View {
     var body: some View {
         ZStack {
             Color("ListRowColor")
-            NavigationLink(destination: EventDetailView(event: event)) { EmptyView() }
+            NavigationLink(destination: EventDetailView(event: $event)) { EmptyView() }
             .buttonStyle(PlainButtonStyle())
             .opacity(0.0)
             VStack {

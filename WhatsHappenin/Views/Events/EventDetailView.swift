@@ -10,7 +10,7 @@ import CoreData
 
 struct EventDetailView : View {
     @SwiftUI.Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @State var event: Event
+    @Binding var event: Event
     @State private var controller: EventsListController = EventsListController.sharedInstance
     @State private var rsvpStatus: RSVPStatus = RSVPStatus.no
     
@@ -221,7 +221,7 @@ struct EventDetailView : View {
 
 struct EventInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        EventDetailView(event: Event.samples()[0]).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        EventDetailView(event: Binding.constant(Event.samples()[0])).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
 
