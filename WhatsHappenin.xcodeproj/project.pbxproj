@@ -26,6 +26,8 @@
 		190EB57F26E8375300822E65 /* SiestaUI in Frameworks */ = {isa = PBXBuildFile; productRef = 190EB57E26E8375300822E65 /* SiestaUI */; };
 		19382C4C27484C0400476449 /* RSVPStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19382C4B27484C0400476449 /* RSVPStatus.swift */; };
 		19382C4E274852EA00476449 /* PartialBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19382C4D274852EA00476449 /* PartialBorder.swift */; };
+		196715F427513DE40067BED4 /* RSVPSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196715F327513DE40067BED4 /* RSVPSection.swift */; };
+		196715F727513E8C0067BED4 /* DetailImageWithTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196715F627513E8C0067BED4 /* DetailImageWithTitle.swift */; };
 		198ACAA02716112900037178 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198ACA9F2716112800037178 /* GenericResponse.swift */; };
 		198ACAA22716171B00037178 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198ACAA12716171B00037178 /* LocationManager.swift */; };
 		198ACAA627161EAB00037178 /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 198ACAA527161EAB00037178 /* SwiftUIRefresh */; };
@@ -79,6 +81,8 @@
 		190EB57A26E7EAE100822E65 /* WhatsHappenin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WhatsHappenin.entitlements; sourceTree = "<group>"; };
 		19382C4B27484C0400476449 /* RSVPStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSVPStatus.swift; sourceTree = "<group>"; };
 		19382C4D274852EA00476449 /* PartialBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialBorder.swift; sourceTree = "<group>"; };
+		196715F327513DE40067BED4 /* RSVPSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSVPSection.swift; sourceTree = "<group>"; };
+		196715F627513E8C0067BED4 /* DetailImageWithTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageWithTitle.swift; sourceTree = "<group>"; };
 		198ACA9F2716112800037178 /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		198ACAA12716171B00037178 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		19B2768F2730C34B0050438F /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -124,6 +128,7 @@
 		07900D0B26F7F66D00542CD2 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				196715F227513DD10067BED4 /* DetailComponents */,
 				19F2F5022731AEAE0095775B /* EventRow.swift */,
 				663AAF0A26FA657500248928 /* CreateEvent.swift */,
 				19B276A8273242130050438F /* EventDetailView.swift */,
@@ -202,6 +207,15 @@
 				190EB56E26E7EAD600822E65 /* Info.plist */,
 			);
 			path = WhatsHappeninUITests;
+			sourceTree = "<group>";
+		};
+		196715F227513DD10067BED4 /* DetailComponents */ = {
+			isa = PBXGroup;
+			children = (
+				196715F327513DE40067BED4 /* RSVPSection.swift */,
+				196715F627513E8C0067BED4 /* DetailImageWithTitle.swift */,
+			);
+			path = DetailComponents;
 			sourceTree = "<group>";
 		};
 		196D0EF62723683700E05CC8 /* Controllers */ = {
@@ -399,6 +413,7 @@
 				19382C4C27484C0400476449 /* RSVPStatus.swift in Sources */,
 				19F666A0270CB8A00080C6C3 /* Environment.swift in Sources */,
 				19F666AC270CDD0A0080C6C3 /* LoginView.swift in Sources */,
+				196715F427513DE40067BED4 /* RSVPSection.swift in Sources */,
 				07D654BA272DF92600EABA93 /* MapView.swift in Sources */,
 				19F2F50D2731F18B0095775B /* ImagePicker.swift in Sources */,
 				19F666B1270CF9BD0080C6C3 /* Address.swift in Sources */,
@@ -409,6 +424,7 @@
 				663AAF0B26FA657500248928 /* CreateEvent.swift in Sources */,
 				190EB54B26E7EAD500822E65 /* WhatsHappeninApp.swift in Sources */,
 				19F666B3270CF9CE0080C6C3 /* Country.swift in Sources */,
+				196715F727513E8C0067BED4 /* DetailImageWithTitle.swift in Sources */,
 				07900D0726F7F21A00542CD2 /* RegistrationView.swift in Sources */,
 				19F666C0270CFCAA0080C6C3 /* Comment.swift in Sources */,
 				19F666A8270CDAEE0080C6C3 /* Keychain.swift in Sources */,

@@ -13,107 +13,40 @@ struct EventDetailView : View {
     @Binding var event: Event
     @State private var controller: EventsListController = EventsListController.sharedInstance
     @State private var rsvpStatus: RSVPStatus = RSVPStatus.no
-    
-    let MAX_IMAGE_FRAME_HEIGHT: CGFloat = 500//px
-    
+        
     var body: some View {
         GeometryReader { outerGeometry in
             ZStack(alignment: .top) {
                 Color.clear
                 ScrollView {
                     VStack(alignment: .leading, spacing: 0) {
-                        GeometryReader { geometry in
-                            Image(uiImage: getHeaderImage())
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: geometry.size.width, height: self.getHeightForHeaderImage(geometry))
-                                .clipped()
-                                .offset(y: self.getOffsetForHeaderImage(geometry))
-                        }
-                        .frame(height: getScaledHeightForFrame(getHeaderImage(), geometry: outerGeometry))
+                        DetailImageWithTitle(event: $event, outerGeometry: .constant(outerGeometry))
                     
-                        HStack(spacing: 0) {
-                            Button(action: {
-                                if ($event.rsvp.wrappedValue != "yes") {
-                                    EventsListController.sharedInstance.doRSVP(event, status: "yes")
-                                }
-                            }) {
-                                Text("Yes")
-                                    .padding()
-                                    .frame(minWidth: 0, maxWidth: .infinity)
-                                    .background($event.rsvp.wrappedValue == "yes" ? Color("SelectedButton") : Color("UntappedButton"))
-                                    .foregroundColor(Color("FontColor"))
-                                    .border(width: 1, edges: [.bottom], color: .gray)
-                            }
-                            
-                            Button(action: {
-                                if ($event.rsvp.wrappedValue != "maybe") {
-                                    EventsListController.sharedInstance.doRSVP(event, status: "maybe")
-                                }
-                            }) {
-                                Text("Maybe")
-                                    .padding()
-                                    .frame(minWidth: 0, maxWidth: .infinity)
-                                    .background($event.rsvp.wrappedValue == "maybe" ? Color("SelectedButton") : Color("UntappedButton"))
-                                    .foregroundColor(Color("FontColor"))
-                                    .border(width: 1, edges: [.bottom, .leading, .trailing], color: .gray)
-                            }
-                            
-                            Button(action: {
-                                if ($event.rsvp.wrappedValue != "no") {
-                                    EventsListController.sharedInstance.doRSVP(event, status: "no")
-                                }
-                            }) {
-                                Text("No")
-                                    .padding()
-                                    .frame(minWidth: 0, maxWidth: .infinity)
-                                    .background($event.rsvp.wrappedValue == "no" ? Color("SelectedButton") : Color("UntappedButton"))
-                                    .foregroundColor(Color("FontColor"))
-                                    .border(width: 1, edges: [.bottom], color: .gray)
-                            }
-//                            Button("Yes") {
-//
-//                            }
-//                            .frame(minWidth: 0, maxWidth: .infinity)
-//                            .frame(height: 50)
-//                            .background(Color.green)
-//
-//
-//
-//                            Button("Maybe") {
-//
-//                            }
-//                            .frame(minWidth: 0, maxWidth: .infinity)
-//                            .frame(height: 50)
-//                            .background(Color.white)
-//                            //.border(width: 1, edges: [.leading, .bottom, .trailing], color: Color.gray)
-//                            .overlay(Divider(), alignment: .leading)
-//
-//                            Button("No") {
-//
-//                            }
-//                            .frame(minWidth: 0, maxWidth: .infinity)
-//                            .frame(height: 50)
-//                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-//                            .background(Color.red)
-                        }
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                        .frame(height: 50)
+                        RSVPSection(event: $event)
                         
                         VStack(alignment: .leading, spacing: 0) {
-                           
-
-                            let titleFont = Font.system(size: 30).bold()
-                            Text($event.title.wrappedValue)
-                                .font(titleFont)
+                            let startDate = $event.startDate.wrappedValue
+                            let endDate = $event.endDate.wrappedValue
+                            
+                            Text(dateDiff(startDate, to: endDate))
                                 .foregroundColor(Color("FontColor"))
+                                .padding()
+                            
+                            Divider()
+                            
+                            Text("LOCATION INFO")
+                                .foregroundColor(Color("FontColor"))
+                                .padding()
+                            
+                            Divider()
                             
                             let descriptionFont = Font.system(size: 16)
                             Text($event.description.wrappedValue)
                                 .font(descriptionFont)
                                 .foregroundColor(Color("FontColor"))
+                                .padding()
+                            Divider()
                         }
-                        .padding(EdgeInsets(top: 5, leading: 10, bottom: 10, trailing: 10))
                     }
                 }
                 .edgesIgnoringSafeArea(.top)
@@ -176,44 +109,24 @@ struct EventDetailView : View {
         }
     }
     
-    private func getScrollOffset(_ geometry: GeometryProxy) -> CGFloat {
-        geometry.frame(in: .global).minY
-    }
-    
-    private func getOffsetForHeaderImage(_ geometry: GeometryProxy) -> CGFloat {
-        let offset = getScrollOffset(geometry)
-        
-        if offset > 0 {
-            return -offset
+    private func dateDiff(_ from: Date, to: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US")
+        let diff = Calendar.current.dateComponents([.day], from: from, to: to)
+        let longFormat = "EEEE, MMM d, yyy HH:mm a"
+        let timeOnly = "HH:mm a"
+
+        dateFormatter.dateFormat = longFormat
+        if (diff.day == 0) {
+            let sD = dateFormatter.string(from: from)
+            dateFormatter.dateFormat = timeOnly
+            let eD = dateFormatter.string(from: to)
+            return "\(sD) - \(eD)"
+        } else {
+            let sD = dateFormatter.string(from: from)
+            let eD = dateFormatter.string(from: to)
+            return "\(sD) - \(eD)"
         }
-        
-        return 0
-    }
-    
-    private func getHeightForHeaderImage(_ geometry: GeometryProxy) -> CGFloat {
-        let offset = getScrollOffset(geometry)
-        let imageHeight = geometry.size.height
-        
-        if offset > 0 {
-            return imageHeight + offset
-        }
-        
-        return imageHeight
-    }
-    
-    private func getScaledHeightForFrame(_ image: UIImage, geometry: GeometryProxy) -> CGFloat {
-        let ratio = geometry.size.width / image.size.width
-        let scaledHeight = ratio * image.size.height
-        let finalHeight = scaledHeight <= MAX_IMAGE_FRAME_HEIGHT ? scaledHeight : MAX_IMAGE_FRAME_HEIGHT
-        return finalHeight
-    }
-    
-    private func getHeaderImage() -> UIImage {
-        if let img: UIImage = controller.eventImages[event] {
-            return img
-        }
-        
-        return UIImage(named: "SampleImage")!
     }
 }
 
