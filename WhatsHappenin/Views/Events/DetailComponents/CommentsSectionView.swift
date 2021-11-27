@@ -20,7 +20,7 @@ struct CommentsSectionView: View {
             let parentArr = Array(Array(comments.keys).sorted(by: { $0.id > $1.id}).enumerated())
             ForEach(parentArr, id: \.offset) { pID, parent in
                 CommentView(comment: .constant(parent))
-                    .padding(.top, pID == 0 ? 5 : 20)
+                    .padding(.top, pID == 0 ? 10 : 20)
                 
                 if let children = comments[parent] {
                     ForEach(children) { child in

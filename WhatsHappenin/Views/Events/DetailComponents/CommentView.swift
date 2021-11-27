@@ -22,8 +22,12 @@ struct CommentView: View {
                 Text(getTimeDiff(comment.createdAt))
                     .frame(width: 30, alignment: .leading)
                 
-                Text("REPLY BUTTON")
+                Button(action: createReply) {
+                    Text("Reply")
+                        
+                }
             }
+            .foregroundColor(Color("LightFontColor"))
             .padding(.top, 6)
             .font(Font.system(size: 12))
         }
@@ -47,6 +51,10 @@ struct CommentView: View {
         }
         
         return dateString
+    }
+    
+    func createReply() {
+        
     }
 }
 
