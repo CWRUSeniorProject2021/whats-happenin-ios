@@ -99,16 +99,32 @@ struct EventDetailView : View {
                 }
                 .edgesIgnoringSafeArea(.top)
                 
-                Button(action: {
-                    self.presentationMode.wrappedValue.dismiss()
-                }) {
-                    let backIconFont = Font.system(size: 30)
-                    Image(systemName: "chevron.backward.circle.fill")
-                        .font(backIconFont)
-                        .padding()
-                    //.foregroundColor(Color("IconColor"))
+                HStack {
+                    Button(action: {
+                        // DO stuff here
+                    }) {
+                        let backIconFont = Font.system(size: 30)
+                        Image(systemName: "chevron.backward.circle.fill")
+                            .font(backIconFont)
+                            .foregroundColor(Color.blue)
+                        //.foregroundColor(Color("IconColor"))
+                    }
+                    
                     Spacer()
+                    
+                    Button(action: {
+                        // DISPLAY THE DROPDOWN HERE
+                    }) {
+                        let dropdownFont = Font.system(size: 30)
+                        Image(systemName: "ellipsis.circle.fill")
+                            .font(dropdownFont)
+                            .foregroundColor(Color.blue)
+                    }
                 }
+                .padding(.top, 35)
+                .padding(.leading, 20)
+                .padding(.trailing, 20)
+                .edgesIgnoringSafeArea(.top)
             }
             .navigationBarTitle("")
             .navigationBarHidden(true)
