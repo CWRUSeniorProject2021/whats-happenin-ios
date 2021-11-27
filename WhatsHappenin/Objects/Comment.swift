@@ -7,18 +7,20 @@
 
 import Foundation
 
-struct Comment: Hashable, Codable {
+struct Comment: Hashable, Codable, Identifiable {
     var id: Int
     var text: String
     var parentId: Int?
-//    var commenterName: String
-//    var commenterId: Int
+    var createdAt: Date
+    var commenterName: String = "ctingle"
+    var commenterId: Int = 1
     
     enum CodingKeys: String, CodingKey {
         case id
         case text = "comment"
         case parentId = "parent_id"
-//        case commenterName = "commenter_name"
-//        case commenterId = "commenter_id"
+        case createdAt = "created_at"
+        case commenterName = "commenter_name"
+        case commenterId = "commenter_id"
     }
 }

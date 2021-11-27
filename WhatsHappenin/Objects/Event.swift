@@ -19,7 +19,7 @@ struct Event: Identifiable, Hashable, Codable, Imageable {
     var startDate: Date
     var endDate: Date
     var rsvp: String
-    var comments: [Comment]?
+    var comments: [Comment]
     
     var imageURL: String? {
         didSet {
@@ -71,12 +71,22 @@ struct Event: Identifiable, Hashable, Codable, Imageable {
             title: "Event Title #\(id)",
             description: "Desc of event here: ",
             attendeeLimit: 100,
-            address: Address(street1: "1750 Ansel Rd", city: "Cleveland", postalCode: "44106", state: StateAddress(name: "Ohio", code: "OH"), country: Country(name: "United States", code: "US")),
+            address: Address(street1: "1750 Ansel Rd", city: "Cleveland", postalCode: "44106", state: StateAddress(name: "Ohio", code: "OH"), country: Country(name: "United States", code: "US"), coordinates: CoordinatePair(latitude: 41.50412, longitude: -81.60944)),
             startDate: Date(),
             endDate: Date().addingTimeInterval(TimeInterval(3600)),
-            rsvp: "maybe"
+            rsvp: "maybe",
+            comments: [
+                Comment(id: 0, text: "I am parent 1", parentId: nil, createdAt: Date().addingTimeInterval(-100000)),
+                Comment(id: 1, text: "I am child 1 with asmfjsdkjdfhsj lots and lots and lots of long text blah blah blah \n\n\nblah blah blah", parentId: 0, createdAt: Date().addingTimeInterval(-5000)),
+                Comment(id: 2, text: "I am parent 2", parentId: nil, createdAt: Date().addingTimeInterval(-3550)),
+                Comment(id: 3, text: "I am parent 3", parentId: nil, createdAt: Date().addingTimeInterval(-3100)),
+                Comment(id: 4, text: "I am child 2 with short text", parentId: 3, createdAt: Date().addingTimeInterval(-3000)),
+                Comment(id: 5, text: "I am parent 4", parentId: nil, createdAt: Date().addingTimeInterval(-10)),
+                
+            ]
         )
     }
+    
 }
 
 struct EventList: Codable {

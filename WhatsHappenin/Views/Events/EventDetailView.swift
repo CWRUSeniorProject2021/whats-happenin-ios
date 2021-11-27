@@ -7,13 +7,14 @@
 
 import SwiftUI
 import CoreData
+import MapKit
 
 struct EventDetailView : View {
     @SwiftUI.Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @Binding var event: Event
     @State private var controller: EventsListController = EventsListController.sharedInstance
     @State private var rsvpStatus: RSVPStatus = RSVPStatus.no
-        
+    
     var body: some View {
         GeometryReader { outerGeometry in
             ZStack(alignment: .top) {
@@ -25,27 +26,73 @@ struct EventDetailView : View {
                         RSVPSection(event: $event)
                         
                         VStack(alignment: .leading, spacing: 0) {
-                            let startDate = $event.startDate.wrappedValue
-                            let endDate = $event.endDate.wrappedValue
-                            
-                            Text(dateDiff(startDate, to: endDate))
-                                .foregroundColor(Color("FontColor"))
-                                .padding()
+                            HStack {
+                                Image(systemName: "clock")
+                                    .font(Font.system(size: 30))
+                                    .foregroundColor(Color("IconColor"))
+                                
+                                let startDate = $event.startDate.wrappedValue
+                                let endDate = $event.endDate.wrappedValue
+                                
+                                Text(dateDiff(startDate, to: endDate))
+                                    .foregroundColor(Color("FontColor"))
+                            }
+                            .padding()
                             
                             Divider()
                             
-                            Text("LOCATION INFO")
-                                .foregroundColor(Color("FontColor"))
-                                .padding()
+                            HStack {
+                                Image(systemName: "map")
+                                    .font(Font.system(size: 30))
+                                    .foregroundColor(Color("IconColor"))
+                                
+                                let a = $event.address.wrappedValue
+                                Text(a.stringRepr)
+                                    .foregroundColor(Color("FontColor"))
+                            }
+                            .padding()
                             
+                            if let coords = event.address.coordinates {
+                                    Map(coordinateRegion: .constant(MKCoordinateRegion(
+                                            center: CLLocationCoordinate2D(
+                                                latitude: coords.latitude,
+                                                longitude: coords.longitude),
+                                            latitudinalMeters: 300,
+                                            longitudinalMeters: 300
+                                        )),
+                                        annotationItems: [IdentifiablePlace(id: event.id, coords: coords)]) { place in
+                                        MapMarker(coordinate: place.location,
+                                                  tint: Color.red)
+                                        
+                                    }
+                                    .scaledToFill()
+                                    .allowsHitTesting(false)
+                            }
+
                             Divider()
                             
-                            let descriptionFont = Font.system(size: 16)
-                            Text($event.description.wrappedValue)
-                                .font(descriptionFont)
-                                .foregroundColor(Color("FontColor"))
-                                .padding()
+                            HStack {
+                                Image(systemName: "text.bubble")
+                                    .font(Font.system(size: 30))
+                                    .foregroundColor(Color("IconColor"))
+                                
+                                VStack(alignment: .leading, spacing: 10) {
+                                    Text("Description")
+                                        .font(Font.system(size: 16))
+                                        .foregroundColor(Color("FontColor"))
+                                    
+                                    let descriptionFont = Font.system(size: 16)
+                                    Text($event.description.wrappedValue)
+                                        .font(descriptionFont)
+                                        .foregroundColor(Color("FontColor"))
+                                }
+                            }
+                            .padding()
+
                             Divider()
+                            
+                            CommentsSectionView(event: $event)
+                                .padding()
                         }
                     }
                 }
@@ -64,48 +111,6 @@ struct EventDetailView : View {
             }
             .navigationBarTitle("")
             .navigationBarHidden(true)
-            
-            //        Form{
-            //            Section{
-            //                Text("Event Name: \(event.title)")
-            //                Text("Event Description: \(event.description)")
-            //                .lineLimit(4)
-            //                .multilineTextAlignment(.leading)
-            //                .frame(minWidth: 100, maxWidth: 200, minHeight: 100, maxHeight: .infinity, alignment: .topLeading)
-            //            }
-            //
-            //            Section{
-            //                Text("Starts: \(event.startDate)")
-            //                Text("Ends: \(event.endDate)")
-            //                //Text("Starts: \(dateFormatter.string(from: event.startDate))")
-            //                //Text("Ends: \(dateFormatter.string(from: event.endDate))")
-            //            }
-            //
-            //            Text("Address: \(event.address.stringRepr)")
-            //                .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
-            //
-            //            Section{
-            //            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-            //                Text("RSVP")
-            //            })
-            //
-            //            }
-            //
-            //            Section{
-            //                Text("Comments:")
-            //                    .lineLimit(4)
-            //                    .multilineTextAlignment(.leading)
-            //                    .frame(minWidth: 100, maxWidth: 200, minHeight: 100, maxHeight: .infinity, alignment: .topLeading)
-            //
-            //                Text("Type Your Comment Here")
-            //
-            //                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-            //                    Text("Add Comment")
-            //                })
-            //            }
-            //            }
-            //            .navigationTitle("Event Details")
-            //        }
         }
     }
     
@@ -113,8 +118,8 @@ struct EventDetailView : View {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US")
         let diff = Calendar.current.dateComponents([.day], from: from, to: to)
-        let longFormat = "EEEE, MMM d, yyy HH:mm a"
-        let timeOnly = "HH:mm a"
+        let longFormat = "EEEE, MMM d, yyy hh:mm a"
+        let timeOnly = "hh:mm a"
 
         dateFormatter.dateFormat = longFormat
         if (diff.day == 0) {

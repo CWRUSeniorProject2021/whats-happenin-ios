@@ -27,7 +27,12 @@ struct Address: Hashable, Codable {
     }
     
     var stringRepr: String {
-        return "\(street1) \(street2 ?? "")\n\(city), \(state.name) \(postalCode)"
+        var output = "\(self.street1)"
+        if (self.street2 != nil && self.street2! != "") {
+            output += "\n\(self.street2!)"
+        }
+        output += "\n\(self.city), \(self.state.name) \(self.postalCode)"
+        return output
     }
 }
 
