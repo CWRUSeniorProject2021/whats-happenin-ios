@@ -15,6 +15,9 @@ struct EventDetailView : View {
     @State private var controller: EventsListController = EventsListController.sharedInstance
     @State private var rsvpStatus: RSVPStatus = RSVPStatus.no
     
+    @GestureState private var dragOffset = CGSize.zero
+
+    
     var body: some View {
         GeometryReader { outerGeometry in
             ZStack(alignment: .top) {
@@ -112,6 +115,13 @@ struct EventDetailView : View {
             .navigationBarTitle("")
             .navigationBarHidden(true)
         }
+        // Add in a hacky gesture recognizer to go back to prev view
+        //https://stackoverflow.com/questions/58234142/how-to-give-back-swipe-gesture-in-swiftui-the-same-behaviour-as-in-uikit-intera
+        .gesture(DragGesture().updating($dragOffset, body: { (value, state, transaction) in
+             if(value.startLocation.x < 50 && value.translation.width > 100) {
+                 self.presentationMode.wrappedValue.dismiss()
+             }
+        }))
     }
     
     private func dateDiff(_ from: Date, to: Date) -> String {
