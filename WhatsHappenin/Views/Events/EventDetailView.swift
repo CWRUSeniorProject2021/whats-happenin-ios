@@ -11,12 +11,10 @@ import MapKit
 
 struct EventDetailView : View {
     @SwiftUI.Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @GestureState private var dragOffset = CGSize.zero
     @Binding var event: Event
     @State private var controller: EventsListController = EventsListController.sharedInstance
     @State private var rsvpStatus: RSVPStatus = RSVPStatus.no
-    
-    @GestureState private var dragOffset = CGSize.zero
-
     
     var body: some View {
         GeometryReader { outerGeometry in

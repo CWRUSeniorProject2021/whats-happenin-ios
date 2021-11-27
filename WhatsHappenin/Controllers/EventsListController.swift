@@ -29,6 +29,8 @@ class EventsListController: ObservableObject, ResourceObserver {
         loadNearbyEvents()
         
         WHAPI.sharedInstance.yourEvents.addObserver(self)
+        WHAPI.sharedInstance.upcomingEvents.addObserver(self)
+        WHAPI.sharedInstance.pastEvents.addObserver(self)
         loadYourEvents()
         
         WHAPI.sharedInstance.events.addObserver(self)
@@ -90,6 +92,8 @@ class EventsListController: ObservableObject, ResourceObserver {
     
     func loadYourEvents() {
         WHAPI.sharedInstance.yourEvents.loadIfNeeded()
+        WHAPI.sharedInstance.pastEvents.loadIfNeeded()
+        WHAPI.sharedInstance.upcomingEvents.loadIfNeeded()
     }
     
     // MARK: Load Images
