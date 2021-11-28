@@ -10,6 +10,7 @@ struct ShowProfilePage: View {
     @ObservedObject var controller = ProfilePageController.sharedInstance
     
     @Binding var isLoggedIn: Bool
+    @State private var willMoveToNextScreen = false
     
     var body: some View {
         VStack {
@@ -45,10 +46,7 @@ struct ShowProfilePage: View {
 
         Spacer().frame(height: 30)
 
-        Button {
-            print("Editing info...")
-            
-        } label : {
+        NavigationLink(destination: EditProfileInfo()) {
             Text("Edit Information")
                 .bold()
                 .frame(width: 260, height: 50)
@@ -80,39 +78,3 @@ struct ShowProfilePage_Previews: PreviewProvider {
         ShowProfilePage(isLoggedIn: .constant(true))
     }
 }
-
-extension View {
-    /// Navigate to a new view.
-    /// - Parameters:
-    ///   - view: View to navigate to.
-    ///   - binding: Only navigates when this condition is `true`.
-    func navigate<NewView: View>(to view: NewView, when binding: Binding<Bool>) -> some View {
-        NavigationView {
-            ZStack {
-                self
-                    .navigationBarTitle("")
-                    .navigationBarHidden(true)
-
-                NavigationLink(
-                    destination: view
-                        .navigationBarTitle("")
-                        .navigationBarHidden(true),
-                    isActive: binding
-                ) {
-                    EmptyView()
-                }
-            }
-        }
-        .navigationViewStyle(.stack)
-    }
-}
-
-/*
- 
-First Name + Last Name
-Email
-School
-Username
- 
- 
-*/
