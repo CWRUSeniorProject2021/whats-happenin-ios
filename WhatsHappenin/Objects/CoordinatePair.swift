@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct CoordinatePair: Hashable, Codable {
+struct CoordinatePair: Hashable, Codable, Identifiable {
+    let id = UUID()
     var latitude: Double
     var longitude: Double
     
@@ -16,3 +17,5 @@ struct CoordinatePair: Hashable, Codable {
         case longitude
     }
 }
+
+

@@ -6,24 +6,29 @@
 //
 import MapKit
 import SwiftUI
+import CoreLocation
 
 struct ShowMap: View {
     @StateObject private var viewModel = ShowMapModel()
     @ObservedObject private var controller = EventsListController.sharedInstance
 
     var body: some View {
+        
+        let groupedEvents = groupEvents(controller.nearbyEvents)
+        let coords = Array(groupedEvents.keys)
+        
         Map(coordinateRegion: $viewModel.region,
             showsUserLocation: true,
-            annotationItems: controller.nearbyEvents) { event in
-                    MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: event.address.coordinates?.latitude ?? 41.51273, longitude: event.address.coordinates?.longitude ?? -81.60443)) {
-                            NavigationLink(
-                                destination: EventDetailView(event: Binding.constant(event)),
-                                label: {
-                                    PlaceAnnotationView(title: event.title)
-
-                                })
+            //userTrackingMode: .constant(MapUserTrackingMode.follow),
+            annotationItems: coords) { coord in
+            MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: coord.latitude ?? 41.51273, longitude: coord.longitude ?? -81.60443)) {
+                        //we will need a popup here that shows list of events
+                        // groupedEvents[coord] for the list of events
+                        //i will need to make a popup function that shows a list of the events
+                        
+                        PlaceAnnotationView(events: groupedEvents[coord]!)
+                                }
                         }
-            }
             .ignoresSafeArea()
 //            .accentColor(Color(.systemPink)) // change current location circle to pink ^_^
             .onAppear {
@@ -32,6 +37,40 @@ struct ShowMap: View {
                     
             }
     }
+    func isEventWithinDistance(from: CoordinatePair, to: CoordinatePair, range: Double) -> Bool{
+        let from = CLLocation(latitude: from.latitude, longitude: from.longitude)
+        let to = CLLocation(latitude: to.latitude, longitude: to.longitude)
+        
+        let distanceInMeters = to.distance(from: from)
+        
+        if (distanceInMeters <= range){
+            return true
+        }
+        return false
+    }
+    
+    func groupEvents(_ events: [Event]) -> [CoordinatePair: [Event]] {
+            var output = [CoordinatePair: [Event]]()
+            var alreadyGroupedEvents = [Event]()
+            let filteredEvents = events.filter { event in return event.address.coordinates != nil }
+            filteredEvents.forEach { event in
+                var toAdd = [event]
+                
+                alreadyGroupedEvents.append(event)
+                let eventsToGroup = filteredEvents.filter { fe in
+                    return !alreadyGroupedEvents.contains(fe) && isEventWithinDistance(from: event.address.coordinates!, to: fe.address.coordinates!, range: 10)
+                }
+                
+                eventsToGroup.forEach { fe in
+                    alreadyGroupedEvents.append(fe)
+                    toAdd.append(fe)
+                }
+                
+                output[event.address.coordinates!] = toAdd
+            }
+            print(output)
+            return output
+        }
 //
 //    func updateUIView(_ view: MKMapView, context: Context) {
 //
@@ -103,17 +142,27 @@ final class ShowMapModel: NSObject, ObservableObject, CLLocationManagerDelegate 
 
 // We can use a custom one in later versions (designed)
 struct PlaceAnnotationView: View {
-  let title: String
+//  let title: String
+    let events: [Event]
 
   var body: some View {
     VStack(spacing: 0) {
 
-      Image(systemName: "bell.badge")
-            .resizable()
-            .scaledToFit()
-            .frame(width: 30, height: 30)
-            .font(.title)
-            .foregroundColor(.red)
+
+                Menu {
+                    ForEach(events) { event in
+                        Text(event.title)
+                        //NavigationLink(event.title, destination: EventDetailView(event: Binding.constant(event)))
+                    }
+                } label: {
+                    Image(systemName: "mappin")
+                          .resizable()
+                          .scaledToFit()
+                          .frame(width: 30, height: 30)
+                          .font(.title)
+                          .foregroundColor(.red)
+                }
+            
 //
         // Uncomment for standard marker
 //        Image(systemName: "mappin.circle.fill")
