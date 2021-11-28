@@ -59,7 +59,6 @@ struct DetailImageWithTitle: View {
         if offset > 0 {
             return imageHeight + offset
         }
-        
         return imageHeight
     }
     

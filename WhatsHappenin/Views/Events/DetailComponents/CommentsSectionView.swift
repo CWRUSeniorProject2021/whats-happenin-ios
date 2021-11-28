@@ -16,10 +16,6 @@ struct CommentsSectionView: View {
                 .font(Font.system(size: 20))
                 .foregroundColor(Color("FontColor"))
             
-            HStack {
-                
-            }
-            
             let comments = sortAndArrangeComments(event.comments)
             let parentArr = Array(Array(comments.keys).sorted(by: { $0.id > $1.id}).enumerated())
             ForEach(parentArr, id: \.offset) { pID, parent in

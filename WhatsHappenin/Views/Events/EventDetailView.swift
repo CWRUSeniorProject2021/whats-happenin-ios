@@ -16,6 +16,8 @@ struct EventDetailView : View {
     @State private var controller: EventsListController = EventsListController.sharedInstance
     @State private var rsvpStatus: RSVPStatus = RSVPStatus.no
     
+    @State var isCommenting: Bool = false
+    
     var body: some View {
         GeometryReader { outerGeometry in
             ZStack(alignment: .top) {
@@ -99,32 +101,46 @@ struct EventDetailView : View {
                 }
                 .edgesIgnoringSafeArea(.top)
                 
-                HStack {
-                    Button(action: {
-                        // DO stuff here
-                    }) {
-                        let backIconFont = Font.system(size: 30)
-                        Image(systemName: "chevron.backward.circle.fill")
-                            .font(backIconFont)
-                            .foregroundColor(Color.blue)
-                        //.foregroundColor(Color("IconColor"))
+                VStack {
+                    HStack {
+                        Button(action: {
+                            // DO stuff here
+                        }) {
+                            let backIconFont = Font.system(size: 30)
+                            Image(systemName: "chevron.backward.circle.fill")
+                                .font(backIconFont)
+                                .foregroundColor(Color.blue)
+                            //.foregroundColor(Color("IconColor"))
+                        }
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            // DISPLAY THE DROPDOWN HERE
+                        }) {
+                            let dropdownFont = Font.system(size: 30)
+                            Image(systemName: "ellipsis.circle.fill")
+                                .font(dropdownFont)
+                                .foregroundColor(Color.blue)
+                        }
                     }
+                    .padding(.top, 35)
+                    .padding(.leading, 20)
+                    .padding(.trailing, 20)
+                    .edgesIgnoringSafeArea(.top)
                     
                     Spacer()
                     
-                    Button(action: {
-                        // DISPLAY THE DROPDOWN HERE
-                    }) {
-                        let dropdownFont = Font.system(size: 30)
-                        Image(systemName: "ellipsis.circle.fill")
-                            .font(dropdownFont)
-                            .foregroundColor(Color.blue)
+                    if ($isCommenting.wrappedValue) {
+                        HStack(spacing: 0) {
+                            Text("Comment")
+                            //TextField("Comment")
+                        }
+                        .frame(width: outerGeometry.size.width, height: 65)
+                        .background(Color.white)
                     }
                 }
-                .padding(.top, 35)
-                .padding(.leading, 20)
-                .padding(.trailing, 20)
-                .edgesIgnoringSafeArea(.top)
+                .edgesIgnoringSafeArea(.bottom)
             }
             .navigationBarTitle("")
             .navigationBarHidden(true)
