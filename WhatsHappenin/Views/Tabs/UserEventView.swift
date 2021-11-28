@@ -83,7 +83,7 @@ struct Home : View {
             .background(Color.black.opacity(0.06))
             .clipShape(Capsule())
             .padding(.horizontal)
-            .offset(y: -35)
+            .offset(y: -65)
 
             TabView(selection: self.$index) {
                 
@@ -92,7 +92,7 @@ struct Home : View {
                     List($controller.pastEvents) { $event in
                         EventRow(event: $event, controller: controller)
                     }
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 24, trailing: 0))
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                     .edgesIgnoringSafeArea(.all)
                     .listStyle(PlainListStyle())
                     .pullToRefresh(isShowing: $isRefreshing) {
@@ -111,7 +111,7 @@ struct Home : View {
                     List($controller.yourEvents) { $event in
                         EventRow(event: $event, controller: controller)
                     }
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 24, trailing: 0))
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                     .edgesIgnoringSafeArea(.all)
                     .listStyle(PlainListStyle())
                     .pullToRefresh(isShowing: $isRefreshing) {
@@ -130,7 +130,7 @@ struct Home : View {
                     List($controller.upcomingEvents) { $event in
                         EventRow(event: $event, controller: controller)
                     }
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 24, trailing: 0))
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                     .edgesIgnoringSafeArea(.all)
                     .listStyle(PlainListStyle())
                     .pullToRefresh(isShowing: $isRefreshing) {
@@ -144,9 +144,10 @@ struct Home : View {
                 }
                 .tag(2)
             }
+            .offset(y: -60)
+            .padding(.bottom, -60)
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             
-            Spacer(minLength: 0)
         }
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
