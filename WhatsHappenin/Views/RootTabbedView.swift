@@ -35,7 +35,7 @@ struct RootTabbedView: View {
             
             NavigationView {
                 UserEventView()
-                    .navigationTitle("Your Events")
+                    .navigationTitle("")
             }
             .tabItem {
                 Label("Your Events", systemImage: "calendar")
