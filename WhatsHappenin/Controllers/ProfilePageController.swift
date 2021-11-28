@@ -9,25 +9,33 @@ import Foundation
 import Siesta
 import CoreLocation
 
-class ProfilePageController: ObservableObject { // Should we keep? --> ResourceObserver {
-    var profilePageResource: Resource// [String : String]
-    let username = LoginView(isLoggedIn: .constant(false)).username
-//    let user = WHAPI.sharedInstance.auth.request()
+class ProfilePageController: ObservableObject, ResourceObserver { // Should we keep? --> ResourceObserver {
+    @Published var myProfile : MyProfile?
+    static let sharedInstance = ProfilePageController()
     
-//    let lastName = RegistrationView().lastName
-//    let emailAddr = RegistrationView().emailAddr
-//    let standing = RegistrationView().standing
     init() {
-        profilePageResource = WHAPI.sharedInstance.signInResource//.userAuthData()
+        WHAPI.sharedInstance.myProfile.addObserver(self)
+        loadMyProfile()
     }
-
+    
+    func loadMyProfile() {
+        WHAPI.sharedInstance.myProfile.load()
+    }
+    
     func resourceChanged(_ resource: Resource, event: ResourceEvent) {
-        print("hit resource changed")
-    }
-
-    func printProfile() {
-//        print("\(username) and \(firstName) \(lastName) and \(emailAddr) and \(standing)")
+        switch (resource) {
+        // Handle nearby
+        case WHAPI.sharedInstance.myProfile:
+            if let result: MyProfile = resource.typedContent() {
+                myProfile = result
+            }
+            
+        default:
+            break
+        }
+        
+        print(resource)
+        print(event)
+        
     }
 }
-
-let profilePageController = ProfilePageController()
