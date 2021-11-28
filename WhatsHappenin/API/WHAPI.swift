@@ -144,6 +144,7 @@ class WHAPI: Service {
                 self.authClient = $0.headers[Keys.Auth.Client]
                 self.authUID = $0.headers[Keys.Auth.UID]
                 self.invalidateConfiguration()                    // …make future requests use it
+                ProfilePageController.sharedInstance.loadMyProfile()
             }
             .onFailure { _ in
                 self.clearAuthDetails()

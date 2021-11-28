@@ -29,24 +29,23 @@ struct ShowProfilePage: View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
                 Image(systemName: "envelope")
-                Text(controller.myProfile?.username ?? "N/A")
+                Text($controller.myProfile.wrappedValue?.username ?? "N/A")
             }
 
             HStack {
                 Image(systemName: "phone")
-                Text(controller.myProfile?.firstName ?? "N/A")
+                Text($controller.myProfile.wrappedValue?.firstName ?? "N/A")
             }
 
             HStack {
                 Image(systemName: "network")
-                Text(controller.myProfile?.lastName ?? "N/A")
+                Text($controller.myProfile.wrappedValue?.lastName ?? "N/A")
             }
         }
 
         Spacer().frame(height: 30)
 
         Button {
-//            controller.loadMyProfile()
             print("Button Tapped")
             WHAPI.sharedInstance.logout()
                 .onSuccess { _ in
