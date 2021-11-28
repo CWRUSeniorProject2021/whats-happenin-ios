@@ -16,7 +16,8 @@ struct EventDetailView : View {
     @State private var controller: EventsListController = EventsListController.sharedInstance
     @State private var rsvpStatus: RSVPStatus = RSVPStatus.no
     
-    @State var isCommenting: Bool = false
+    @State var isCommenting: Bool = true
+    @State var newComment: String = ""
     
     var body: some View {
         GeometryReader { outerGeometry in
@@ -104,7 +105,7 @@ struct EventDetailView : View {
                 VStack {
                     HStack {
                         Button(action: {
-                            // DO stuff here
+                            self.presentationMode.wrappedValue.dismiss()
                         }) {
                             let backIconFont = Font.system(size: 30)
                             Image(systemName: "chevron.backward.circle.fill")
@@ -131,13 +132,29 @@ struct EventDetailView : View {
                     
                     Spacer()
                     
-                    if ($isCommenting.wrappedValue) {
+                    if (isCommenting) {
                         HStack(spacing: 0) {
-                            Text("Comment")
-                            //TextField("Comment")
+                            TextField("Add a comment",
+                                      text: $newComment)
+                                .border(.secondary)
+                                .padding(.leading, 20)
+                            Spacer()
+                            
+                            Button(action: {
+                                
+                            }) {
+                                let submitButtonFont = Font.system(size:16)
+                                Text("Post")
+                                    .font(submitButtonFont)
+                            }
+                            .padding(.trailing, 20)
                         }
                         .frame(width: outerGeometry.size.width, height: 65)
-                        .background(Color.white)
+                        .background(Color.white
+                                        .shadow(color: Color.gray, radius: 6, x: 0, y: 0)
+                                        .mask(Rectangle()
+                                                .padding(.top, -20)
+                                                .edgesIgnoringSafeArea(.all)))
                     }
                 }
                 .edgesIgnoringSafeArea(.bottom)
@@ -152,6 +169,12 @@ struct EventDetailView : View {
                  self.presentationMode.wrappedValue.dismiss()
              }
         }))
+        .introspectTabBarController { (UITabBarController) in
+            UITabBarController.tabBar.isHidden = true
+            uiTabarController = UITabBarController
+        }.onDisappear{
+            uiTabarController?.tabBar.isHidden = false
+        }
     }
     
     private func dateDiff(_ from: Date, to: Date) -> String {
