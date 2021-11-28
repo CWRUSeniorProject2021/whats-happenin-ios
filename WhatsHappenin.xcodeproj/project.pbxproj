@@ -44,7 +44,6 @@
 		19B2769F2730EEA60050438F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B2769E2730EEA60050438F /* Constants.swift */; };
 		19B276A12730EFB30050438F /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B276A02730EFB30050438F /* Keys.swift */; };
 		19B276A9273242130050438F /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B276A8273242130050438F /* EventDetailView.swift */; };
-		19EF083F27530AC300C0DE29 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 19EF083E27530AC300C0DE29 /* Introspect */; };
 		19F2F5032731AEAE0095775B /* EventRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F2F5022731AEAE0095775B /* EventRow.swift */; };
 		19F2F5072731B0D90095775B /* Imageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F2F5062731B0D90095775B /* Imageable.swift */; };
 		19F2F50B2731D8C10095775B /* RemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F2F50A2731D8C10095775B /* RemoteImageView.swift */; };
@@ -132,7 +131,6 @@
 			files = (
 				198ACAA627161EAB00037178 /* SwiftUIRefresh in Frameworks */,
 				19F666A5270CD5920080C6C3 /* KeychainSwift in Frameworks */,
-				19EF083F27530AC300C0DE29 /* Introspect in Frameworks */,
 				190EB57D26E8375300822E65 /* Siesta in Frameworks */,
 				190EB57F26E8375300822E65 /* SiestaUI in Frameworks */,
 			);
@@ -362,7 +360,6 @@
 				190EB57E26E8375300822E65 /* SiestaUI */,
 				19F666A4270CD5920080C6C3 /* KeychainSwift */,
 				198ACAA527161EAB00037178 /* SwiftUIRefresh */,
-				19EF083E27530AC300C0DE29 /* Introspect */,
 			);
 			productName = WhatsHappenin;
 			productReference = 190EB54726E7EAD500822E65 /* WhatsHappenin.app */;
@@ -395,7 +392,6 @@
 				190EB57B26E8375200822E65 /* XCRemoteSwiftPackageReference "siesta" */,
 				19F666A3270CD5920080C6C3 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 				198ACAA427161EAB00037178 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */,
-				19EF083D27530AC300C0DE29 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = 190EB54826E7EAD500822E65 /* Products */;
 			projectDirPath = "";
@@ -853,14 +849,6 @@
 				kind = branch;
 			};
 		};
-		19EF083D27530AC300C0DE29 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.3;
-			};
-		};
 		19F666A3270CD5920080C6C3 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
@@ -886,11 +874,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 198ACAA427161EAB00037178 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */;
 			productName = SwiftUIRefresh;
-		};
-		19EF083E27530AC300C0DE29 /* Introspect */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 19EF083D27530AC300C0DE29 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
-			productName = Introspect;
 		};
 		19F666A4270CD5920080C6C3 /* KeychainSwift */ = {
 			isa = XCSwiftPackageProductDependency;
