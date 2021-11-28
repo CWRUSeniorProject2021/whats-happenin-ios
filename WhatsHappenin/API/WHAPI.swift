@@ -66,6 +66,10 @@ class WHAPI: Service {
         configureTransformer("/events/*/rsvp") {
             try self.jsonDecoder.decode(GenericResponse<SingleEvent>.self, from: $0.content).data.event
         }
+        
+        configureTransformer("/events/*") {
+            try self.jsonDecoder.decode(GenericResponse<SingleEvent>.self, from: $0.content).data.event
+        }
 
         configureTransformer("/events/nearby") {
             try self.jsonDecoder.decode(GenericResponse<EventList>.self, from: $0.content).data.events

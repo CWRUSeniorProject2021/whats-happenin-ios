@@ -17,6 +17,8 @@
 		07D654BE272DF93900EABA93 /* UserEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D654BD272DF93900EABA93 /* UserEventView.swift */; };
 		07D654C2272DF94500EABA93 /* NearbyEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D654C1272DF94500EABA93 /* NearbyEventView.swift */; };
 		07D654C6272DF95100EABA93 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D654C5272DF95100EABA93 /* ProfileView.swift */; };
+		190B907E2753FFEC00370487 /* NewCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190B907D2753FFEC00370487 /* NewCommentView.swift */; };
+		190B90802754032000370487 /* NewCommentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190B907F2754032000370487 /* NewCommentData.swift */; };
 		190EB54B26E7EAD500822E65 /* WhatsHappeninApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190EB54A26E7EAD500822E65 /* WhatsHappeninApp.swift */; };
 		190EB54F26E7EAD600822E65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 190EB54E26E7EAD600822E65 /* Assets.xcassets */; };
 		190EB55226E7EAD600822E65 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 190EB55126E7EAD600822E65 /* Preview Assets.xcassets */; };
@@ -71,6 +73,8 @@
 		07D654BD272DF93900EABA93 /* UserEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEventView.swift; sourceTree = "<group>"; };
 		07D654C1272DF94500EABA93 /* NearbyEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyEventView.swift; sourceTree = "<group>"; };
 		07D654C5272DF95100EABA93 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		190B907D2753FFEC00370487 /* NewCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCommentView.swift; sourceTree = "<group>"; };
+		190B907F2754032000370487 /* NewCommentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCommentData.swift; sourceTree = "<group>"; };
 		190EB54726E7EAD500822E65 /* WhatsHappenin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsHappenin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		190EB54A26E7EAD500822E65 /* WhatsHappeninApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsHappeninApp.swift; sourceTree = "<group>"; };
 		190EB54E26E7EAD600822E65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -224,6 +228,7 @@
 				196715F327513DE40067BED4 /* RSVPSection.swift */,
 				196715F627513E8C0067BED4 /* DetailImageWithTitle.swift */,
 				196715FD2751E6740067BED4 /* CommentsSectionView.swift */,
+				190B907D2753FFEC00370487 /* NewCommentView.swift */,
 			);
 			path = DetailComponents;
 			sourceTree = "<group>";
@@ -325,6 +330,7 @@
 				19F666BF270CFCAA0080C6C3 /* Comment.swift */,
 				19F666C3270D0C9E0080C6C3 /* StateAddress.swift */,
 				198ACA9F2716112800037178 /* GenericResponse.swift */,
+				190B907F2754032000370487 /* NewCommentData.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -418,6 +424,7 @@
 				19B276992730D9060050438F /* ShowProfilePage.swift in Sources */,
 				190EB55726E7EAD600822E65 /* WhatsHappenin.xcdatamodeld in Sources */,
 				19B276A9273242130050438F /* EventDetailView.swift in Sources */,
+				190B90802754032000370487 /* NewCommentData.swift in Sources */,
 				07D654C2272DF94500EABA93 /* NearbyEventView.swift in Sources */,
 				19F666C9270D1F530080C6C3 /* EventsListController.swift in Sources */,
 				190EB55426E7EAD600822E65 /* Persistence.swift in Sources */,
@@ -439,6 +446,7 @@
 				07D654BA272DF92600EABA93 /* MapView.swift in Sources */,
 				19F2F50D2731F18B0095775B /* ImagePicker.swift in Sources */,
 				19F666B1270CF9BD0080C6C3 /* Address.swift in Sources */,
+				190B907E2753FFEC00370487 /* NewCommentView.swift in Sources */,
 				196715FA2751C0EE0067BED4 /* MapPin.swift in Sources */,
 				19F666B8270CF9F50080C6C3 /* CoordinatePair.swift in Sources */,
 				198ACAA22716171B00037178 /* LocationManager.swift in Sources */,
@@ -588,7 +596,7 @@
 				CODE_SIGN_ENTITLEMENTS = WhatsHappenin/WhatsHappenin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"WhatsHappenin/Preview Content\"";
-				DEVELOPMENT_TEAM = 9NDA238J6N;
+				DEVELOPMENT_TEAM = Z6G83N9S59;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = WhatsHappenin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -612,7 +620,7 @@
 				CODE_SIGN_ENTITLEMENTS = WhatsHappenin/WhatsHappenin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"WhatsHappenin/Preview Content\"";
-				DEVELOPMENT_TEAM = 9NDA238J6N;
+				DEVELOPMENT_TEAM = Z6G83N9S59;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = WhatsHappenin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -698,7 +706,7 @@
 				CODE_SIGN_ENTITLEMENTS = WhatsHappenin/WhatsHappenin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"WhatsHappenin/Preview Content\"";
-				DEVELOPMENT_TEAM = 9NDA238J6N;
+				DEVELOPMENT_TEAM = Z6G83N9S59;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = WhatsHappenin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -778,7 +786,7 @@
 				CODE_SIGN_ENTITLEMENTS = WhatsHappenin/WhatsHappenin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"WhatsHappenin/Preview Content\"";
-				DEVELOPMENT_TEAM = 9NDA238J6N;
+				DEVELOPMENT_TEAM = Z6G83N9S59;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = WhatsHappenin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;

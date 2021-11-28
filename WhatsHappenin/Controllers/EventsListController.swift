@@ -147,6 +147,19 @@ class EventsListController: ObservableObject, ResourceObserver {
         }
     }
     
+    func reloadEvent(_ eventId: Int) {
+        let res = WHAPI.sharedInstance.events.child("\(eventId)")
+        res.load().onSuccess { response in
+            if let result: Event = response.typedContent() {
+                self.setEvent(result)
+            }
+        }
+    }
+    
+    func reloadEvent(_ event: Event) {
+        reloadEvent(event.id)
+    }
+    
     // MARK: Set Events
     func refreshEvents(_ items: [Event]) -> [Int] {
         var tempIds = [Int]()
@@ -173,6 +186,7 @@ class EventsListController: ObservableObject, ResourceObserver {
     }
     
     func resourceChanged(_ resource: Resource, event: ResourceEvent) {
+        print("got resource changed")
         switch (resource) {
         // Handle nearby
         case nearbyEventsResource:
@@ -191,11 +205,10 @@ class EventsListController: ObservableObject, ResourceObserver {
             if let result: [Event] = resource.typedContent() {
                 upcomingEventIds = refreshEvents(result)
             }
-        case WHAPI.sharedInstance.events:
+        default:
             if let result: Event = resource.typedContent() {
                 events[result.id] = result
             }
-        default:
             break
         }
         

@@ -16,8 +16,8 @@ struct EventDetailView : View {
     @State private var controller: EventsListController = EventsListController.sharedInstance
     @State private var rsvpStatus: RSVPStatus = RSVPStatus.no
     
-    @State var isCommenting: Bool = true
-    @State var newComment: String = ""
+    @ObservedObject var newCommentData: NewCommentData = NewCommentData()
+    @State private var isPostingComment: Bool = false
     
     @FocusState private var focusedField: Field?
     
@@ -101,7 +101,7 @@ struct EventDetailView : View {
 
                             Divider()
                             
-                            CommentsSectionView(event: $event)
+                            CommentsSectionView(event: $event, newCommentData: newCommentData)
                                 .padding()
                         }
                     }
@@ -109,7 +109,7 @@ struct EventDetailView : View {
                 .edgesIgnoringSafeArea(.top)
                 .onTapGesture {
                     focusedField = nil
-                    isCommenting = false
+                    newCommentData.isCommenting = false
                 }
                 
                 VStack {
@@ -159,11 +159,11 @@ struct EventDetailView : View {
                     
                     Spacer()
                     
-                    if (isCommenting) {
+                    if (newCommentData.isCommenting) {
                         ZStack() {
                             HStack(spacing: 0) {
-                                TextField("Add a comment",
-                                          text: $newComment)
+                                TextField($newCommentData.placeholder.wrappedValue ?? "Add a comment...",
+                                          text: $newCommentData.text)
                                     .focused($focusedField, equals: .commentField)
                                     .padding(.leading, 15)
                                     .padding(.trailing, 5)
@@ -171,7 +171,24 @@ struct EventDetailView : View {
                                 Spacer()
                                 
                                 Button(action: {
-                                    
+                                    if (newCommentData.text != "") {
+                                        self.isPostingComment = true
+                                        let requestData: [String: Any] = [
+                                            "text": newCommentData.text,
+                                            "parent_id": newCommentData.parentId ?? ""
+                                        ] as [String: Any]
+                                        WHAPI.sharedInstance.events.child("\(event.id)").child("comments").request(.post, json: requestData)
+                                            .onSuccess { response in
+                                                self.isPostingComment = false
+                                                self.newCommentData.isCommenting = false
+                                                self.focusedField = .none
+                                                EventsListController.sharedInstance.reloadEvent(event)
+                                            }
+                                            .onFailure { error in
+                                                self.isPostingComment = false
+                                                // HANDLE FAILURE HERE
+                                            }
+                                    }
                                 }) {
                                     let submitButtonFont = Font.system(size:16)
                                     Text("Post")
@@ -179,12 +196,16 @@ struct EventDetailView : View {
                                 }
                                 .padding(.trailing, 20)
                                 .padding(.vertical, 10)
+                                .disabled(self.isPostingComment)
                                                         
                             }
                             .background(Color("TextInput"))
                             .cornerRadius(20)
                             .padding(.leading, 20)
                             .padding(.trailing, 20)
+                        }
+                        .onAppear {
+                            self.focusedField = .commentField
                         }
                         .frame(width: outerGeometry.size.width, height: 65)
                         .background(Color("ListRowColor")

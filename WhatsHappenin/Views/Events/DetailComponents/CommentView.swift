@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CommentView: View {
     @Binding var comment: Comment
+    @ObservedObject var newCommentData: NewCommentData
     
     var body: some View {
         let isReply = comment.parentId != nil
@@ -24,7 +25,6 @@ struct CommentView: View {
                 
                 Button(action: createReply) {
                     Text("Reply")
-                        
                 }
             }
             .foregroundColor(Color("LightFontColor"))
@@ -54,13 +54,21 @@ struct CommentView: View {
     }
     
     func createReply() {
+        self.newCommentData.isCommenting = true
+        self.newCommentData.text = ""
+        self.newCommentData.placeholder = "Replying to \(comment.commenterName)..."
         
+        if (comment.parentId != nil) {
+            self.newCommentData.parentId = comment.parentId
+        } else {
+            self.newCommentData.parentId = comment.id
+        }
     }
 }
 
 struct Comment_Previews: PreviewProvider {
     static var previews: some View {
-        CommentView(comment: .constant(Comment(id: 0, text: "Hi there", parentId: nil, createdAt: Date().addingTimeInterval(-100000))))
+        CommentView(comment: .constant(Comment(id: 0, text: "Hi there", parentId: nil, createdAt: Date().addingTimeInterval(-100000))), newCommentData: NewCommentData())
     }
 }
 

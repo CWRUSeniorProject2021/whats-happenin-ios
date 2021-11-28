@@ -17,7 +17,7 @@ struct Comment: Hashable, Codable, Identifiable {
     
     enum CodingKeys: String, CodingKey {
         case id
-        case text = "comment"
+        case text = "text"
         case parentId = "parent_id"
         case createdAt = "created_at"
         case commenterName = "commenter_name"
