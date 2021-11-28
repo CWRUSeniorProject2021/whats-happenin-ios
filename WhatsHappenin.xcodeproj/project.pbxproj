@@ -60,7 +60,7 @@
 		19F666C0270CFCAA0080C6C3 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F666BF270CFCAA0080C6C3 /* Comment.swift */; };
 		19F666C4270D0C9E0080C6C3 /* StateAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F666C3270D0C9E0080C6C3 /* StateAddress.swift */; };
 		19F666C9270D1F530080C6C3 /* EventsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F666C8270D1F530080C6C3 /* EventsListController.swift */; };
-		663AAF0B26FA657500248928 /* CreateEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663AAF0A26FA657500248928 /* CreateEvent.swift */; };
+		663AAF0B26FA657500248928 /* EventForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663AAF0A26FA657500248928 /* EventForm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -121,7 +121,7 @@
 		19F666BF270CFCAA0080C6C3 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		19F666C3270D0C9E0080C6C3 /* StateAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateAddress.swift; sourceTree = "<group>"; };
 		19F666C8270D1F530080C6C3 /* EventsListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListController.swift; sourceTree = "<group>"; };
-		663AAF0A26FA657500248928 /* CreateEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateEvent.swift; path = WhatsHappenin/Views/Events/CreateEvent.swift; sourceTree = SOURCE_ROOT; };
+		663AAF0A26FA657500248928 /* EventForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EventForm.swift; path = WhatsHappenin/Views/Events/EventForm.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,7 +144,7 @@
 			children = (
 				196715F227513DD10067BED4 /* DetailComponents */,
 				19F2F5022731AEAE0095775B /* EventRow.swift */,
-				663AAF0A26FA657500248928 /* CreateEvent.swift */,
+				663AAF0A26FA657500248928 /* EventForm.swift */,
 				19B276A8273242130050438F /* EventDetailView.swift */,
 			);
 			path = Events;
@@ -456,7 +456,7 @@
 				19B2769F2730EEA60050438F /* Constants.swift in Sources */,
 				07D654B2272DF85200EABA93 /* FeedView.swift in Sources */,
 				196715FC2751CB540067BED4 /* CommentView.swift in Sources */,
-				663AAF0B26FA657500248928 /* CreateEvent.swift in Sources */,
+				663AAF0B26FA657500248928 /* EventForm.swift in Sources */,
 				190EB54B26E7EAD500822E65 /* WhatsHappeninApp.swift in Sources */,
 				19F666B3270CF9CE0080C6C3 /* Country.swift in Sources */,
 				196715F727513E8C0067BED4 /* DetailImageWithTitle.swift in Sources */,

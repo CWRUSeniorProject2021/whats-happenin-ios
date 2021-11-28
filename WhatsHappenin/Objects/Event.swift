@@ -19,6 +19,7 @@ struct Event: Identifiable, Hashable, Codable, Imageable {
     var startDate: Date
     var endDate: Date
     var rsvp: String
+    var isOwnEvent: Bool
     var comments: [Comment]
     
     var imageURL: String? {
@@ -37,6 +38,7 @@ struct Event: Identifiable, Hashable, Codable, Imageable {
         case address
         case startDate = "start_date"
         case endDate = "end_date"
+        case isOwnEvent = "is_own_event"
         case comments
         case imageURL = "image_url"
         case rsvp = "rsvp_status"
@@ -75,6 +77,7 @@ struct Event: Identifiable, Hashable, Codable, Imageable {
             startDate: Date(),
             endDate: Date().addingTimeInterval(TimeInterval(3600)),
             rsvp: "maybe",
+            isOwnEvent: true,
             comments: [
                 Comment(id: 0, text: "I am parent 1", parentId: nil, createdAt: Date().addingTimeInterval(-100000)),
                 Comment(id: 1, text: "I am child 1 with asmfjsdkjdfhsj lots and lots and lots of long text blah blah blah \n\n\nblah blah blah", parentId: 0, createdAt: Date().addingTimeInterval(-5000)),

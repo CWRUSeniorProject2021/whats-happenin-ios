@@ -1,5 +1,5 @@
 //
-//  createEvent.swift
+//  EventForm.swift
 //  WhatsHappenin
 //
 //  Created by Prithik Karthikeyan on 9/21/21.
@@ -8,7 +8,9 @@ import SwiftUI
 import CoreData
 import Siesta
 
-struct CreateEvent : View {
+struct EventForm : View {
+    @SwiftUI.Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     let event: Event?
     
     @State var showAlert: Bool = false
@@ -128,6 +130,8 @@ struct CreateEvent : View {
                     .onSuccess { _ in
                         self.alertMessage = "Event was successfully updated"
                         self.showAlert = true
+                        EventsListController.sharedInstance.reloadEvent(e.id)
+                        self.presentationMode.wrappedValue.dismiss()
                     }
                     .onFailure { _ in
                         self.alertMessage = "There was an error in updating event"
@@ -195,6 +199,6 @@ extension UIImage {
 
 struct CreateEvent_Previews: PreviewProvider {
     static var previews: some View {
-        CreateEvent(for: Event.samples()[0]).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        EventForm(for: Event.samples()[0]).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

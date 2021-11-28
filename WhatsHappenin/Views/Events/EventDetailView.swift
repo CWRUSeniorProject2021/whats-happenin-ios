@@ -128,7 +128,7 @@ struct EventDetailView : View {
                         
                         
                         Menu {
-                            NavigationLink("Edit", destination: CreateEvent(for: self.event))
+                            NavigationLink("Edit", destination: EventForm(for: self.event))
                             Button(action: {
                                 // DO REFRESH HERE
                             }) {
@@ -145,11 +145,14 @@ struct EventDetailView : View {
                                 .font(dropdownFont)
                                 .foregroundColor(Color.blue)
                         }
-                        NavigationLink(destination: CreateEvent(for: self.event)) {
-                            let dropdownFont = Font.system(size: 30)
-                            Image(systemName: "pencil.circle.fill")
-                                .font(dropdownFont)
-                                .foregroundColor(Color.blue)
+                        
+                        if (event.isOwnEvent) {
+                            NavigationLink(destination: EventForm(for: self.event)) {
+                                let dropdownFont = Font.system(size: 30)
+                                Image(systemName: "pencil.circle.fill")
+                                    .font(dropdownFont)
+                                    .foregroundColor(Color.blue)
+                            }
                         }
                     }
                     .padding(.top, 55)

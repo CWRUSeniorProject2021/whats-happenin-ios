@@ -31,7 +31,7 @@ struct NearbyEventView: View {
         }
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
-                NavigationLink(destination: CreateEvent()) {
+                NavigationLink(destination: EventForm()) {
                     Image(systemName: "plus")
                 }
               }

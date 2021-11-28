@@ -205,10 +205,12 @@ class EventsListController: ObservableObject, ResourceObserver {
             if let result: [Event] = resource.typedContent() {
                 upcomingEventIds = refreshEvents(result)
             }
-        default:
+        case WHAPI.sharedInstance.events:
             if let result: Event = resource.typedContent() {
                 events[result.id] = result
             }
+        default:
+            
             break
         }
         
