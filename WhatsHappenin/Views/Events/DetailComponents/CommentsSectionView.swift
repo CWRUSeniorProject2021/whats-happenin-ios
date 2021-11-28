@@ -42,7 +42,7 @@ struct CommentsSectionView: View {
             var children = comments.filter { comment in
                 return comment.parentId == pc.id
             }
-            children = children.sorted(by: { $0.id > $1.id})
+            children = children.sorted(by: { $0.id < $1.id})
             arrComments[pc] = children
         }
         return arrComments

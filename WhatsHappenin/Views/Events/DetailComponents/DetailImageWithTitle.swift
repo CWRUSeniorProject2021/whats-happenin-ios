@@ -49,7 +49,6 @@ struct DetailImageWithTitle: View {
         if offset > 0 {
             return -offset
         }
-        
         return 0
     }
     
@@ -60,7 +59,6 @@ struct DetailImageWithTitle: View {
         if offset > 0 {
             return imageHeight + offset
         }
-        
         return imageHeight
     }
     
@@ -70,8 +68,6 @@ struct DetailImageWithTitle: View {
         let finalHeight = scaledHeight <= MAX_IMAGE_FRAME_HEIGHT ? scaledHeight : MAX_IMAGE_FRAME_HEIGHT
         return finalHeight
     }
-    
-    
     
     private func getHeaderImage() -> UIImage {
         if let img: UIImage = controller.eventImages[event] {
@@ -95,8 +91,8 @@ struct ImageOverlayView: View {
     
     private func imageGradient() -> Array<Color> {
         return [
-            Color(red: 37/255, green: 37/255, blue: 37/255, opacity: 0.0),
-            Color(red: 37/255, green: 37/255, blue: 37/255, opacity: 0.0),
+            Color(red: 37/255, green: 37/255, blue: 37/255, opacity: 0.3),
+            Color(red: 37/255, green: 37/255, blue: 37/255, opacity: 0.1),
             Color(red: 37/255, green: 37/255, blue: 37/255, opacity: 0.0),
             Color(red: 37/255, green: 37/255, blue: 37/255, opacity: 0.0),
             Color(red: 37/255, green: 37/255, blue: 37/255, opacity: 0.0),
