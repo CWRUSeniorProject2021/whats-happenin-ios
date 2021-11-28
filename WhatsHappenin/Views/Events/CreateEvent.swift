@@ -10,7 +10,7 @@ import Siesta
 
 struct CreateEvent : View {
     
-    @Binding var event: Event?
+    @Binding var event: Event? 
     
     @State var showAlert: Bool = false
     @State var alertMessage: String = ""
@@ -40,22 +40,6 @@ struct CreateEvent : View {
     
     init(event: Binding<Event?>){
         self._event = event
-        if let e = self.event{
-            self.eventName = e.title
-            self.eventDesc = e.description
-            self.startTime = e.startDate
-            self.endTime = e.endDate
-            self.address1 = e.address.street1
-            self.address2 = e.address.street2 ?? ""
-            self.city = e.address.city
-            self.state = e.address.state.name
-            self.zipcode = e.address.postalCode
-            if let image = EventsListController.sharedInstance.eventImages[e]{
-                self.inputImage = image
-            }
-            
-            //initialize other shit here
-        }
     }
     
     init(){
@@ -171,6 +155,24 @@ struct CreateEvent : View {
         .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
             ImagePicker(image: self.$inputImage)
         }
+        .onAppear{
+            if let e = self.event{
+                self.eventName = e.title
+                self.eventDesc = e.description
+                self.startTime = e.startDate
+                self.endTime = e.endDate
+                self.address1 = e.address.street1
+                self.address2 = e.address.street2 ?? ""
+                self.city = e.address.city
+                self.state = e.address.state.name
+                self.zipcode = e.address.postalCode
+                if let image = EventsListController.sharedInstance.eventImages[e]{
+                    self.inputImage = image
+                }
+
+        
+            }
+        }
     }
     
     func loadImage() {
@@ -201,6 +203,6 @@ extension UIImage {
 
 struct CreateEvent_Previews: PreviewProvider {
     static var previews: some View {
-        CreateEvent().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        CreateEvent(event:.constant(Event.samples()[0])).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

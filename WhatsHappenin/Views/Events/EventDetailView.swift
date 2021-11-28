@@ -115,9 +115,16 @@ struct EventDetailView : View {
                         
                         Spacer()
                         
-                        Button(action: {
-                            // DISPLAY THE DROPDOWN HERE
-                        }) {
+//                        Button(action: {
+//                            // DISPLAY THE DROPDOWN HERE
+//
+//                        }) {
+//                            let dropdownFont = Font.system(size: 30)
+//                            Image(systemName: "ellipsis.circle.fill")
+//                                .font(dropdownFont)
+//                                .foregroundColor(Color.blue)
+//                        }
+                        NavigationLink(destination: CreateEvent(event: .constant(self.event))) {
                             let dropdownFont = Font.system(size: 30)
                             Image(systemName: "ellipsis.circle.fill")
                                 .font(dropdownFont)
