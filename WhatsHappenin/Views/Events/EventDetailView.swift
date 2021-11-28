@@ -125,7 +125,7 @@ struct EventDetailView : View {
 //                                .font(dropdownFont)
 //                                .foregroundColor(Color.blue)
 //                        }
-                        NavigationLink(destination: CreateEvent(event: .constant(self.event))) {
+                        NavigationLink(destination: CreateEvent(for: self.event)) {
                             let dropdownFont = Font.system(size: 30)
                             Image(systemName: "ellipsis.circle.fill")
                                 .font(dropdownFont)
@@ -176,12 +176,12 @@ struct EventDetailView : View {
                  self.presentationMode.wrappedValue.dismiss()
              }
         }))
-        .introspectTabBarController { (UITabBarController) in
-            UITabBarController.tabBar.isHidden = true
-            uiTabarController = UITabBarController
-        }.onDisappear{
-            uiTabarController?.tabBar.isHidden = false
-        }
+//        .introspectTabBarController { (UITabBarController) in
+//            UITabBarController.tabBar.isHidden = true
+//            uiTabarController = UITabBarController
+//        }.onDisappear{
+//            uiTabarController?.tabBar.isHidden = false
+//        }
     }
     
     private func dateDiff(_ from: Date, to: Date) -> String {

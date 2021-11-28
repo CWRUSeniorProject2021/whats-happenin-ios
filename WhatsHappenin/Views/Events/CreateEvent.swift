@@ -9,21 +9,20 @@ import CoreData
 import Siesta
 
 struct CreateEvent : View {
-    
-    @Binding var event: Event? 
+    let event: Event?
     
     @State var showAlert: Bool = false
     @State var alertMessage: String = ""
-    @State private var eventName: String = ""
-    @State private var eventDesc: String = ""
-    @State private var startTime: Date = Date()
-    @State private var endTime: Date = Date()
-    @State private var eventType: String = ""
-    @State private var address1: String = ""
-    @State private var address2: String = ""
-    @State private var city: String = ""
-    @State private var state: String = ""
-    @State private var zipcode: String = ""
+    @State private var eventName: String
+    @State private var eventDesc: String
+    @State private var startTime: Date
+    @State private var endTime: Date
+    @State private var eventType: String
+    @State private var address1: String
+    @State private var address2: String
+    @State private var city: String
+    @State private var state: String
+    @State private var zipcode: String
     
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
@@ -38,14 +37,24 @@ struct CreateEvent : View {
         var id: String { self.rawValue }
     }
     
-    init(event: Binding<Event?>){
-        self._event = event
+    init(for event: Event?) {
+        self.event = event
+        
+        self._eventName = State(initialValue: event?.title ?? "")
+        self._eventDesc = State(initialValue: event?.description ?? "")
+        self._startTime = State(initialValue: event?.startDate ?? Date())
+        self._endTime = State(initialValue: event?.endDate ?? Date().addingTimeInterval(3600))
+        self._eventType = State(initialValue: "restricted")
+        self._address1 = State(initialValue: event?.address.street1 ?? "")
+        self._address2 = State(initialValue: event?.address.street2 ?? "")
+        self._city = State(initialValue: event?.address.city ?? "")
+        self._state = State(initialValue: event?.address.state.code ?? "")
+        self._zipcode = State(initialValue: event?.address.postalCode ?? "")
     }
     
-    init(){
-        self._event = .constant(nil)
+    init() {
+        self.init(for: nil)
     }
-    
     
     var body: some View {
         Form {
@@ -138,7 +147,8 @@ struct CreateEvent : View {
                 }
                 
             }, label: {
-                if let e = event{
+                
+                if (event != nil) {
                     Text("Save")
                 } else {
                     Text("Submit")
@@ -154,24 +164,6 @@ struct CreateEvent : View {
         .navigationTitle("Create Event")
         .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
             ImagePicker(image: self.$inputImage)
-        }
-        .onAppear{
-            if let e = self.event{
-                self.eventName = e.title
-                self.eventDesc = e.description
-                self.startTime = e.startDate
-                self.endTime = e.endDate
-                self.address1 = e.address.street1
-                self.address2 = e.address.street2 ?? ""
-                self.city = e.address.city
-                self.state = e.address.state.name
-                self.zipcode = e.address.postalCode
-                if let image = EventsListController.sharedInstance.eventImages[e]{
-                    self.inputImage = image
-                }
-
-        
-            }
         }
     }
     
@@ -203,6 +195,6 @@ extension UIImage {
 
 struct CreateEvent_Previews: PreviewProvider {
     static var previews: some View {
-        CreateEvent(event:.constant(Event.samples()[0])).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        CreateEvent(for: Event.samples()[0]).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
