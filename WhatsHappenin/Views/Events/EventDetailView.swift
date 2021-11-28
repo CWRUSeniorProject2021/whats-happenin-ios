@@ -29,7 +29,7 @@ struct EventDetailView : View {
         GeometryReader { outerGeometry in
             ZStack(alignment: .top) {
                 Color.clear
-                ScrollView {
+                ScrollView(showsIndicators: false) {
                     VStack(alignment: .leading, spacing: 0) {
                         DetailImageWithTitle(event: $event, outerGeometry: .constant(outerGeometry))
                     
@@ -130,7 +130,7 @@ struct EventDetailView : View {
                         Menu {
                             NavigationLink("Edit", destination: EventForm(for: self.event))
                             Button(action: {
-                                // DO REFRESH HERE
+                                EventsListController.sharedInstance.reloadEvent(event)
                             }) {
                                 Text("Refresh")
                             }

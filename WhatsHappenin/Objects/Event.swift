@@ -21,6 +21,7 @@ struct Event: Identifiable, Hashable, Codable, Imageable {
     var rsvp: String
     var isOwnEvent: Bool
     var comments: [Comment]
+    var user: UserProfile
     
     var imageURL: String? {
         didSet {
@@ -40,6 +41,7 @@ struct Event: Identifiable, Hashable, Codable, Imageable {
         case endDate = "end_date"
         case isOwnEvent = "is_own_event"
         case comments
+        case user
         case imageURL = "image_url"
         case rsvp = "rsvp_status"
     }
@@ -86,7 +88,8 @@ struct Event: Identifiable, Hashable, Codable, Imageable {
                 Comment(id: 4, text: "I am child 2 with short text", parentId: 3, createdAt: Date().addingTimeInterval(-3000)),
                 Comment(id: 5, text: "I am parent 4", parentId: nil, createdAt: Date().addingTimeInterval(-10)),
                 
-            ]
+            ],
+            user: UserProfile(id: 0, firstName: "Test User", lastName: "Test User", username: "test", school: School(id: 1, name: "CWRU"))
         )
     }
     
