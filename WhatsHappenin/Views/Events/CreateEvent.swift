@@ -10,19 +10,20 @@ import Siesta
 
 struct CreateEvent : View {
     
+    @Binding var event: Event?
+    
     @State var showAlert: Bool = false
     @State var alertMessage: String = ""
-    
-    @State private var eventName: String = "Test \(Date.now)"
-    @State private var eventDesc: String = "askjdawhkjd"
+    @State private var eventName: String = ""
+    @State private var eventDesc: String = ""
     @State private var startTime: Date = Date()
     @State private var endTime: Date = Date()
-    @State private var eventType: String = "restricted"
-    @State private var address1: String = "11111 euclid ave"
+    @State private var eventType: String = ""
+    @State private var address1: String = ""
     @State private var address2: String = ""
-    @State private var city: String = "cleveland"
-    @State private var state: String = "OH"
-    @State private var zipcode: String = "44106"
+    @State private var city: String = ""
+    @State private var state: String = ""
+    @State private var zipcode: String = ""
     
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
@@ -35,6 +36,30 @@ struct CreateEvent : View {
         case restricted
 
         var id: String { self.rawValue }
+    }
+    
+    init(event: Binding<Event?>){
+        self._event = event
+        if let e = self.event{
+            self.eventName = e.title
+            self.eventDesc = e.description
+            self.startTime = e.startDate
+            self.endTime = e.endDate
+            self.address1 = e.address.street1
+            self.address2 = e.address.street2 ?? ""
+            self.city = e.address.city
+            self.state = e.address.state.name
+            self.zipcode = e.address.postalCode
+            if let image = EventsListController.sharedInstance.eventImages[e]{
+                self.inputImage = image
+            }
+            
+            //initialize other shit here
+        }
+    }
+    
+    init(){
+        self._event = .constant(nil)
     }
     
     
@@ -105,21 +130,39 @@ struct CreateEvent : View {
                     let imageData = img.jpeg(.lowest)
                     requestContent["image"] = imageData!.base64EncodedString(options: .lineLength64Characters)
                 }
-                
-                WHAPI.sharedInstance.events.request(.post, json: requestContent)
+                if let e = event {
+                    WHAPI.sharedInstance.events.child("\(e.id)").request(.patch, json: requestContent)
                     .onSuccess { _ in
-                        self.alertMessage = "Event was successfully created"
+                        self.alertMessage = "Event was successfully updated"
                         self.showAlert = true
                     }
                     .onFailure { _ in
-                        self.alertMessage = "There was an error creating the event"
+                        self.alertMessage = "There was an error in updating event"
                         self.showAlert = true
                     }
+
+                }else{
+                    WHAPI.sharedInstance.events.request(.post, json: requestContent)
+                        .onSuccess { _ in
+                            self.alertMessage = "Event was successfully created"
+                            self.showAlert = true
+                        }
+                        .onFailure { _ in
+                            self.alertMessage = "There was an error creating the event"
+                            self.showAlert = true
+                        }
+                }
                 
-            }, label: { Text("Submit")})
+            }, label: {
+                if let e = event{
+                    Text("Save")
+                } else {
+                    Text("Submit")
+                }
+            })
                 .alert(isPresented: $showAlert) {
                     Alert(
-                        title: Text("Event Successfully Created"),
+                        title: Text($alertMessage.wrappedValue),
                         dismissButton: .default(Text("Close"))
                     )
                 }
