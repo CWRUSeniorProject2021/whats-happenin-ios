@@ -14,7 +14,7 @@ struct ShowMap: View {
     var body: some View {
         Map(coordinateRegion: $viewModel.region,
             showsUserLocation: true,
-            userTrackingMode: .constant(MapUserTrackingMode.follow),
+//            userTrackingMode: .constant(MapUserTrackingMode.follow),
             annotationItems: controller.nearbyEvents) { event in
                     MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: event.address.coordinates?.latitude ?? 41.51273, longitude: event.address.coordinates?.longitude ?? -81.60443)) {
                             NavigationLink(
