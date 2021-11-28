@@ -71,6 +71,14 @@ class WHAPI: Service {
             try self.jsonDecoder.decode(GenericResponse<EventList>.self, from: $0.content).data.events
         }
         
+        configureTransformer("/events/past") {
+            try self.jsonDecoder.decode(GenericResponse<EventList>.self, from: $0.content).data.events
+        }
+        
+        configureTransformer("/events/upcoming") {
+            try self.jsonDecoder.decode(GenericResponse<EventList>.self, from: $0.content).data.events
+        }
+        
         configureTransformer("/events/mine") {
              try self.jsonDecoder.decode(GenericResponse<EventList>.self, from: $0.content).data.events
          }

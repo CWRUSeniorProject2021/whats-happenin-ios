@@ -92,7 +92,7 @@ struct Home : View {
                     List($controller.pastEvents) { $event in
                         EventRow(event: $event, controller: controller)
                     }
-                    .padding(EdgeInsets(top: 44, leading: 0, bottom: 24, trailing: 0))
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 24, trailing: 0))
                     .edgesIgnoringSafeArea(.all)
                     .listStyle(PlainListStyle())
                     .pullToRefresh(isShowing: $isRefreshing) {
@@ -111,7 +111,7 @@ struct Home : View {
                     List($controller.yourEvents) { $event in
                         EventRow(event: $event, controller: controller)
                     }
-                    .padding(EdgeInsets(top: 44, leading: 0, bottom: 24, trailing: 0))
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 24, trailing: 0))
                     .edgesIgnoringSafeArea(.all)
                     .listStyle(PlainListStyle())
                     .pullToRefresh(isShowing: $isRefreshing) {
@@ -130,7 +130,7 @@ struct Home : View {
                     List($controller.upcomingEvents) { $event in
                         EventRow(event: $event, controller: controller)
                     }
-                    .padding(EdgeInsets(top: 44, leading: 0, bottom: 24, trailing: 0))
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 24, trailing: 0))
                     .edgesIgnoringSafeArea(.all)
                     .listStyle(PlainListStyle())
                     .pullToRefresh(isShowing: $isRefreshing) {
