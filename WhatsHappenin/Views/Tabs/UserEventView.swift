@@ -83,7 +83,7 @@ struct Home : View {
             .background(Color.black.opacity(0.06))
             .clipShape(Capsule())
             .padding(.horizontal)
-            .offset(y: -65)
+            .offset(y: -12.5)
 
             TabView(selection: self.$index) {
                 
@@ -144,8 +144,8 @@ struct Home : View {
                 }
                 .tag(2)
             }
-            .offset(y: -60)
-            .padding(.bottom, -60)
+            .offset(y: -5)
+            .padding(.bottom, -5)
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             
         }

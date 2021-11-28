@@ -18,7 +18,7 @@ struct ShowProfilePage: View {
                     .resizable()
                     .frame(width: 120, height: 120)
                     .clipShape(Circle())
-                Text("Christian Tingle")
+                Text("\($controller.myProfile.wrappedValue?.firstName ?? "N/A") \($controller.myProfile.wrappedValue?.lastName ?? "N/A")")
                     .font(.title)
                     .bold()
             }
@@ -26,25 +26,37 @@ struct ShowProfilePage: View {
 
         Spacer().frame(height: 30)
 
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .center, spacing: 12) {
             HStack {
                 Image(systemName: "envelope")
+                Text($controller.myProfile.wrappedValue?.email ?? "N/A")
+            }
+
+            HStack {
+                Image(systemName: "graduationcap")
+                Text($controller.myProfile.wrappedValue?.school.name ?? "N/A")
+            }
+
+            HStack {
+                Image(systemName: "person.text.rectangle")
                 Text($controller.myProfile.wrappedValue?.username ?? "N/A")
-            }
-
-            HStack {
-                Image(systemName: "phone")
-                Text($controller.myProfile.wrappedValue?.firstName ?? "N/A")
-            }
-
-            HStack {
-                Image(systemName: "network")
-                Text($controller.myProfile.wrappedValue?.lastName ?? "N/A")
             }
         }
 
         Spacer().frame(height: 30)
 
+        Button {
+            print("Editing info...")
+            
+        } label : {
+            Text("Edit Information")
+                .bold()
+                .frame(width: 260, height: 50)
+                .background(Color.green)
+                .foregroundColor(.white)
+                .cornerRadius(12)
+        }
+        
         Button {
             print("Button Tapped")
             WHAPI.sharedInstance.logout()
@@ -69,11 +81,38 @@ struct ShowProfilePage_Previews: PreviewProvider {
     }
 }
 
+extension View {
+    /// Navigate to a new view.
+    /// - Parameters:
+    ///   - view: View to navigate to.
+    ///   - binding: Only navigates when this condition is `true`.
+    func navigate<NewView: View>(to view: NewView, when binding: Binding<Bool>) -> some View {
+        NavigationView {
+            ZStack {
+                self
+                    .navigationBarTitle("")
+                    .navigationBarHidden(true)
+
+                NavigationLink(
+                    destination: view
+                        .navigationBarTitle("")
+                        .navigationBarHidden(true),
+                    isActive: binding
+                ) {
+                    EmptyView()
+                }
+            }
+        }
+        .navigationViewStyle(.stack)
+    }
+}
+
 /*
  
- Idea: userAuthData of WHAPI()
+First Name + Last Name
+Email
+School
+Username
  
-  Things I need for profile page: Username, Email, Year,
-  
-  
- */
+ 
+*/
