@@ -19,6 +19,12 @@ struct EventDetailView : View {
     @State var isCommenting: Bool = true
     @State var newComment: String = ""
     
+    @FocusState private var focusedField: Field?
+    
+    enum Field: Hashable {
+            case commentField
+        }
+    
     var body: some View {
         GeometryReader { outerGeometry in
             ZStack(alignment: .top) {
@@ -101,6 +107,10 @@ struct EventDetailView : View {
                     }
                 }
                 .edgesIgnoringSafeArea(.top)
+                .onTapGesture {
+                    focusedField = nil
+                    isCommenting = false
+                }
                 
                 VStack {
                     HStack {
@@ -116,18 +126,28 @@ struct EventDetailView : View {
                         
                         Spacer()
                         
-//                        Button(action: {
-//                            // DISPLAY THE DROPDOWN HERE
-//
-//                        }) {
-//                            let dropdownFont = Font.system(size: 30)
-//                            Image(systemName: "ellipsis.circle.fill")
-//                                .font(dropdownFont)
-//                                .foregroundColor(Color.blue)
-//                        }
-                        NavigationLink(destination: CreateEvent(for: self.event)) {
+                        
+                        Menu {
+                            NavigationLink("Edit", destination: CreateEvent(for: self.event))
+                            Button(action: {
+                                // DO REFRESH HERE
+                            }) {
+                                Text("Refresh")
+                            }
+                            Button(role: .destructive, action: {
+                                // DO DELETE CONFIRMATIION HERE
+                            }) {
+                                Label("Delete Event", systemImage: "")
+                            }
+                        } label : {
                             let dropdownFont = Font.system(size: 30)
                             Image(systemName: "ellipsis.circle.fill")
+                                .font(dropdownFont)
+                                .foregroundColor(Color.blue)
+                        }
+                        NavigationLink(destination: CreateEvent(for: self.event)) {
+                            let dropdownFont = Font.system(size: 30)
+                            Image(systemName: "pencil.circle.fill")
                                 .font(dropdownFont)
                                 .foregroundColor(Color.blue)
                         }
@@ -140,31 +160,40 @@ struct EventDetailView : View {
                     Spacer()
                     
                     if (isCommenting) {
-                        HStack(spacing: 0) {
-                            TextField("Add a comment",
-                                      text: $newComment)
-                                .border(.secondary)
-                                .padding(.leading, 20)
-                            Spacer()
-                            
-                            Button(action: {
+                        ZStack() {
+                            HStack(spacing: 0) {
+                                TextField("Add a comment",
+                                          text: $newComment)
+                                    .focused($focusedField, equals: .commentField)
+                                    .padding(.leading, 15)
+                                    .padding(.trailing, 5)
                                 
-                            }) {
-                                let submitButtonFont = Font.system(size:16)
-                                Text("Post")
-                                    .font(submitButtonFont)
+                                Spacer()
+                                
+                                Button(action: {
+                                    
+                                }) {
+                                    let submitButtonFont = Font.system(size:16)
+                                    Text("Post")
+                                        .font(submitButtonFont)
+                                }
+                                .padding(.trailing, 20)
+                                .padding(.vertical, 10)
+                                                        
                             }
+                            .background(Color("TextInput"))
+                            .cornerRadius(20)
+                            .padding(.leading, 20)
                             .padding(.trailing, 20)
                         }
                         .frame(width: outerGeometry.size.width, height: 65)
-                        .background(Color.white
-                                        .shadow(color: Color.gray, radius: 6, x: 0, y: 0)
+                        .background(Color("ListRowColor")
+                                        .shadow(color: Color("LightFontColor"), radius: 6, x: 0, y: 0)
                                         .mask(Rectangle()
                                                 .padding(.top, -20)
                                                 .edgesIgnoringSafeArea(.all)))
                     }
                 }
-                .edgesIgnoringSafeArea(.bottom)
             }
             .navigationBarTitle("")
             .navigationBarHidden(true)
@@ -176,12 +205,6 @@ struct EventDetailView : View {
                  self.presentationMode.wrappedValue.dismiss()
              }
         }))
-//        .introspectTabBarController { (UITabBarController) in
-//            UITabBarController.tabBar.isHidden = true
-//            uiTabarController = UITabBarController
-//        }.onDisappear{
-//            uiTabarController?.tabBar.isHidden = false
-//        }
     }
     
     private func dateDiff(_ from: Date, to: Date) -> String {
