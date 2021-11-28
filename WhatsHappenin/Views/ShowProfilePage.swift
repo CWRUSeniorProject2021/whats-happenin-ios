@@ -7,7 +7,8 @@
 import SwiftUI
 
 struct ShowProfilePage: View {
-    let profilePageCntrl = ProfilePageController()
+    @ObservedObject var controller = ProfilePageController.sharedInstance
+    
     @Binding var isLoggedIn: Bool
     
     var body: some View {
@@ -28,23 +29,24 @@ struct ShowProfilePage: View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
                 Image(systemName: "envelope")
-                Text(profilePageCntrl.username)
+                Text(controller.myProfile?.username ?? "N/A")
             }
 
             HStack {
                 Image(systemName: "phone")
-                Text("216-943-1302")
+                Text(controller.myProfile?.firstName ?? "N/A")
             }
 
             HStack {
                 Image(systemName: "network")
-                Text("cpt15.com")
+                Text(controller.myProfile?.lastName ?? "N/A")
             }
         }
 
         Spacer().frame(height: 30)
 
         Button {
+//            controller.loadMyProfile()
             print("Button Tapped")
             WHAPI.sharedInstance.logout()
                 .onSuccess { _ in

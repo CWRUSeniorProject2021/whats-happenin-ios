@@ -82,6 +82,10 @@ class WHAPI: Service {
         configureTransformer("/events/mine") {
              try self.jsonDecoder.decode(GenericResponse<EventList>.self, from: $0.content).data.events
          }
+        
+        configureTransformer("/users/myprofile") {
+            try self.jsonDecoder.decode(GenericResponse<MyProfile>.self, from: $0.content).data
+         }
     }
     
     private func initializeAuthDetails() {
@@ -181,6 +185,7 @@ class WHAPI: Service {
     var signInResource: Resource { return resource("/auth/sign_in") }
     var signOutResource: Resource { return resource("/auth/sign_out") }
     var auth: Resource { return resource("/auth") }
+    var myProfile: Resource { return resource("/users/myprofile")}
 
     var events: Resource { return resource("/events") }
     var nearbyEvents: Resource { return resource("/events/nearby") }
