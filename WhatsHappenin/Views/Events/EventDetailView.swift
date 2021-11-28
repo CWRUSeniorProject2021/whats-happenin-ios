@@ -132,7 +132,7 @@ struct EventDetailView : View {
                                 .foregroundColor(Color.blue)
                         }
                     }
-                    .padding(.top, 35)
+                    .padding(.top, 55)
                     .padding(.leading, 20)
                     .padding(.trailing, 20)
                     .edgesIgnoringSafeArea(.top)

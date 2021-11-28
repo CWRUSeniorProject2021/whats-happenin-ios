@@ -121,7 +121,7 @@ struct CreateEvent : View {
                 
                 if let img = inputImage {
                     let imageData = img.jpeg(.lowest)
-                    requestContent["image"] = imageData!.base64EncodedString(options: .lineLength64Characters)
+                    requestContent["image_64"] = imageData!.base64EncodedString(options: .lineLength64Characters)
                 }
                 if let e = event {
                     WHAPI.sharedInstance.events.child("\(e.id)").request(.patch, json: requestContent)
