@@ -91,9 +91,9 @@ class EventsListController: ObservableObject, ResourceObserver {
     }
     
     func loadYourEvents() {
-        WHAPI.sharedInstance.yourEvents.loadIfNeeded()
-        WHAPI.sharedInstance.pastEvents.loadIfNeeded()
-        WHAPI.sharedInstance.upcomingEvents.loadIfNeeded()
+        WHAPI.sharedInstance.yourEvents.load()
+        WHAPI.sharedInstance.pastEvents.load()
+        WHAPI.sharedInstance.upcomingEvents.load()
     }
     
     // MARK: Load Images
