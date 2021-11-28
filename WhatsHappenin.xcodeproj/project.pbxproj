@@ -588,7 +588,7 @@
 				CODE_SIGN_ENTITLEMENTS = WhatsHappenin/WhatsHappenin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"WhatsHappenin/Preview Content\"";
-				DEVELOPMENT_TEAM = Z6G83N9S59;
+				DEVELOPMENT_TEAM = 9NDA238J6N;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = WhatsHappenin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -612,7 +612,7 @@
 				CODE_SIGN_ENTITLEMENTS = WhatsHappenin/WhatsHappenin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"WhatsHappenin/Preview Content\"";
-				DEVELOPMENT_TEAM = Z6G83N9S59;
+				DEVELOPMENT_TEAM = 9NDA238J6N;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = WhatsHappenin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -698,7 +698,7 @@
 				CODE_SIGN_ENTITLEMENTS = WhatsHappenin/WhatsHappenin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"WhatsHappenin/Preview Content\"";
-				DEVELOPMENT_TEAM = Z6G83N9S59;
+				DEVELOPMENT_TEAM = 9NDA238J6N;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = WhatsHappenin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -778,7 +778,7 @@
 				CODE_SIGN_ENTITLEMENTS = WhatsHappenin/WhatsHappenin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"WhatsHappenin/Preview Content\"";
-				DEVELOPMENT_TEAM = Z6G83N9S59;
+				DEVELOPMENT_TEAM = 9NDA238J6N;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = WhatsHappenin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;

@@ -12,8 +12,10 @@ let lightGreyColor = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255
 
 struct LoginView : View {
     @Binding var isLoggedIn: Bool
+    @SwiftUI.Environment(\.colorScheme) var colorScheme : ColorScheme
     @State var username: String = Environment.testUserUsername
     @State var password: String = Environment.testUserPassword
+    @State var showAlert: Bool = false
     
     var body: some View {
             NavigationView{
@@ -42,15 +44,17 @@ struct LoginView : View {
     private var usernameFieldView : some View {
         TextField("Username", text: $username)
             .padding()
-            .background(lightGreyColor)
+            .background(colorScheme == .dark ? Color(white: 0.4745) : Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0) )
             .cornerRadius(5.0)
             .padding(.bottom, 5)
+            
+
     }
     
     private var passwordFieldView : some View {
         SecureField("Password", text: $password)
             .padding()
-            .background(lightGreyColor)
+            .background(colorScheme == .dark ? Color(white: 0.4745) : Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0) )
             .cornerRadius(5.0)
             .padding(.bottom, 10)
     }
@@ -64,6 +68,7 @@ struct LoginView : View {
                     isLoggedIn = true
                 }.onFailure { _ in
                     isLoggedIn = false
+                    showAlert = true
                 }
             }) {
                 Text("LOGIN")
@@ -73,6 +78,12 @@ struct LoginView : View {
                     .frame(width: 220, height: 60)
                     .background(Color.green)
                     .cornerRadius(15.0)
+            }.alert(isPresented: $showAlert) {
+                Alert(
+                    title: Text("Login Failed"),
+                    message: Text("Username or Password invalid"),
+                    dismissButton: .default(Text("Close"))
+                )
             }
     }
     
