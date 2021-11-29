@@ -16,18 +16,37 @@ struct MyMapView: UIViewRepresentable {
     }
     
     func updateUIView(_ view: MKMapView, context: Context){
-            let coordinate = CLLocationCoordinate2D(latitude: 41.51273, longitude: -81.60443)
+        let coordinate = CLLocationCoordinate2D(latitude: 41.51273, longitude: -81.60443)
         let span = MKCoordinateSpan(latitudeDelta: 0.007, longitudeDelta: 0.007)
-            let region = MKCoordinateRegion(center: coordinate, span: span)
-            view.setRegion(region, animated: true)
-        
+        let region = MKCoordinateRegion(center: coordinate, span: span)
+        view.setRegion(region, animated: true)
+        view.delegate = context.coordinator
         view.addAnnotations(annotations)
+    }
+
+    func makeCoordinator() -> MapViewCoordinator{
+         MapViewCoordinator(self)
     }
 }
 
 struct MyMapView_Previews: PreviewProvider {
     static var previews: some View {
         MyMapView(annotations: [Annotation.example])
+    }
+}
+
+class MapViewCoordinator: NSObject, MKMapViewDelegate {
+    var mapViewController: MyMapView
+    
+    init(_ control: MyMapView) {
+        self.mapViewController = control
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "Annotation")
+        annotationView.canShowCallout = true
+        annotationView.image = UIImage(systemName: "mappin")
+        return annotationView
     }
 }
 
