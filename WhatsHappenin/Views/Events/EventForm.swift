@@ -15,6 +15,7 @@ struct EventForm : View {
     
     @State var showAlert: Bool = false
     @State var alertMessage: String = ""
+    @State var alertBody: String = ""
     @State private var eventName: String
     @State private var eventDesc: String
     @State private var startTime: Date
@@ -134,8 +135,19 @@ struct EventForm : View {
                         EventsListController.sharedInstance.reloadEvent(e.id)
                         self.presentationMode.wrappedValue.dismiss()
                     }
-                    .onFailure { _ in
+                    .onFailure { error in
                         self.alertMessage = "There was an error in updating event"
+                        let val : GenericResponse<Empty>? = WHAPI.sharedInstance.parseErrors(error)
+                        print (val?.errors)
+                        var err: String = ""
+                        for (a , b ) in val?.errors ?? [:] {
+                            var temp = a.replacingOccurrences(of: "address.", with: "")
+                            temp = temp.replacingOccurrences(of: "_", with: " ")
+                                for c in b {
+                                    err = err + "\n" + temp + " " + c
+                                }
+                        }
+                        alertBody = err
                         self.showAlert = true
                     }
 
@@ -143,10 +155,22 @@ struct EventForm : View {
                     WHAPI.sharedInstance.events.request(.post, json: requestContent)
                         .onSuccess { _ in
                             self.alertMessage = "Event was successfully created"
+                            
                             self.showAlert = true
                         }
-                        .onFailure { _ in
+                        .onFailure { error in
                             self.alertMessage = "There was an error creating the event"
+                            let val : GenericResponse<Empty>? = WHAPI.sharedInstance.parseErrors(error)
+                            print (val?.errors)
+                            var err: String = ""
+                            for (a , b ) in val?.errors ?? [:] {
+                                var temp = a.replacingOccurrences(of: "address.", with: "")
+                                temp = temp.replacingOccurrences(of: "_", with: " ")
+                                    for c in b {
+                                        err = err + "\n" + temp + " " + c
+                                    }
+                            }
+                            alertBody = err
                             self.showAlert = true
                         }
                 }
@@ -162,6 +186,7 @@ struct EventForm : View {
                 .alert(isPresented: $showAlert) {
                     Alert(
                         title: Text($alertMessage.wrappedValue),
+                        message: Text($alertBody.wrappedValue),
                         dismissButton: .default(Text("Close"))
                     )
                 }
