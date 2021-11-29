@@ -49,15 +49,18 @@ struct RegistrationView : View {
     var body: some View {
         Form{
             Section(header: Text("Account Information")){
-                TextField("Username", text: $userName)
+                TextField("Email Address", text: $emailAddr)
+                    .textInputAutocapitalization(.never)
+                    .disableAutocorrection(true)
                 SecureField("Password", text: $password1)
                 SecureField("Re-enter Password", text: $password2)
-                
             }
             Section(header: Text("Profile Information")){
                 TextField("First Name", text: $firstName)
                 TextField("Last Name", text: $lastName)
-                TextField("Email Address", text: $emailAddr)
+                TextField("Username", text: $userName)
+                    .textInputAutocapitalization(.never)
+                    .disableAutocorrection(true)
 //                DatePicker(selection: $birthDate, in: ...Date(), displayedComponents: .date) {
 //                                Text("Date of Birth")
 //                            }
@@ -71,9 +74,8 @@ struct RegistrationView : View {
 //                                            Text(standing.rawValue.capitalized).tag(standing)
 //                                        }
 //                            }
-
-                
-                    }
+          
+            }
             Button(action: {
                             //add method call
                 WHAPI.sharedInstance.auth.request(.post, urlEncoded:["email":emailAddr, "password":password1, "password_confirmation":password2, "username":userName , "first_name":firstName , "last_name":lastName])

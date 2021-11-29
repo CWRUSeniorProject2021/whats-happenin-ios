@@ -186,8 +186,7 @@ struct EventDetailView : View {
                                         ] as [String: Any]
                                         WHAPI.sharedInstance.events.child("\(event.id)").child("comments").request(.post, json: requestData)
                                             .onSuccess { response in
-                                                self.isPostingComment = false
-                                                self.newCommentData.isCommenting = false
+                                                self.newCommentData.reset()
                                                 self.focusedField = .none
                                                 EventsListController.sharedInstance.reloadEvent(event)
                                             }
@@ -214,6 +213,14 @@ struct EventDetailView : View {
                         .onAppear {
                             self.focusedField = .commentField
                         }
+                        .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
+                                    .onEnded({ value in
+                                        if value.translation.height > 10 {
+                                            self.focusedField = nil
+                                            self.newCommentData.reset()
+                                        }
+                            })
+                        )
                         .frame(width: outerGeometry.size.width, height: 65)
                         .background(Color("ListRowColor")
                                         .shadow(color: Color("LightFontColor"), radius: 6, x: 0, y: 0)

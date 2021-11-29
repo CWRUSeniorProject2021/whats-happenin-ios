@@ -43,6 +43,8 @@ struct LoginView : View {
     
     private var usernameFieldView : some View {
         TextField("Email", text: $username)
+            .textInputAutocapitalization(.never)
+            .disableAutocorrection(true)
             .padding()
             .background(colorScheme == .dark ? Color(white: 0.4745) : Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0) )
             .cornerRadius(5.0)

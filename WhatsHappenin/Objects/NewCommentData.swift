@@ -12,4 +12,11 @@ class NewCommentData: ObservableObject {
     @Published var text: String = ""
     @Published var parentId: Int?
     @Published var placeholder: String?
+    
+    func reset() {
+        self.isCommenting = false
+        self.text = ""
+        self.parentId = nil
+        self.placeholder = nil
+    }
 }

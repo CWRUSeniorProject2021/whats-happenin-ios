@@ -16,8 +16,10 @@ struct CommentView: View {
         let indentAmount: CGFloat = isReply ? 25 : 0
         
         VStack(alignment: .leading, spacing: 0) {
-            (Text($comment.commenterName.wrappedValue).bold() +
-             Text("  \($comment.text.wrappedValue)"))
+            (Text($comment.commenterName.wrappedValue)
+                .bold()
+            + Text("  \($comment.text.wrappedValue)"))
+                .textSelection(.enabled)
             
             HStack() {
                 Text(getTimeDiff(comment.createdAt))
