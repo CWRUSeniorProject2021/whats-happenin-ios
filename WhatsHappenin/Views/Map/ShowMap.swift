@@ -72,22 +72,34 @@ struct PlaceAnnotationView: View {
     var body: some View {
         VStack(spacing: 0) {
             ScrollView {
-                VStack {
+                VStack(alignment: .leading, spacing: 5) {
                     ForEach($events) { $event in
                         NavigationLink {
                             EventDetailView(event: $event)
                         } label: {
-                            
-                            Text(event.title)
-                                .font(.callout)
+                            ZStack {
+                                VStack(spacing: 3) {
+                                    Text($event.title.wrappedValue)
+                                        .font(.callout).bold()
+                                    Text($event.description.wrappedValue)
+                                }
+                                .padding(4)
+                            }
+                            .frame(width: .infinity)
+                            .padding(5)
+                            .background(.red)
+                            .cornerRadius(10)
+                            .shadow(color: Color("LightFontColor"), radius: 6, x: 0, y: 0)
                         }
                     }
                 }
-                .padding(5)
-                .background(.white)
-                .cornerRadius(10)
-                .opacity(showTitle ? 0 : 1)
+                
             }
+            .frame(maxWidth: 200, maxHeight: 400)
+            .padding(5)
+            .background(.white)
+            .cornerRadius(10)
+            .opacity(showTitle ? 0 : 1)
             
             Image(systemName: "mappin.circle.fill")
                 .font(.title)
