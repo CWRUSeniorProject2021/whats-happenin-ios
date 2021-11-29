@@ -59,9 +59,11 @@ struct ShowProfilePage: View {
             print("Button Tapped")
             WHAPI.sharedInstance.logout()
                 .onSuccess { _ in
-                    isLoggedIn = false
                     //rootView.logout()
                 }
+            WHAPI.sharedInstance.clearAuthDetails()
+            isLoggedIn = false
+            
         } label : {
             Text("Log Out")
                 .bold()
