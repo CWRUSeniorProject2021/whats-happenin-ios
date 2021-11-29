@@ -38,6 +38,7 @@ struct EventForm : View {
 
         var id: String { self.rawValue }
     }
+
     
     init(for event: Event?) {
         self.event = event
