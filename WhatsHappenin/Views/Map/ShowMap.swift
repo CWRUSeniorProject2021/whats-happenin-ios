@@ -19,6 +19,7 @@ struct ShowMap: View {
         let coords = Array(events.keys)
         
         Map(coordinateRegion: $region,
+            showsUserLocation: true,
             annotationItems: coords
         ) { coord in
             MapAnnotation(coordinate: coord.toCLLocationCoordinate()) {
