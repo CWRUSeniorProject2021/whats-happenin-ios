@@ -47,7 +47,7 @@ struct ShowProfilePage: View {
         Spacer().frame(height: 30)
 
         NavigationLink(destination: EditProfileInfo()) {
-            Text("Edit Information")
+            Text("Edit Profile")
                 .bold()
                 .frame(width: 260, height: 50)
                 .background(Color.green)
