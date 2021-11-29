@@ -11,7 +11,7 @@ struct MapView: View {
    
     var body: some View {
         VStack {
-            ShowMap()
+            MyMapView()
                 .edgesIgnoringSafeArea(.all)
         }
     }

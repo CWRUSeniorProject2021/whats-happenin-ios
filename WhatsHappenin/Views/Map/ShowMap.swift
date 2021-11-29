@@ -26,11 +26,11 @@ struct ShowMap: View {
                         // groupedEvents[coord] for the list of events
                         //i will need to make a popup function that shows a list of the events
                         
-                NavigationLink {
-                    ListofEventsView(events: groupedEvents[coord]!, coord: coord, dict: groupedEvents)
-                  } label: {
-                    PlaceAnnotationView(title: "text")
-                  }
+//                NavigationLink {
+//                    ListofEventsView(events: groupedEvents[coord]!, coord: coord, dict: groupedEvents)
+//                  } label: {
+                PlaceAnnotationView(title: "text", events: .constant(groupedEvents[coord]!))
+//                  }
                                 }
                         }
             .ignoresSafeArea()
@@ -147,11 +147,14 @@ final class ShowMapModel: NSObject, ObservableObject, CLLocationManagerDelegate 
 // We can use a custom one in later versions (designed)
 struct PlaceAnnotationView: View {
 let title: String
-
+    @Binding var events: [Event]
 
   var body: some View {
     VStack(spacing: 0) {
 
+        ForEach($events) { $event in
+            Text($event.title.wrappedValue)
+        }
 
                     Image(systemName: "mappin")
                           .resizable()

@@ -247,6 +247,7 @@
 			children = (
 				07D654B5272DF90200EABA93 /* ShowMap.swift */,
 				196715F92751C0EE0067BED4 /* MapPin.swift */,
+				19B48A332754584000865420 /* MyMapView.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -467,6 +468,7 @@
 				198ACAA22716171B00037178 /* LocationManager.swift in Sources */,
 				19B2769F2730EEA60050438F /* Constants.swift in Sources */,
 				07D654B2272DF85200EABA93 /* FeedView.swift in Sources */,
+				19B48A342754584000865420 /* MyMapView.swift in Sources */,
 				196715FC2751CB540067BED4 /* CommentView.swift in Sources */,
 				663AAF0B26FA657500248928 /* EventForm.swift in Sources */,
 				190EB54B26E7EAD500822E65 /* WhatsHappeninApp.swift in Sources */,
