@@ -46,6 +46,7 @@
 		19B276A12730EFB30050438F /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B276A02730EFB30050438F /* Keys.swift */; };
 		19B276A9273242130050438F /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B276A8273242130050438F /* EventDetailView.swift */; };
 		19B48A322754300800865420 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B48A312754300800865420 /* UserProfile.swift */; };
+		19B48A362754649F00865420 /* LoginProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B48A352754649F00865420 /* LoginProfile.swift */; };
 		19F2F5032731AEAE0095775B /* EventRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F2F5022731AEAE0095775B /* EventRow.swift */; };
 		19F2F5072731B0D90095775B /* Imageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F2F5062731B0D90095775B /* Imageable.swift */; };
 		19F2F50B2731D8C10095775B /* RemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F2F50A2731D8C10095775B /* RemoteImageView.swift */; };
@@ -109,6 +110,7 @@
 		19B276A02730EFB30050438F /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		19B276A8273242130050438F /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EventDetailView.swift; path = WhatsHappenin/Views/Events/EventDetailView.swift; sourceTree = SOURCE_ROOT; };
 		19B48A312754300800865420 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		19B48A352754649F00865420 /* LoginProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProfile.swift; sourceTree = "<group>"; };
 		19F2F5022731AEAE0095775B /* EventRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EventRow.swift; path = WhatsHappenin/Views/Events/EventRow.swift; sourceTree = SOURCE_ROOT; };
 		19F2F5062731B0D90095775B /* Imageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Imageable.swift; sourceTree = "<group>"; };
 		19F2F50A2731D8C10095775B /* RemoteImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 		19F666AF270CF8B80080C6C3 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				19B48A352754649F00865420 /* LoginProfile.swift */,
 				0710BBDF26F7CE12000E5501 /* Event.swift */,
 				19F666B0270CF9BD0080C6C3 /* Address.swift */,
 				19F666B2270CF9CE0080C6C3 /* Country.swift */,
@@ -426,6 +429,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19B48A362754649F00865420 /* LoginProfile.swift in Sources */,
 				19F2F5032731AEAE0095775B /* EventRow.swift in Sources */,
 				19B2769B2730D9290050438F /* ProfilePageController.swift in Sources */,
 				19B48A322754300800865420 /* UserProfile.swift in Sources */,
