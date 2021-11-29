@@ -46,7 +46,7 @@ struct ShowProfilePage: View {
 
         Spacer().frame(height: 30)
 
-        NavigationLink(destination: EditProfileInfo()) {
+        NavigationLink(destination: EditProfileInfo(for: self.controller.myProfile)) {
             Text("Edit Profile")
                 .bold()
                 .frame(width: 260, height: 50)

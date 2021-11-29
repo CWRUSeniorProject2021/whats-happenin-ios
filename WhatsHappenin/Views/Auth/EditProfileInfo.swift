@@ -14,11 +14,26 @@ struct EditProfileInfo: View {
     @State var showAlert = false
     @State var showChanged = false
     
-    @State private var firstName = ""
-    @State private var lastName = ""
-    @State private var userName = ""
-    @State private var email = ""
-    @State private var schoolName = ""
+    @State private var firstName: String
+    @State private var lastName: String
+    @State private var userName: String
+    @State private var email: String
+    
+    let currentProfile: MyProfile?
+    
+    init(for currentProfile: MyProfile?) {
+        print("Filling in default")
+        self.currentProfile = currentProfile
+        
+        self._firstName = State(initialValue: currentProfile?.firstName ?? "")
+        self._lastName = State(initialValue: currentProfile?.lastName ?? "")
+        self._userName = State(initialValue: currentProfile?.username ?? "")
+        self._email = State(initialValue: currentProfile?.email ?? "")
+    }
+    
+    init() {
+        self.init(for: nil)
+    }
     
     var body: some View {
         Form{
