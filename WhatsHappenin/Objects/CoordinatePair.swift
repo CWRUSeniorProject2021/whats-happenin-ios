@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import CoreLocation
 
-struct CoordinatePair: Hashable, Codable {
+struct CoordinatePair: Hashable, Codable, Identifiable {
+    let id = UUID()
     var latitude: Double
     var longitude: Double
     
@@ -15,4 +17,10 @@ struct CoordinatePair: Hashable, Codable {
         case latitude
         case longitude
     }
+    
+    func toCLLocationCoordinate() -> CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
 }
+
+
