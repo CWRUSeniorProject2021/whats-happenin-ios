@@ -18,6 +18,7 @@ struct EventDetailView : View {
     
     @ObservedObject var newCommentData: NewCommentData = NewCommentData()
     @State private var isPostingComment: Bool = false
+    @State private var showDeleteAlert: Bool = false
     
     @FocusState private var focusedField: Field?
     
@@ -128,16 +129,22 @@ struct EventDetailView : View {
                         
                         
                         Menu {
+                            if(event.isOwnEvent){
                             NavigationLink("Edit", destination: EventForm(for: self.event))
+                            }
                             Button(action: {
                                 EventsListController.sharedInstance.reloadEvent(event)
                             }) {
                                 Text("Refresh")
                             }
+                            if(event.isOwnEvent){
                             Button(role: .destructive, action: {
                                 // DO DELETE CONFIRMATIION HERE
+                                showDeleteAlert = true
                             }) {
                                 Label("Delete Event", systemImage: "")
+                            }
+                    
                             }
                         } label : {
                             let dropdownFont = Font.system(size: 30)
@@ -221,6 +228,13 @@ struct EventDetailView : View {
             }
             .navigationBarTitle("")
             .navigationBarHidden(true)
+            .alert(isPresented: $showDeleteAlert) {
+                Alert(
+                    title: Text("Caution"),
+                    message: Text("Are you sure you want to delete event?"),
+                    dismissButton: .default(Text("Yes"))
+                )
+            }
         }
         // Add in a hacky gesture recognizer to go back to prev view
         //https://stackoverflow.com/questions/58234142/how-to-give-back-swipe-gesture-in-swiftui-the-same-behaviour-as-in-uikit-intera
