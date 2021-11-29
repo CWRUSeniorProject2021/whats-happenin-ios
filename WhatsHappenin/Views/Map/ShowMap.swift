@@ -26,7 +26,11 @@ struct ShowMap: View {
                         // groupedEvents[coord] for the list of events
                         //i will need to make a popup function that shows a list of the events
                         
-                        PlaceAnnotationView(events: groupedEvents[coord]!)
+                NavigationLink {
+                    ListofEventsView(events: groupedEvents[coord]!, coord: coord, dict: groupedEvents)
+                  } label: {
+                    PlaceAnnotationView(title: "text")
+                  }
                                 }
                         }
             .ignoresSafeArea()
@@ -142,19 +146,13 @@ final class ShowMapModel: NSObject, ObservableObject, CLLocationManagerDelegate 
 
 // We can use a custom one in later versions (designed)
 struct PlaceAnnotationView: View {
-//  let title: String
-    let events: [Event]
+let title: String
+
 
   var body: some View {
     VStack(spacing: 0) {
 
 
-                Menu {
-                    ForEach(events) { event in
-                        Text(event.title)
-                        //NavigationLink(event.title, destination: EventDetailView(event: Binding.constant(event)))
-                    }
-                } label: {
                     Image(systemName: "mappin")
                           .resizable()
                           .scaledToFit()
@@ -162,6 +160,7 @@ struct PlaceAnnotationView: View {
                           .font(.title)
                           .foregroundColor(.red)
                 }
+  }
             
 //
         // Uncomment for standard marker
@@ -173,5 +172,18 @@ struct PlaceAnnotationView: View {
 //        .foregroundColor(.red)
 //        .offset(x: 0, y: -5)
     }
-  }
+
+struct ListofEventsView: View {
+    let events: [Event]
+    let coord: CoordinatePair
+    let dict: [CoordinatePair: [Event]]
+    
+    var body: some View {
+        VStack{
+            ForEach(dict[coord]!) { event in
+                Text(event.title)
+            }
+        }
+    }
 }
+
