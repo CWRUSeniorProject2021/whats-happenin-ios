@@ -70,53 +70,62 @@ struct PlaceAnnotationView: View {
     @Binding var events: [Event]
     
     var body: some View {
-            ZStack() {
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 5) {
-                        ForEach($events) { $event in
-                            NavigationLink {
-                                EventDetailView(event: $event)
-                            } label: {
-                                ZStack {
-                                    VStack(spacing: 3) {
-                                        Text($event.title.wrappedValue)
-                                            .font(.callout).bold()
-                                        Text($event.description.wrappedValue)
-                                    }
-                                    .padding(4)
-                                }
-                                .background(.red)
-                                .cornerRadius(10)
-                                .shadow(color: Color("LightFontColor"), radius: 6, x: 0, y: 0)
-                                .padding(5)
-
-                            }
+        VStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 10) {
+                    ForEach($events) { $event in
+                        NavigationLink {
+                            EventDetailView(event: $event)
+                        } label: {
+                            Text($event.title.wrappedValue)
+                                .font(.callout).bold()
+                            
                         }
                     }
                 }
-                .frame(maxWidth: 200, maxHeight: 400)
-                .padding(5)
-                .background(.white)
-                .cornerRadius(10)
-                .opacity(showTitle ? 0 : 1)
-                .offset
+            }
+            .frame(maxWidth: 200, maxHeight: 200)
+            .padding(10)
+            .background(.white)
+            .cornerRadius(10)
+            .opacity(showTitle ? 0 : 1)
+            //.offset(x: 0, y: -100)
+            
+            VStack(spacing: 0) {
+                Image(systemName: "mappin.circle.fill")
+                    .font(.title)
+                    .foregroundColor(.red)
                 
-                VStack(spacing: 0) {
-                    Image(systemName: "mappin.circle.fill")
-                        .font(.title)
-                        .foregroundColor(.red)
-                    
-                    Image(systemName: "arrowtriangle.down.fill")
-                        .font(.caption)
-                        .foregroundColor(.red)
-                        .offset(x: 0, y: -5)
-                }
+                Image(systemName: "arrowtriangle.down.fill")
+                    .font(.caption)
+                    .foregroundColor(.red)
+                    .offset(x: 0, y: -5)
             }
             .onTapGesture {
                 withAnimation(.easeInOut) {
                     showTitle.toggle()
                 }
             }
+            
+            ScrollView {
+                VStack(alignment: .leading, spacing: 10) {
+                    ForEach($events) { $event in
+                        NavigationLink {
+                            EventDetailView(event: $event)
+                        } label: {
+                            Text($event.title.wrappedValue)
+                                .font(.callout).bold()
+                            
+                        }
+                    }
+                }
+            }
+            .frame(maxWidth: 200, maxHeight: 200)
+            .padding(10)
+            .background(.white)
+            .cornerRadius(10)
+            .opacity(0)
+        }
     }
 }
 
