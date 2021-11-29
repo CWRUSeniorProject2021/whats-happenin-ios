@@ -90,6 +90,17 @@ class WHAPI: Service {
         configureTransformer("/users/myprofile") {
             try self.jsonDecoder.decode(GenericResponse<MyProfile>.self, from: $0.content).data
          }
+        
+        configureTransformer("/auth") {
+            try self.jsonDecoder.decode(GenericResponse<LoginProfile>.self, from: $0.content)
+         }
+        
+//        configure {
+//            $0.pipeline[.cleanup].add(
+//                ErrorMessageExtractor()
+//            )
+//        }
+
     }
     
     private func initializeAuthDetails() {
@@ -197,6 +208,18 @@ class WHAPI: Service {
     var yourEvents: Resource { return resource("/events/mine") }
     var pastEvents: Resource { return resource("/events/past") }
     var upcomingEvents: Resource { return resource("/events/upcoming") }
+    
+    func parseErrors<T: Codable>(_ response: RequestError) -> GenericResponse<T>? {
+        if let errorData: Data = response.typedContent(){
+            do {
+                let content = try jsonDecoder.decode(GenericResponse<T>.self, from: errorData)
+                return content
+            } catch {
+               print(error)
+            }
+        }
+        return nil
+    }
 }
 
 extension DateFormatter {
@@ -210,3 +233,33 @@ extension DateFormatter {
   }()
 }
 
+//struct ErrorMessageExtractor: ResponseTransformer {
+//  func process(_ response: Response) -> Response {
+//    switch response {
+//      case .success:
+//        return response
+//
+//      case .failure(var error):
+////        let decoder = JSONDecoder()
+////        var errors = [String: [String]]()
+////        if let errorData: Data = error.typedContent(){
+////            do{
+////                let content = try decoder.decode(GenericResponse<Empty>.self, from: errorData).errors
+////                print(content)
+////                errors = content
+////                print(error.entity)
+////            } catch {
+////                print(error)
+////            }
+////            //let content = try? WHAPI.sharedInstance.jsonDecoder.decode(GenericResponse<LoginProfile>.self, from: errorData)
+////            //print(String(decoding: errorData, as: UTF8.self))
+////        }
+//
+//        return .failure(error)
+//    }
+//  }
+//}
+
+struct Empty: Hashable, Codable {
+    
+}

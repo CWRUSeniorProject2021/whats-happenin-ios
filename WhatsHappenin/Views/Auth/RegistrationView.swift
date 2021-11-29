@@ -22,6 +22,8 @@ struct RegistrationView : View {
     @State private var gender = ""
     @State private var standing = ""
     @State private var birthDate = Date()
+    @State private var alertTitle : String = ""
+    @State private var alertMessage : String = ""
     
     enum Gender: String, CaseIterable, Identifiable {
             case male
@@ -74,12 +76,32 @@ struct RegistrationView : View {
             Button(action: {
                             //add method call
                 WHAPI.sharedInstance.auth.request(.post, urlEncoded:["email":emailAddr, "password":password1, "password_confirmation":password2, "username":userName , "first_name":firstName , "last_name":lastName])
+                    .onSuccess{ _ in
                             self.showAlert = true
+                            alertTitle = "Success"
+                            alertMessage = "Confirm Account using email link"
+                        }
+                    .onFailure{ error in
+                        alertTitle = "Registration Failed"
+                        let val : GenericResponse<LoginProfile>? = WHAPI.sharedInstance.parseErrors(error)
+                        print (val?.errors)
+                        var err: String = ""
+                        for (a , b ) in val?.errors ?? [:] {
+                                if(a  == "full_messages"){
+                                for c in b {
+                                    err = err + "\n" + c
+                                }
+                            }
+                        }
+                        alertMessage = err
+                        showAlert = true
+                    }
+                            
                         }, label: { Text("Submit" )})
             .alert(isPresented: $showAlert) {
                         Alert(
-                            title: Text("Succesfully Submitted"),
-                            message: Text("Verify account using email link"),
+                            title: Text($alertTitle.wrappedValue),
+                            message: Text($alertMessage.wrappedValue),
                             dismissButton: .default(Text("Close"))
                         )
                 }
@@ -96,3 +118,5 @@ struct RegistrationView_Previews: PreviewProvider {
         RegistrationView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
+
+
