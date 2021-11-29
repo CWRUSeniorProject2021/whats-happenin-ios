@@ -58,8 +58,18 @@ class WHAPI: Service {
                 $0.headers[Keys.Auth.UID] = authUID
             }
             
-            $0.decorateRequests {
-                self.refreshTokenOnAuthFailure(request: $1)
+//                $0.decorateRequests {
+//                    self.refreshTokenOnAuthFailure(request: $1)
+//                }
+        }
+        
+        configure(whenURLMatches: { $0 != self.signInResource.url }, description: "Catch auth failures") {
+            $0.decorateRequests {_, req in
+                req.onFailure{ error in
+                    if error.httpStatusCode == 401 {
+                        self.clearAuthDetails()
+                    }
+                }
             }
         }
         
@@ -99,15 +109,11 @@ class WHAPI: Service {
             try self.jsonDecoder.decode(GenericResponse<LoginProfile>.self, from: $0.content)
          }
         
-//        configure {
-//            $0.pipeline[.cleanup].add(
-//                ErrorMessageExtractor()
-//            )
-//        }
         configureTransformer("/users") {
             try self.jsonDecoder.decode(GenericResponse<UserProfile>.self, from: $0.content).data
          }
 
+        self.invalidateConfiguration()
     }
     
     private func initializeAuthDetails() {
@@ -122,17 +128,19 @@ class WHAPI: Service {
      */
     func refreshTokenOnAuthFailure(request: Request) -> Request {
         let authDetails = self.userAuthData()
-        let hasCreds = (authDetails["email"]) ?? "" != "" && (authDetails["password"] ?? "") != ""
+        let hasCreds = ((authDetails["email"] ?? "") != "") && ((authDetails["password"] ?? "") != "")
 
         return request.chained {
+            print(request)
             guard case .failure(let error) = $0.response,  // Did request fail…
                   error.httpStatusCode == 401 && hasCreds else {           // …because of expired token?
                       return .useThisResponse                    // If not, use the response we got.
                   }
             
             return .passTo(
-                self.login().chained {             // If so, first request a new token, then:
+                self.login().chained { // If so, first request a new token, then:
                     if case .failure = $0.response { // If token request failed…
+                        self.clearAuthDetails()
                         return .useThisResponse                  // …report that error.
                     } else {
                         return .passTo(request.repeated())       // We have a new token! Repeat the original request.
@@ -153,10 +161,11 @@ class WHAPI: Service {
         } else {
             authDetails = userAuthData()
         }
-        
+        print("Attempting login")
         return signInResource
             .request(.post, json: authDetails)
             .onSuccess {
+                print("login success")
                 self.authToken = $0.headers[Keys.Auth.Token]
                 self.authTokenType = $0.headers[Keys.Auth.TokenType]
                 self.authClient = $0.headers[Keys.Auth.Client]
@@ -165,6 +174,7 @@ class WHAPI: Service {
                 ProfilePageController.sharedInstance.loadMyProfile()
             }
             .onFailure { _ in
+                print("login failed")
                 self.clearAuthDetails()
             }
     }
@@ -173,11 +183,9 @@ class WHAPI: Service {
      * Perform logout request
      */
     func logout() -> Request {
+        self.clearAuthDetails()
         return signOutResource
             .request(.delete)
-            .onSuccess { _ in
-                self.clearAuthDetails()
-            }
             .onFailure { _ in
                 print("Failed to logout")
             }
@@ -187,6 +195,7 @@ class WHAPI: Service {
      * Clears auth details from keychain storage
      */
     func clearAuthDetails() {
+        print("Clearing auth")
         self.authToken = ""
         self.authTokenType = ""
         self.authClient = ""
@@ -240,33 +249,6 @@ extension DateFormatter {
     return formatter
   }()
 }
-
-//struct ErrorMessageExtractor: ResponseTransformer {
-//  func process(_ response: Response) -> Response {
-//    switch response {
-//      case .success:
-//        return response
-//
-//      case .failure(var error):
-////        let decoder = JSONDecoder()
-////        var errors = [String: [String]]()
-////        if let errorData: Data = error.typedContent(){
-////            do{
-////                let content = try decoder.decode(GenericResponse<Empty>.self, from: errorData).errors
-////                print(content)
-////                errors = content
-////                print(error.entity)
-////            } catch {
-////                print(error)
-////            }
-////            //let content = try? WHAPI.sharedInstance.jsonDecoder.decode(GenericResponse<LoginProfile>.self, from: errorData)
-////            //print(String(decoding: errorData, as: UTF8.self))
-////        }
-//
-//        return .failure(error)
-//    }
-//  }
-//}
 
 struct Empty: Hashable, Codable {
     

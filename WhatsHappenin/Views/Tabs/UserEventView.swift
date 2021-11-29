@@ -156,5 +156,10 @@ struct Home : View {
                 }
               }
         }
+        .onAppear {
+            WHAPI.sharedInstance.yourEvents.loadIfNeeded()
+            WHAPI.sharedInstance.pastEvents.loadIfNeeded()
+            WHAPI.sharedInstance.upcomingEvents.loadIfNeeded()
+        }
     }
 }
