@@ -58,19 +58,19 @@ struct RegistrationView : View {
                 TextField("First Name", text: $firstName)
                 TextField("Last Name", text: $lastName)
                 TextField("Email Address", text: $emailAddr)
-                DatePicker(selection: $birthDate, in: ...Date(), displayedComponents: .date) {
-                                Text("Date of Birth")
-                            }
-                Picker("Gender", selection: $gender) {
-                                        ForEach(Gender.allCases) { gender in
-                                            Text(gender.rawValue.capitalized).tag(gender)
-                                        }
-                            }.pickerStyle(SegmentedPickerStyle())
-                Picker("Class", selection: $gender) {
-                                        ForEach(Standing.allCases) { standing in
-                                            Text(standing.rawValue.capitalized).tag(standing)
-                                        }
-                            }
+//                DatePicker(selection: $birthDate, in: ...Date(), displayedComponents: .date) {
+//                                Text("Date of Birth")
+//                            }
+//                Picker("Gender", selection: $gender) {
+//                                        ForEach(Gender.allCases) { gender in
+//                                            Text(gender.rawValue.capitalized).tag(gender)
+//                                        }
+//                            }.pickerStyle(SegmentedPickerStyle())
+//                Picker("Class", selection: $gender) {
+//                                        ForEach(Standing.allCases) { standing in
+//                                            Text(standing.rawValue.capitalized).tag(standing)
+//                                        }
+//                            }
 
                 
                     }

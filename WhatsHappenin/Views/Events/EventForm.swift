@@ -31,6 +31,19 @@ struct EventForm : View {
     @State private var inputImage: UIImage?
     @State private var image: SwiftUI.Image?
     
+    @FocusState private var focusedField: Field?
+    
+    enum Field: Hashable {
+        case title
+        case description
+        case street1
+        case street2
+        case city
+        case postalCode
+    }
+    
+    let stateList: [String] = ["AK", "AL", "AR", "AS", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "GU", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MP", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UM", "UT", "VA", "VI", "VT", "WA", "WI", "WV", "WY"]
+    
     //things to 
     enum EventType: String, CaseIterable, Identifiable {
         case open
@@ -64,10 +77,12 @@ struct EventForm : View {
         Form {
             Section(header: Text("Event Information")){
                 TextField("Event Name", text: $eventName)
+                    .focused($focusedField, equals: .title)
                 TextField("Event Description", text: $eventDesc)
                             .lineLimit(4)
                             .multilineTextAlignment(.leading)
                             .frame(minWidth: 100, maxWidth: 200, minHeight: 100, maxHeight: .infinity, alignment: .topLeading)
+                            .focused($focusedField, equals: .description)
                 DatePicker("Start Time", selection: $startTime, displayedComponents: [.date, .hourAndMinute])
                     
                 DatePicker("End Time", selection: $endTime, displayedComponents: [.date, .hourAndMinute])
@@ -83,10 +98,18 @@ struct EventForm : View {
             }
             Section(header: Text("Event Location")){
                 TextField("Address Line 1", text: $address1)
+                    .focused($focusedField, equals: .street1)
                 TextField("Address Line 2", text: $address2)
+                    .focused($focusedField, equals: .street1)
                 TextField("City", text: $city)
-                TextField("State", text: $state)
+                    .focused($focusedField, equals: .city)
+                Picker("State", selection: $state) {
+                    ForEach(stateList, id: \.self) {
+                        Text($0)
+                    }
+                }
                 TextField("Zipcode", text: $zipcode)
+                    .focused($focusedField, equals: .postalCode)
             }
             Section(header: Text("Image")) {
                 if image != nil {
@@ -100,8 +123,8 @@ struct EventForm : View {
                     Button(action: {
                         showingImagePicker = true
                     }, label: { Text("Add an Image")})
-                    .foregroundColor(.white)
-                    .font(.headline)
+                    .foregroundColor(Color("FontColor"))
+                    //.font(.headline)
                         
                 }
             }
@@ -131,9 +154,9 @@ struct EventForm : View {
                     WHAPI.sharedInstance.events.child("\(e.id)").request(.patch, json: requestContent)
                     .onSuccess { _ in
                         EventsListController.sharedInstance.reloadEvent(e.id)
-                        self.presentationMode.wrappedValue.dismiss()
                         self.alertMessage = "Event was successfully updated"
                         self.showAlert = true
+                        self.presentationMode.wrappedValue.dismiss()
                     }
                     .onFailure { error in
                         self.alertMessage = "There was an error in updating event"
@@ -155,8 +178,10 @@ struct EventForm : View {
                     WHAPI.sharedInstance.events.request(.post, json: requestContent)
                         .onSuccess { _ in
                             self.alertMessage = "Event was successfully created"
-                            
                             self.showAlert = true
+                            EventsListController.sharedInstance.loadYourEvents()
+                            EventsListController.sharedInstance.loadNearbyEvents()
+                            self.presentationMode.wrappedValue.dismiss()
                         }
                         .onFailure { error in
                             self.alertMessage = "There was an error creating the event"

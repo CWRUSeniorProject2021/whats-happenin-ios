@@ -24,7 +24,7 @@ struct EventDetailView : View {
     
     enum Field: Hashable {
             case commentField
-        }
+    }
     
     var body: some View {
         GeometryReader { outerGeometry in
@@ -229,23 +229,20 @@ struct EventDetailView : View {
                 Alert(
                     title: Text("Caution"),
                     message: Text("Are you sure you want to delete event?"),
-                    primaryButton: .default(Text("Yes")){
+                    primaryButton: .default(Text("Cancel")),
+                    secondaryButton: .destructive(Text("Yes")){
                         print("deleting")
                         WHAPI.sharedInstance.events.child("\(event.id)").request(.delete)
                             .onSuccess{ _ in
-                            print("great success")
+                                controller.clearEvent(event)
                             }
                             .onFailure{ _ in
-                            print("grape")
                             }
                         self.presentationMode.wrappedValue.dismiss()
-                    },
-                    secondaryButton: .destructive(Text("Cancel"))
+                    }
                 )
             }
         }
-        // Add in a hacky gesture recognizer to go back to prev view
-        //https://stackoverflow.com/questions/58234142/how-to-give-back-swipe-gesture-in-swiftui-the-same-behaviour-as-in-uikit-intera
         .gesture(DragGesture().updating($dragOffset, body: { (value, state, transaction) in
              if(value.startLocation.x < 50 && value.translation.width > 100) {
                  self.presentationMode.wrappedValue.dismiss()

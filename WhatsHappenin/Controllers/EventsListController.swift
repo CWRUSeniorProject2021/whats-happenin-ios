@@ -67,6 +67,20 @@ class EventsListController: ObservableObject, ResourceObserver {
         }
     }
     
+    func clearEvent(_ id: Int) {
+        pastEventIds.removeAll(where: { $0 == id })
+        upcomingEventIds.removeAll(where: { $0 == id})
+        nearbyEventIds.removeAll(where: {$0 == id})
+        yourEventIds.removeAll(where: {$0 == id})
+        if let e = events.removeValue(forKey: id) {
+            eventImages.removeValue(forKey: e)
+        }
+    }
+    
+    func clearEvent(_ event: Event) {
+        clearEvent(event.id)
+    }
+    
     func getEvents(_ arr: [Int]) -> [Event] {
         var temp = [Event]()
         arr.forEach( { id in
