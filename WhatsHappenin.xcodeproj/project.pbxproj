@@ -104,6 +104,7 @@
 		196FCFBF275466850046098A /* MyMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMapView.swift; sourceTree = "<group>"; };
 		198ACA9F2716112800037178 /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		198ACAA12716171B00037178 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		199FD3C22755446800AEDD7B /* Cle.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Cle.gpx; sourceTree = "<group>"; };
 		19B2768F2730C34B0050438F /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		19B276982730D9050050438F /* ShowProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowProfilePage.swift; sourceTree = "<group>"; };
 		19B2769A2730D9290050438F /* ProfilePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageController.swift; sourceTree = "<group>"; };
@@ -201,6 +202,7 @@
 				190EB55826E7EAD600822E65 /* Info.plist */,
 				190EB55526E7EAD600822E65 /* WhatsHappenin.xcdatamodeld */,
 				190EB55026E7EAD600822E65 /* Preview Content */,
+				199FD3C22755446800AEDD7B /* Cle.gpx */,
 			);
 			path = WhatsHappenin;
 			sourceTree = "<group>";
