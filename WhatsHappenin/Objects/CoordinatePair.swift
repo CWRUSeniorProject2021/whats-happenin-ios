@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 struct CoordinatePair: Hashable, Codable, Identifiable {
     let id = UUID()
@@ -15,6 +16,10 @@ struct CoordinatePair: Hashable, Codable, Identifiable {
     enum CodingKeys: String, CodingKey {
         case latitude
         case longitude
+    }
+    
+    func toCLLocationCoordinate() -> CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
 }
 

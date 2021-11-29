@@ -9,6 +9,8 @@ import Foundation
 import CoreLocation
 
 class LocationManager: NSObject, CLLocationManagerDelegate {
+    static let sharedInstance = LocationManager()
+    
     private var _locationManager: CLLocationManager?
     private var currentLocation: CLLocation?
     private var coordinates: CoordinatePair?

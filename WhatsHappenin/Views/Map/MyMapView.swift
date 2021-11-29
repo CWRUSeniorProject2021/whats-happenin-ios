@@ -5,11 +5,12 @@
 //  Created by Christian Tingle on 11/28/21.
 //
 
+import Foundation
 import SwiftUI
 import MapKit
 
 struct MyMapView: UIViewRepresentable {
-    var annotations: [Annotation] = [Annotation]()
+    var annotations: [Annotation] = [Annotation.example]
     
     func makeUIView(context: Context) -> MKMapView {
         MKMapView(frame: .zero)
@@ -43,9 +44,13 @@ class MapViewCoordinator: NSObject, MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "Annotation")
+        let identifier = "Event"
+        
+        let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+        
         annotationView.canShowCallout = true
-        annotationView.image = UIImage(systemName: "mappin")
+        annotationView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        //annotationView.image = UIImage(systemName: "mappin")
         return annotationView
     }
 }
