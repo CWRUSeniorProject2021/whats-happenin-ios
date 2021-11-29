@@ -615,6 +615,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = WhatsHappenin/WhatsHappenin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"WhatsHappenin/Preview Content\"";
 				DEVELOPMENT_TEAM = Z6G83N9S59;
 				ENABLE_PREVIEWS = YES;
@@ -640,6 +641,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = WhatsHappenin/WhatsHappenin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"WhatsHappenin/Preview Content\"";
 				DEVELOPMENT_TEAM = Z6G83N9S59;
 				ENABLE_PREVIEWS = YES;
@@ -727,6 +729,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = WhatsHappenin/WhatsHappenin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"WhatsHappenin/Preview Content\"";
 				DEVELOPMENT_TEAM = Z6G83N9S59;
 				ENABLE_PREVIEWS = YES;
@@ -808,6 +811,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = WhatsHappenin/WhatsHappenin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"WhatsHappenin/Preview Content\"";
 				DEVELOPMENT_TEAM = Z6G83N9S59;
 				ENABLE_PREVIEWS = YES;
