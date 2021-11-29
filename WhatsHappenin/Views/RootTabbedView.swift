@@ -18,13 +18,14 @@ struct RootTabbedView: View {
 
     var body: some View {
         TabView {
-//            NavigationView {
-//                FeedView()
-//                    .navigationTitle("Feed")
-//            }
-//            .tabItem {
-//                Label("Feed", systemImage: "house")
-//            }
+            
+            NavigationView {
+                NearbyEventView()
+                    .navigationTitle("Nearby Events")
+            }
+            .tabItem {
+                Label("Nearby Events", systemImage: "list.bullet")
+            }
             
             NavigationView {
                 MapView()
@@ -39,14 +40,6 @@ struct RootTabbedView: View {
             }
             .tabItem {
                 Label("Your Events", systemImage: "calendar")
-            }
-
-            NavigationView {
-                NearbyEventView()
-                    .navigationTitle("Nearby Events")
-            }
-            .tabItem {
-                Label("Nearby Events", systemImage: "list.bullet")
             }
 
             NavigationView {

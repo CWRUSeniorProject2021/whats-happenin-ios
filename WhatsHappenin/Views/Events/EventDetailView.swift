@@ -127,6 +127,14 @@ struct EventDetailView : View {
                         
                         Spacer()
                         
+                        if (event.isOwnEvent) {
+                            NavigationLink(destination: EventForm(for: self.event)) {
+                                let dropdownFont = Font.system(size: 30)
+                                Image(systemName: "pencil.circle.fill")
+                                    .font(dropdownFont)
+                                    .foregroundColor(Color.blue)
+                            }
+                        }
                         
                         Menu {
                             Button(action: {
@@ -150,14 +158,6 @@ struct EventDetailView : View {
                                 .foregroundColor(Color.blue)
                         }
                         
-                        if (event.isOwnEvent) {
-                            NavigationLink(destination: EventForm(for: self.event)) {
-                                let dropdownFont = Font.system(size: 30)
-                                Image(systemName: "pencil.circle.fill")
-                                    .font(dropdownFont)
-                                    .foregroundColor(Color.blue)
-                            }
-                        }
                     }
                     .padding(.top, 55)
                     .padding(.leading, 20)

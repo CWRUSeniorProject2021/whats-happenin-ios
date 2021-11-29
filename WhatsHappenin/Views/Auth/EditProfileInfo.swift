@@ -64,9 +64,7 @@ struct EditProfileInfo: View {
                 .onFailure { error in
                     self.showChanged = true
                     let errorMessage: GenericResponse<Empty>? = WHAPI.sharedInstance.parseErrors(error)
-                    print(errorMessage)
-                        
-                    // HANDLE FAILURE HERE
+                    
                 }
 
             

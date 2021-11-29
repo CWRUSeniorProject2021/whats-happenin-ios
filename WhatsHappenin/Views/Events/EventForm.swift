@@ -138,7 +138,7 @@ struct EventForm : View {
                     .onFailure { error in
                         self.alertMessage = "There was an error in updating event"
                         let val : GenericResponse<Empty>? = WHAPI.sharedInstance.parseErrors(error)
-                        print (val?.errors)
+
                         var err: String = ""
                         for (a , b ) in val?.errors ?? [:] {
                             var temp = a.replacingOccurrences(of: "address.", with: "")
@@ -161,7 +161,7 @@ struct EventForm : View {
                         .onFailure { error in
                             self.alertMessage = "There was an error creating the event"
                             let val : GenericResponse<Empty>? = WHAPI.sharedInstance.parseErrors(error)
-                            print (val?.errors)
+
                             var err: String = ""
                             for (a , b ) in val?.errors ?? [:] {
                                 var temp = a.replacingOccurrences(of: "address.", with: "")
