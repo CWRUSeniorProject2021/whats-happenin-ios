@@ -16,6 +16,7 @@ struct UserEventView: View {
 struct UserEventView_Previews: PreviewProvider {
     static var previews: some View {
         UserEventView()
+            .previewDevice("iPhone 13 Pro")
     }
 }
 
@@ -40,8 +41,9 @@ struct Home : View {
                 Text("Past")
                     .foregroundColor(self.index == 0 ? .white : Color.red.opacity(0.85))
                     .fontWeight(.bold)
-                    .padding(.vertical, 10)
-                    .padding(.horizontal,30)
+                    .font(Font.system(size: 14))
+                    .padding(.vertical, 5)
+                    .padding(.horizontal, 30)
                     .background(Color.red.opacity(self.index == 0 ? 0.7 : 0))
                     .clipShape(Capsule())
                     .onTapGesture {
@@ -55,8 +57,9 @@ struct Home : View {
                 Text("Your Events")
                     .foregroundColor(self.index == 1 ? .white : Color.red.opacity(0.85))
                     .fontWeight(.bold)
-                    .padding(.vertical, 10)
-                    .padding(.horizontal,15)
+                    .font(Font.system(size: 14))
+                    .padding(.vertical, 5)
+                    .padding(.horizontal, 15)
                     .background(Color.red.opacity(self.index == 1 ? 0.7 : 0))
                     .clipShape(Capsule())
                     .onTapGesture {
@@ -70,8 +73,9 @@ struct Home : View {
                 Text("Future")
                     .foregroundColor(self.index == 2 ? .white : Color.red.opacity(0.85))
                     .fontWeight(.bold)
-                    .padding(.vertical, 10)
-                    .padding(.horizontal,30)
+                    .font(Font.system(size: 14))
+                    .padding(.vertical, 5)
+                    .padding(.horizontal, 30)
                     .background(Color.red.opacity(self.index == 2 ? 0.7 : 0))
                     .clipShape(Capsule())
                     .onTapGesture {
