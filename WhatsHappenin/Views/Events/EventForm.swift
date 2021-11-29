@@ -130,10 +130,10 @@ struct EventForm : View {
                 if let e = event {
                     WHAPI.sharedInstance.events.child("\(e.id)").request(.patch, json: requestContent)
                     .onSuccess { _ in
-                        self.alertMessage = "Event was successfully updated"
-                        self.showAlert = true
                         EventsListController.sharedInstance.reloadEvent(e.id)
                         self.presentationMode.wrappedValue.dismiss()
+                        self.alertMessage = "Event was successfully updated"
+                        self.showAlert = true
                     }
                     .onFailure { error in
                         self.alertMessage = "There was an error in updating event"

@@ -11,6 +11,7 @@ import Siesta
 
 struct RegistrationView : View {
     
+    @SwiftUI.Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var showAlert = false
     
     @State private var firstName = ""
@@ -77,23 +78,29 @@ struct RegistrationView : View {
                             //add method call
                 WHAPI.sharedInstance.auth.request(.post, urlEncoded:["email":emailAddr, "password":password1, "password_confirmation":password2, "username":userName , "first_name":firstName , "last_name":lastName])
                     .onSuccess{ _ in
-                            self.showAlert = true
                             alertTitle = "Success"
                             alertMessage = "Confirm Account using email link"
+                            showAlert = true
                         }
                     .onFailure{ error in
                         alertTitle = "Registration Failed"
                         let val : GenericResponse<LoginProfile>? = WHAPI.sharedInstance.parseErrors(error)
                         print (val?.errors)
-                        var err: String = ""
-                        for (a , b ) in val?.errors ?? [:] {
-                                if(a  == "full_messages"){
-                                for c in b {
-                                    err = err + "\n" + c
+                        if(val?.errors != nil){
+                            var err: String = ""
+                            for (a , b ) in val?.errors ?? [:] {
+                                    if(a  == "full_messages"){
+                                    for c in b {
+                                        err = err + "\n" + c
+                                    }
                                 }
                             }
+                            alertTitle = "Registration Failed"
+                            alertMessage = err
+                        }else {
+                            alertTitle = "Registration Successful"
+                            alertMessage = "Use Email link to confirm"
                         }
-                        alertMessage = err
                         showAlert = true
                     }
                             
