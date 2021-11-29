@@ -16,6 +16,7 @@ struct LoginView : View {
     @State var username: String = Environment.testUserUsername
     @State var password: String = Environment.testUserPassword
     @State var showAlert: Bool = false
+    @ObservedObject var controller = EventsListController.sharedInstance
     
     var body: some View {
             NavigationView{
@@ -63,9 +64,11 @@ struct LoginView : View {
         Button(action: {
             print("u:\(username) p:\(password)")
             WHAPI.sharedInstance.login(username: username, password: password).onSuccess { _ in
-                    GlobalKeychain.set(username, forKey: "email")
-                    GlobalKeychain.set(password, forKey: "password")
-                    isLoggedIn = true
+                GlobalKeychain.set(username, forKey: "email")
+                GlobalKeychain.set(password, forKey: "password")
+                isLoggedIn = true
+                controller.loadYourEvents()
+                controller.loadNearbyEvents()
                 }.onFailure { _ in
                     isLoggedIn = false
                     showAlert = true
