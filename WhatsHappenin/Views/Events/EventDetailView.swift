@@ -129,9 +129,6 @@ struct EventDetailView : View {
                         
                         
                         Menu {
-                            if(event.isOwnEvent){
-                            NavigationLink("Edit", destination: EventForm(for: self.event))
-                            }
                             Button(action: {
                                 EventsListController.sharedInstance.reloadEvent(event)
                             }) {
@@ -232,7 +229,18 @@ struct EventDetailView : View {
                 Alert(
                     title: Text("Caution"),
                     message: Text("Are you sure you want to delete event?"),
-                    dismissButton: .default(Text("Yes"))
+                    primaryButton: .default(Text("Yes")){
+                        print("deleting")
+                        WHAPI.sharedInstance.events.child("\(event.id)").request(.delete)
+                            .onSuccess{ _ in
+                            print("great success")
+                            }
+                            .onFailure{ _ in
+                            print("grape")
+                            }
+                        self.presentationMode.wrappedValue.dismiss()
+                    },
+                    secondaryButton: .destructive(Text("Cancel"))
                 )
             }
         }
