@@ -53,7 +53,6 @@
 		19F2F50B2731D8C10095775B /* RemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F2F50A2731D8C10095775B /* RemoteImageView.swift */; };
 		19F2F50D2731F18B0095775B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F2F50C2731F18B0095775B /* ImagePicker.swift */; };
 		19F66673270CB2500080C6C3 /* WHAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F66672270CB2500080C6C3 /* WHAPI.swift */; };
-		19F6669E270CB6F40080C6C3 /* Production.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 19F6669D270CB6F40080C6C3 /* Production.xcconfig */; };
 		19F666A0270CB8A00080C6C3 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F6669F270CB8A00080C6C3 /* Environment.swift */; };
 		19F666A5270CD5920080C6C3 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 19F666A4270CD5920080C6C3 /* KeychainSwift */; };
 		19F666A8270CDAEE0080C6C3 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F666A7270CDAEE0080C6C3 /* Keychain.swift */; };
@@ -384,7 +383,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1250;
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1310;
 				TargetAttributes = {
 					190EB54626E7EAD500822E65 = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -421,7 +420,6 @@
 			files = (
 				190EB55226E7EAD600822E65 /* Preview Assets.xcassets in Resources */,
 				190EB54F26E7EAD600822E65 /* Assets.xcassets in Resources */,
-				19F6669E270CB6F40080C6C3 /* Production.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

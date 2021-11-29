@@ -85,7 +85,6 @@ struct RegistrationView : View {
                     .onFailure{ error in
                         alertTitle = "Registration Failed"
                         let val : GenericResponse<LoginProfile>? = WHAPI.sharedInstance.parseErrors(error)
-                        print (val?.errors)
                         if(val?.errors != nil){
                             var err: String = ""
                             for (a , b ) in val?.errors ?? [:] {

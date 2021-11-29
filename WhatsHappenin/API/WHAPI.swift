@@ -209,7 +209,7 @@ class WHAPI: Service {
     var signOutResource: Resource { return resource("/auth/sign_out") }
     var auth: Resource { return resource("/auth") }
     var myProfile: Resource { return resource("/users/myprofile")}
-    var user: Resource { return resource("/users") }
+    var users: Resource { return resource("/users") }
 
     var events: Resource { return resource("/events") }
     var nearbyEvents: Resource { return resource("/events/nearby") }

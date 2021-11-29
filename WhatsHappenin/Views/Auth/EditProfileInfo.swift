@@ -53,7 +53,7 @@ struct EditProfileInfo: View {
                 "username": userName,
                 "email": email,
             ] as [String: Any]
-            WHAPI.sharedInstance.user.child("\(controller.myProfile?.id ?? 1)").request(.patch, json: requestData)
+            WHAPI.sharedInstance.users.child("\(controller.myProfile?.id ?? 1)").request(.patch, json: requestData)
                 .onSuccess { response in
                     GlobalKeychain.set(email, forKey: Keys.Auth.UID)
                     GlobalKeychain.set(email, forKey: "email")
